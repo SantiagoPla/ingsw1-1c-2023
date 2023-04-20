@@ -562,11 +562,10 @@ Entero subclass: #EnteroMayorQueUno
 	poolDictionaries: ''
 	category: 'Numero-Exercise'!
 
-!EnteroMayorQueUno methodsFor: 'as yet unclassified' stamp: 'FP 4/19/2023 13:28:36'!
+!EnteroMayorQueUno methodsFor: 'as yet unclassified' stamp: 'FP 4/20/2023 14:10:02'!
 fibonacci
 
 	| one two |
-	
 	one := Entero with: 1.
 	two := Entero with: 2.
 		
