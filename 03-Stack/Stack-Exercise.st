@@ -147,25 +147,25 @@ TestCase subclass: #SentenceFinderByPrefixTest
 
 !classDefinition: #OOStack category: 'Stack-Exercise'!
 Object subclass: #OOStack
-	instanceVariableNames: 'state size'
+	instanceVariableNames: 'topState size'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStack methodsFor: 'instance creation' stamp: 'SP 4/22/2023 16:20:14'!
+!OOStack methodsFor: 'instance creation' stamp: 'SP 4/23/2023 11:49:01'!
 initialize
 	
-	state := StackStateEmpty new.
+	topState := StackStateEmpty new.
 	size := 0.! !
 
 
-!OOStack methodsFor: 'auxiliary operations' stamp: 'SP 4/22/2023 16:17:17'!
+!OOStack methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 11:49:01'!
 popWhenStateIsNotEmpty
 
 	| poppedElement |
 	
 	poppedElement := self top.
-	state := state below.
+	topState := topState below.
 	size := size - 1.	
 	^poppedElement 
 	! !
@@ -175,34 +175,34 @@ raiseErrorForAccesingWhenStateIsEmpty
 
 	self error: self class stackEmptyErrorDescription ! !
 
-!OOStack methodsFor: 'auxiliary operations' stamp: 'SP 4/22/2023 16:19:05'!
+!OOStack methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 11:49:01'!
 topWhenStateIsNotEmpty
 
-	^state content! !
+	^topState content! !
 
 
-!OOStack methodsFor: 'modifying' stamp: 'SP 4/22/2023 16:39:06'!
+!OOStack methodsFor: 'modifying' stamp: 'SP 4/23/2023 11:49:01'!
 pop 
 
-	^state tellStackToPopIDependingOnState: self
+	^topState tellStackToPopIDependingOnState: self
 ! !
 
-!OOStack methodsFor: 'modifying' stamp: 'SP 4/22/2023 16:16:18'!
+!OOStack methodsFor: 'modifying' stamp: 'SP 4/23/2023 11:49:01'!
 push: anElementToBePushed
 
 	| newStackState |
 	
-	newStackState := StackStateNotEmpty with: anElementToBePushed onTopOf: state.
-	state := newStackState.
+	newStackState := StackStateNotEmpty with: anElementToBePushed onTopOf: topState.
+	topState := newStackState.
 	size := size + 1
 
 ! !
 
 
-!OOStack methodsFor: 'accesing' stamp: 'SP 4/22/2023 12:00:00'!
+!OOStack methodsFor: 'accesing' stamp: 'SP 4/23/2023 11:49:01'!
 isEmpty
 
-	^state isEmpty
+	^topState isEmpty
 
 	! !
 
@@ -211,10 +211,10 @@ size
 
 	^size ! !
 
-!OOStack methodsFor: 'accesing' stamp: 'SP 4/22/2023 16:38:51'!
+!OOStack methodsFor: 'accesing' stamp: 'SP 4/23/2023 11:49:01'!
 top
 
-	^state tellStackToGetTopDependingOnState: self! !
+	^topState tellStackToGetTopDependingOnState: self! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -236,10 +236,79 @@ new
 
 !classDefinition: #SentenceFinderByPrefix category: 'Stack-Exercise'!
 Object subclass: #SentenceFinderByPrefix
-	instanceVariableNames: ''
+	instanceVariableNames: 'aSentenceStackToGetSentencesFrom aPrefixToFindSentences foundSentencesWithPrefix tempStackToStoreOriginalSentences'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
+
+!SentenceFinderByPrefix methodsFor: 'instance creation' stamp: 'SP 4/23/2023 13:34:45'!
+initializeWithAPrefix: aPrefix inAStringStack: aSentenceStack
+
+	aPrefixToFindSentences := aPrefix.
+	aSentenceStackToGetSentencesFrom := aSentenceStack.
+	tempStackToStoreOriginalSentences := OOStack new.
+	foundSentencesWithPrefix := OrderedCollection new.! !
+
+
+!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 13:32:17'!
+addASentenceToFoundSentencesIfItHasPrefix: aSentenceToSearchForPrefix
+
+	(aSentenceToSearchForPrefix beginsWith: aPrefixToFindSentences) ifTrue: [ 
+			foundSentencesWithPrefix add: aSentenceToSearchForPrefix.
+			 ]! !
+
+!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 13:34:19'!
+findAllSentencesWithPrefixEmptyingOriginalStack
+
+	aSentenceStackToGetSentencesFrom isEmpty whileFalse:[
+			| lastPoppedSentence |	
+			
+		lastPoppedSentence  := self popFrom: aSentenceStackToGetSentencesFrom andPushInto: tempStackToStoreOriginalSentences.
+		
+		self addASentenceToFoundSentencesIfItHasPrefix: lastPoppedSentence
+		]! !
+
+!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 13:34:19'!
+popFrom: aStackToBePopped andPushInto: aStackToBePushed
+		
+		| poppedElement |
+		
+		poppedElement  := aSentenceStackToGetSentencesFrom pop.
+		tempStackToStoreOriginalSentences push: poppedElement.
+		
+		^poppedElement.
+		
+		! !
+
+!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 13:34:19'!
+putSentencesBackInOriginalStack
+
+	tempStackToStoreOriginalSentences isEmpty whileFalse: [
+			self popFrom: tempStackToStoreOriginalSentences andPushInto: aSentenceStackToGetSentencesFrom 
+		]! !
+
+
+!SentenceFinderByPrefix methodsFor: 'finding' stamp: 'SP 4/23/2023 13:03:41'!
+findAllSentencesWithPrefixInStringStack
+
+	self findAllSentencesWithPrefixEmptyingOriginalStack.
+	
+	self putSentencesBackInOriginalStack.
+	
+	^foundSentencesWithPrefix.
+	
+	! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'SentenceFinderByPrefix class' category: 'Stack-Exercise'!
+SentenceFinderByPrefix class
+	instanceVariableNames: ''!
+
+!SentenceFinderByPrefix class methodsFor: 'as yet unclassified' stamp: 'SP 4/23/2023 12:46:40'!
+withAPrefix: aPrefix inAStringStack: aStringStack
+
+	^self new initializeWithAPrefix: aPrefix inAStringStack: aStringStack! !
 
 
 !classDefinition: #StackState category: 'Stack-Exercise'!
