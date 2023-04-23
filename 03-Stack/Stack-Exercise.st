@@ -144,6 +144,252 @@ TestCase subclass: #SentenceFinderByPrefixTest
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
+!SentenceFinderByPrefixTest methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 18:38:19'!
+assertThatCollection: aCollection hasExactlyTheSameElementsAsCollection: anotherCollection
+
+	self assert: (aCollection includesAllOf: anotherCollection).
+	self assert: (aCollection size = anotherCollection size)! !
+
+!SentenceFinderByPrefixTest methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 18:50:49'!
+assertThatStack: aComparedStack isEqualTo: aComparingStack
+
+	| poppedElementFromComparedStack poppedElementFromComparingStack | 
+
+	self assert: aComparedStack size = aComparingStack size.
+	
+	aComparedStack isEmpty ifTrue: [^true]	.
+	
+	poppedElementFromComparedStack := aComparedStack pop.
+	poppedElementFromComparingStack := aComparingStack pop.
+	
+	self assert: poppedElementFromComparedStack = poppedElementFromComparingStack.
+	
+	self assertThatStack: aComparedStack isEqualTo: aComparingStack.
+	
+	aComparedStack push: poppedElementFromComparedStack.
+	aComparingStack push: poppedElementFromComparingStack.! !
+
+!SentenceFinderByPrefixTest methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 20:07:20'!
+copyStack: aStackToBeCopied 
+
+	| stackCopy temporaryReversedStack |
+	
+	stackCopy := OOStack new.
+	temporaryReversedStack := OOStack new.
+	
+	self popAllFrom: aStackToBeCopied andPushAllInto: temporaryReversedStack.
+	self popAllFrom: temporaryReversedStack andPushAllInto: stackCopy andInto: aStackToBeCopied.
+	
+	^stackCopy! !
+
+!SentenceFinderByPrefixTest methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 20:29:51'!
+popAllFrom: aStackToPopFrom andPushAllInto: aStackToPushInto
+	
+	"Nota: el mensaje popAllFrom:andPushAllInto: es un mensaje ya implementado en la clase SentenceFinderByPrefix. 
+	Si bien hay código repetido, no usamos ese mensaje ya que no nos parece correcto crear una instancia de SentenceFinderByPrefix sólo para usar ese método. 
+	Además, creemos que debería estar 	en el protocolo de OOStack, lo cual no está permitido por la consigna. "
+
+	[aStackToPopFrom isEmpty] whileFalse: [
+		aStackToPushInto push: aStackToPopFrom pop.
+		]! !
+
+!SentenceFinderByPrefixTest methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 20:06:59'!
+popAllFrom: aStackToPopFrom andPushAllInto: aStackToPushInto andInto: anotherStackToPushInto
+
+	[aStackToPopFrom isEmpty] whileFalse: [
+		| poppedElement |
+		
+		poppedElement := aStackToPopFrom pop.
+		aStackToPushInto push: poppedElement.
+		anotherStackToPushInto push: poppedElement.
+		]! !
+
+!SentenceFinderByPrefixTest methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 16:28:35'!
+shouldValuating: aClosureThatShouldFail failWith: anError assert: aClosureWithConditions 
+
+	[aClosureThatShouldFail value.
+		self fail]
+		on: anError 
+		do: aClosureWithConditions! !
+
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SP 4/23/2023 19:49:22'!
+test01SearchingOnAnEmptyStackReturnsNoSentences
+
+	| sentenceFinderWithEmptyStack emptySentenceStack emptySentenceStackCopy |
+	
+	emptySentenceStack := OOStack new.
+	emptySentenceStackCopy := self copyStack: emptySentenceStack.	
+	
+	sentenceFinderWithEmptyStack := SentenceFinderByPrefix withAPrefix: 'buy' inASentenceStack: emptySentenceStack.
+
+	self assert: sentenceFinderWithEmptyStack findAllSentencesWithPrefixInSentenceStack isEmpty.
+	self assertThatStack: emptySentenceStack isEqualTo: emptySentenceStackCopy.
+	
+! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SP 4/23/2023 19:50:08'!
+test02EmptyPrefixIsNotValid
+	
+	| nonEmptySentenceStack |
+	
+	nonEmptySentenceStack := OOStack new.
+	nonEmptySentenceStack push: 'Summer is my favourite season'.
+	
+	self shouldValuating: [SentenceFinderByPrefix withAPrefix: '' inASentenceStack: nonEmptySentenceStack.] 
+		failWith: Error  
+		assert:  [ :anError | self assert: anError messageText = SentenceFinderByPrefix emptyPrefixErrorDescription ]! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SP 4/23/2023 16:50:41'!
+test03PrefixWithEmptySpacesIsNotValid
+	
+	| nonEmptySentenceStack |
+	
+	nonEmptySentenceStack := OOStack new.
+	nonEmptySentenceStack push: 'Summer is my favourite season'.
+	
+	self shouldValuating: [SentenceFinderByPrefix withAPrefix: 'Summer is' inASentenceStack: nonEmptySentenceStack.] 
+		failWith: Error  
+		assert:  [ :anError | self assert: anError messageText = SentenceFinderByPrefix emptySpacesPrefixErrorDescription ]! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SP 4/23/2023 19:52:01'!
+test04FindingSentencesIsCaseSensitive
+
+	| nonEmptySentenceStack sentenceFinderWithNonEmptyStack  correctSentencesCaseSensitive foundSentences nonEmptySentenceStackCopy |
+	
+	nonEmptySentenceStack := OOStack new.
+	nonEmptySentenceStack push: 'Summer is my favourite season'.
+	nonEmptySentenceStack push: 'summer is great!!'.
+	
+	nonEmptySentenceStackCopy := self copyStack: nonEmptySentenceStack.	
+	
+	sentenceFinderWithNonEmptyStack := SentenceFinderByPrefix withAPrefix: 'Summer' inASentenceStack: nonEmptySentenceStack .
+	
+	correctSentencesCaseSensitive := OrderedCollection  new.
+	correctSentencesCaseSensitive add: 'Summer is my favourite season'.
+	
+	foundSentences := sentenceFinderWithNonEmptyStack findAllSentencesWithPrefixInSentenceStack.
+	self assertThatCollection: foundSentences hasExactlyTheSameElementsAsCollection: correctSentencesCaseSensitive.
+	self assertThatStack: nonEmptySentenceStack isEqualTo: nonEmptySentenceStackCopy.! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SP 4/23/2023 19:20:34'!
+test05FindingPreservesOriginalOrder
+
+	| nonEmptySentenceStack sentenceFinderWithNonEmptyStack  correctSentencesInOrder foundSentences nonEmptySentenceStackCopy |
+	
+	nonEmptySentenceStack := OOStack new.
+	nonEmptySentenceStack push: 'Summer is my favourite season'.
+	nonEmptySentenceStack push: 'Smalltalk is awesome!!'.
+	nonEmptySentenceStack push: 'Summer is awesome!!'.
+	
+	nonEmptySentenceStackCopy := self copyStack: nonEmptySentenceStack.	
+	
+	sentenceFinderWithNonEmptyStack := SentenceFinderByPrefix withAPrefix: 'Summer' inASentenceStack: nonEmptySentenceStack .
+	
+	correctSentencesInOrder := OrderedCollection  new.
+	
+	correctSentencesInOrder add: 'Summer is awesome!!'.
+	correctSentencesInOrder add: 'Summer is my favourite season'.
+	
+	
+	foundSentences := sentenceFinderWithNonEmptyStack findAllSentencesWithPrefixInSentenceStack.
+	self assertThatCollection: foundSentences hasExactlyTheSameElementsAsCollection: correctSentencesInOrder.
+	self assertThatStack: nonEmptySentenceStack isEqualTo: nonEmptySentenceStackCopy.
+! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SP 4/23/2023 19:51:15'!
+test06SentencesNotBegginingWithPrefixWordButContainingItAreNotReturned
+
+	| nonEmptySentenceStack sentenceFinderWithNonEmptyStack  correctSentences foundSentences nonEmptySentenceStackCopy |
+	
+	nonEmptySentenceStack := OOStack new.
+	nonEmptySentenceStack push: 'I like Summer'.
+	nonEmptySentenceStack push: 'Summer is my favourite season'.
+	nonEmptySentenceStack push: 'Smalltalk is awesome!!'.
+	nonEmptySentenceStack push: 'summer is great!!'.
+	nonEmptySentenceStack push: 'Summer is awesome!!'.
+	
+	nonEmptySentenceStackCopy := self copyStack: nonEmptySentenceStack.	
+	
+	sentenceFinderWithNonEmptyStack := SentenceFinderByPrefix withAPrefix: 'Winter' inASentenceStack: nonEmptySentenceStack .
+	
+	correctSentences := OrderedCollection  new.
+
+	
+	foundSentences := sentenceFinderWithNonEmptyStack findAllSentencesWithPrefixInSentenceStack.
+	self assertThatCollection: foundSentences hasExactlyTheSameElementsAsCollection: correctSentences.
+	self assertThatStack: nonEmptySentenceStack isEqualTo: nonEmptySentenceStackCopy.
+! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SP 4/23/2023 19:51:40'!
+test07NoSentencesAreReturnedWhenPrefixDoesNotAppear
+
+	| nonEmptySentenceStack sentenceFinderWithNonEmptyStack  correctSentences foundSentences nonEmptySentenceStackCopy |
+	
+	nonEmptySentenceStack := OOStack new.
+	nonEmptySentenceStack push: 'I like Summer'.
+	nonEmptySentenceStack push: 'Summer is my favourite season'.
+	nonEmptySentenceStack push: 'Smalltalk is awesome!!'.
+	nonEmptySentenceStack push: 'summer is great!!'.
+	nonEmptySentenceStack push: 'Summer is awesome!!'.
+	
+	nonEmptySentenceStackCopy := self copyStack: nonEmptySentenceStack.	
+	
+	sentenceFinderWithNonEmptyStack := SentenceFinderByPrefix withAPrefix: 'Winter' inASentenceStack: nonEmptySentenceStack .
+	
+	correctSentences := OrderedCollection  new.
+
+	foundSentences := sentenceFinderWithNonEmptyStack findAllSentencesWithPrefixInSentenceStack.
+	self assertThatCollection: foundSentences hasExactlyTheSameElementsAsCollection: correctSentences.
+	self assertThatStack: nonEmptySentenceStack isEqualTo: nonEmptySentenceStackCopy.
+! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SP 4/23/2023 19:51:48'!
+test08SentencesWithPrefixAreReturnedEvenIfTheirFirstWordIsLongerThanIt
+
+	| nonEmptySentenceStack sentenceFinderWithNonEmptyStack  correctSentences foundSentences nonEmptySentenceStackCopy |
+	
+	nonEmptySentenceStack := OOStack new.
+	nonEmptySentenceStack push: 'Summer is my favourite season'.
+	nonEmptySentenceStack push: 'Sum two numbers'.
+	
+	nonEmptySentenceStackCopy := self copyStack: nonEmptySentenceStack.	
+	
+	sentenceFinderWithNonEmptyStack := SentenceFinderByPrefix withAPrefix: 'Sum' inASentenceStack: nonEmptySentenceStack .
+	
+	correctSentences := OrderedCollection  new.
+	
+	correctSentences add: 'Sum two numbers'.
+	correctSentences add: 'Summer is my favourite season'.
+		
+	foundSentences := sentenceFinderWithNonEmptyStack findAllSentencesWithPrefixInSentenceStack.
+	self assertThatCollection: foundSentences hasExactlyTheSameElementsAsCollection: correctSentences.
+	self assertThatStack: nonEmptySentenceStack isEqualTo: nonEmptySentenceStackCopy.
+! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SP 4/23/2023 19:51:53'!
+test09SentencesWithSeparatedPrefixAreNotReturned
+
+	| nonEmptySentenceStack sentenceFinderWithNonEmptyStack  correctSentences foundSentences nonEmptySentenceStackCopy |
+	
+	nonEmptySentenceStack := OOStack new.
+	nonEmptySentenceStack push: 'The reform was necessary'.
+	nonEmptySentenceStack push: 'There are many points'.
+	
+	nonEmptySentenceStackCopy := self copyStack: nonEmptySentenceStack.	
+	
+	sentenceFinderWithNonEmptyStack := SentenceFinderByPrefix withAPrefix: 'There' inASentenceStack: nonEmptySentenceStack .
+	
+	correctSentences := OrderedCollection  new.
+	
+	correctSentences add: 'There are many points'.
+		
+	foundSentences := sentenceFinderWithNonEmptyStack findAllSentencesWithPrefixInSentenceStack.
+	self assertThatCollection: foundSentences hasExactlyTheSameElementsAsCollection: correctSentences.
+	self assertThatStack: nonEmptySentenceStack isEqualTo: nonEmptySentenceStackCopy.
+
+	! !
+
 
 !classDefinition: #OOStack category: 'Stack-Exercise'!
 Object subclass: #OOStack
@@ -241,8 +487,8 @@ Object subclass: #SentenceFinderByPrefix
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!SentenceFinderByPrefix methodsFor: 'instance creation' stamp: 'SP 4/23/2023 13:34:45'!
-initializeWithAPrefix: aPrefix inAStringStack: aSentenceStack
+!SentenceFinderByPrefix methodsFor: 'instance creation' stamp: 'SP 4/23/2023 17:17:29'!
+initializeWithAPrefix: aPrefix inASentenceStack: aSentenceStack
 
 	aPrefixToFindSentences := aPrefix.
 	aSentenceStackToGetSentencesFrom := aSentenceStack.
@@ -250,46 +496,40 @@ initializeWithAPrefix: aPrefix inAStringStack: aSentenceStack
 	foundSentencesWithPrefix := OrderedCollection new.! !
 
 
-!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 13:32:17'!
+!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 15:22:14'!
 addASentenceToFoundSentencesIfItHasPrefix: aSentenceToSearchForPrefix
 
 	(aSentenceToSearchForPrefix beginsWith: aPrefixToFindSentences) ifTrue: [ 
 			foundSentencesWithPrefix add: aSentenceToSearchForPrefix.
 			 ]! !
 
-!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 13:34:19'!
+!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 20:28:57'!
 findAllSentencesWithPrefixEmptyingOriginalStack
 
-	aSentenceStackToGetSentencesFrom isEmpty whileFalse:[
+	[aSentenceStackToGetSentencesFrom isEmpty] whileFalse:[
 			| lastPoppedSentence |	
-			
-		lastPoppedSentence  := self popFrom: aSentenceStackToGetSentencesFrom andPushInto: tempStackToStoreOriginalSentences.
+		
+		lastPoppedSentence := aSentenceStackToGetSentencesFrom pop.
+		tempStackToStoreOriginalSentences push: lastPoppedSentence.
 		
 		self addASentenceToFoundSentencesIfItHasPrefix: lastPoppedSentence
 		]! !
 
-!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 13:34:19'!
-popFrom: aStackToBePopped andPushInto: aStackToBePushed
-		
-		| poppedElement |
-		
-		poppedElement  := aSentenceStackToGetSentencesFrom pop.
-		tempStackToStoreOriginalSentences push: poppedElement.
-		
-		^poppedElement.
-		
-		! !
+!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 20:32:36'!
+popAllFrom: aStackToPopFrom andPushAllInto: aStackToPushInto
 
-!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 13:34:19'!
-putSentencesBackInOriginalStack
-
-	tempStackToStoreOriginalSentences isEmpty whileFalse: [
-			self popFrom: tempStackToStoreOriginalSentences andPushInto: aSentenceStackToGetSentencesFrom 
+	[aStackToPopFrom isEmpty] whileFalse: [
+		aStackToPushInto push: aStackToPopFrom pop.
 		]! !
 
+!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 20:23:01'!
+putSentencesBackInOriginalStack
 
-!SentenceFinderByPrefix methodsFor: 'finding' stamp: 'SP 4/23/2023 13:03:41'!
-findAllSentencesWithPrefixInStringStack
+	self popAllFrom: tempStackToStoreOriginalSentences andPushAllInto: aSentenceStackToGetSentencesFrom! !
+
+
+!SentenceFinderByPrefix methodsFor: 'finding' stamp: 'SP 4/23/2023 15:55:47'!
+findAllSentencesWithPrefixInSentenceStack
 
 	self findAllSentencesWithPrefixEmptyingOriginalStack.
 	
@@ -305,10 +545,34 @@ findAllSentencesWithPrefixInStringStack
 SentenceFinderByPrefix class
 	instanceVariableNames: ''!
 
-!SentenceFinderByPrefix class methodsFor: 'as yet unclassified' stamp: 'SP 4/23/2023 12:46:40'!
-withAPrefix: aPrefix inAStringStack: aStringStack
+!SentenceFinderByPrefix class methodsFor: 'instance creation' stamp: 'SP 4/23/2023 17:17:29'!
+withAPrefix: aPrefix inASentenceStack: aSentenceStack
 
-	^self new initializeWithAPrefix: aPrefix inAStringStack: aStringStack! !
+	self assertThatPrefixIsNotEmpty: aPrefix.
+	self assertThatPrefixContainsNoEmptySpaces: aPrefix.
+
+	^self new initializeWithAPrefix: aPrefix inASentenceStack: aSentenceStack! !
+
+
+!SentenceFinderByPrefix class methodsFor: 'error descriptions' stamp: 'SP 4/23/2023 15:44:05'!
+assertThatPrefixContainsNoEmptySpaces: aPrefix
+
+	^ (aPrefix includesSubString: ' ') ifTrue: [self error: self emptySpacesPrefixErrorDescription]! !
+
+!SentenceFinderByPrefix class methodsFor: 'error descriptions' stamp: 'SP 4/23/2023 15:43:30'!
+assertThatPrefixIsNotEmpty: aPrefix
+
+	^ (aPrefix = '') ifTrue: [self error: self emptyPrefixErrorDescription]! !
+
+!SentenceFinderByPrefix class methodsFor: 'error descriptions' stamp: 'SP 4/23/2023 15:37:41'!
+emptyPrefixErrorDescription
+
+	^'El prefijo no puede ser vacío!!!!!!'! !
+
+!SentenceFinderByPrefix class methodsFor: 'error descriptions' stamp: 'SP 4/23/2023 15:37:38'!
+emptySpacesPrefixErrorDescription
+
+	^'El prefijo no puede contener espacios vacíos!!!!!!'! !
 
 
 !classDefinition: #StackState category: 'Stack-Exercise'!
