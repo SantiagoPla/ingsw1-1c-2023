@@ -427,10 +427,10 @@ topWhenStateIsNotEmpty
 	^topState content! !
 
 
-!OOStack methodsFor: 'modifying' stamp: 'SP 4/23/2023 11:49:01'!
+!OOStack methodsFor: 'modifying' stamp: 'SP 4/24/2023 09:20:45'!
 pop 
 
-	^topState tellStackToPopIDependingOnState: self
+	^topState tellStackToPopDependingOnState: self
 ! !
 
 !OOStack methodsFor: 'modifying' stamp: 'SP 4/23/2023 11:49:01'!
@@ -496,12 +496,11 @@ initializeWithAPrefix: aPrefix inASentenceStack: aSentenceStack
 	foundSentencesWithPrefix := OrderedCollection new.! !
 
 
-!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 15:22:14'!
+!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/24/2023 09:26:48'!
 addASentenceToFoundSentencesIfItHasPrefix: aSentenceToSearchForPrefix
 
-	(aSentenceToSearchForPrefix beginsWith: aPrefixToFindSentences) ifTrue: [ 
-			foundSentencesWithPrefix add: aSentenceToSearchForPrefix.
-			 ]! !
+	(aSentenceToSearchForPrefix beginsWith: aPrefixToFindSentences) ifTrue: 
+			[ foundSentencesWithPrefix add: aSentenceToSearchForPrefix. ]! !
 
 !SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 20:28:57'!
 findAllSentencesWithPrefixEmptyingOriginalStack
@@ -515,12 +514,10 @@ findAllSentencesWithPrefixEmptyingOriginalStack
 		self addASentenceToFoundSentencesIfItHasPrefix: lastPoppedSentence
 		]! !
 
-!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 20:32:36'!
+!SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/24/2023 09:26:20'!
 popAllFrom: aStackToPopFrom andPushAllInto: aStackToPushInto
 
-	[aStackToPopFrom isEmpty] whileFalse: [
-		aStackToPushInto push: aStackToPopFrom pop.
-		]! !
+	[aStackToPopFrom isEmpty] whileFalse: [		aStackToPushInto push: aStackToPopFrom pop.		]! !
 
 !SentenceFinderByPrefix methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 20:23:01'!
 putSentencesBackInOriginalStack
@@ -593,8 +590,8 @@ tellStackToGetTopDependingOnState: aStackToGetTheTopFrom
 
 	self subclassResponsibility ! !
 
-!StackState methodsFor: 'stack redirecting' stamp: 'SP 4/22/2023 16:39:05'!
-tellStackToPopIDependingOnState: aStackToPopFrom
+!StackState methodsFor: 'stack redirecting' stamp: 'SP 4/24/2023 09:20:44'!
+tellStackToPopDependingOnState: aStackToPopFrom
 
 	self subclassResponsibility ! !
 
@@ -616,8 +613,8 @@ tellStackToGetTopDependingOnState: anEmptyStackToGetTheTopFrom
 	
 ! !
 
-!StackStateEmpty methodsFor: 'stack redirecting' stamp: 'SP 4/22/2023 16:39:05'!
-tellStackToPopIDependingOnState: anEmptyStackToPopFrom
+!StackStateEmpty methodsFor: 'stack redirecting' stamp: 'SP 4/24/2023 09:20:44'!
+tellStackToPopDependingOnState: anEmptyStackToPopFrom
 
 	anEmptyStackToPopFrom raiseErrorForAccesingWhenStateIsEmpty 
 
@@ -672,8 +669,8 @@ tellStackToGetTopDependingOnState: aNotEmptyStackToGetTheTopFrom
 	
 ! !
 
-!StackStateNotEmpty methodsFor: 'stack redirecting' stamp: 'SP 4/22/2023 16:39:06'!
-tellStackToPopIDependingOnState: aNotEmptyStackToPopFrom
+!StackStateNotEmpty methodsFor: 'stack redirecting' stamp: 'SP 4/24/2023 09:20:45'!
+tellStackToPopDependingOnState: aNotEmptyStackToPopFrom
 
 	^aNotEmptyStackToPopFrom popWhenStateIsNotEmpty
 ! !
@@ -684,7 +681,7 @@ tellStackToPopIDependingOnState: aNotEmptyStackToPopFrom
 StackStateNotEmpty class
 	instanceVariableNames: ''!
 
-!StackStateNotEmpty class methodsFor: 'as yet unclassified' stamp: 'SP 4/22/2023 16:22:32'!
+!StackStateNotEmpty class methodsFor: 'instance creation' stamp: 'SP 4/22/2023 16:22:32'!
 with: aValue onTopOf: aStackStateBelow
 
 	^self new initializeWith: aValue onTopOf: aStackStateBelow ! !
