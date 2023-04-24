@@ -182,16 +182,14 @@ copyStack: aStackToBeCopied
 	
 	^stackCopy! !
 
-!SentenceFinderByPrefixTest methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 20:29:51'!
+!SentenceFinderByPrefixTest methodsFor: 'auxiliary operations' stamp: 'SP 4/24/2023 14:11:25'!
 popAllFrom: aStackToPopFrom andPushAllInto: aStackToPushInto
 	
 	"Nota: el mensaje popAllFrom:andPushAllInto: es un mensaje ya implementado en la clase SentenceFinderByPrefix. 
 	Si bien hay código repetido, no usamos ese mensaje ya que no nos parece correcto crear una instancia de SentenceFinderByPrefix sólo para usar ese método. 
 	Además, creemos que debería estar 	en el protocolo de OOStack, lo cual no está permitido por la consigna. "
 
-	[aStackToPopFrom isEmpty] whileFalse: [
-		aStackToPushInto push: aStackToPopFrom pop.
-		]! !
+	[aStackToPopFrom isEmpty] whileFalse: [ aStackToPushInto push: aStackToPopFrom pop.		]! !
 
 !SentenceFinderByPrefixTest methodsFor: 'auxiliary operations' stamp: 'SP 4/23/2023 20:06:59'!
 popAllFrom: aStackToPopFrom andPushAllInto: aStackToPushInto andInto: anotherStackToPushInto
@@ -433,16 +431,11 @@ pop
 	^topState tellStackToPopDependingOnState: self
 ! !
 
-!OOStack methodsFor: 'modifying' stamp: 'SP 4/23/2023 11:49:01'!
+!OOStack methodsFor: 'modifying' stamp: 'SP 4/24/2023 14:06:11'!
 push: anElementToBePushed
 
-	| newStackState |
-	
-	newStackState := StackStateNotEmpty with: anElementToBePushed onTopOf: topState.
-	topState := newStackState.
-	size := size + 1
-
-! !
+	topState  := StackStateNotEmpty with: anElementToBePushed onTopOf: topState.
+	size := size + 1! !
 
 
 !OOStack methodsFor: 'accesing' stamp: 'SP 4/23/2023 11:49:01'!
