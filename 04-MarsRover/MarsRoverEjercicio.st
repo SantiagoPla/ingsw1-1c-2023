@@ -202,16 +202,18 @@ test13MarsRoverKnowsHowToReceiveMoreThanOneCommand
 	
 	! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'FP 5/14/2023 11:43:51'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'FP 5/15/2023 13:13:22'!
 test14MarsRoverRaisesErrorWhenEncounteringInvalidCommand
 
 	| marsRover |
 	
 	marsRover := self marsRoverFacingNorth.
-	
-	[marsRover readCommands: 'rfflbxrr'.	 self fail]
-		on: Error 
-		do: [:anError | self assert: anError messageText = MarsRover invalidCommandErrorDescription]
+			
+	self 
+		should:  [marsRover readCommands: 'rfflbxrr'] 
+		raise:  Error 
+		withExceptionDo: [:anError | self assert: anError messageText = MarsRover invalidCommandErrorDescription.
+				self assertMarsRover: marsRover isInPosition:  2@-1 withFacingState: MarsRoverFacingNorth ].
 	
 
 	
