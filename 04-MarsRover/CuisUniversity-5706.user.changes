@@ -1,0 +1,4556 @@
+
+
+----QUIT----(20 March 2023 11:15:29) CuisUniversity-5706.image priorSource: 4313282!
+
+----STARTUP---- (20 March 2023 11:15:29) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5706.image!
+
+
+----QUIT----(20 March 2023 11:15:30) CuisUniversity-5706.image priorSource: 8712809!
+
+----STARTUP---- (12 May 2023 13:23:17) as D:\cuisworkspace\mars-nuevo\windows64\CuisUniversity-5706.image!
+
+
+----End fileIn of D:\Downloads\ISW1-2023-1C-Parcial-1.st----!
+
+!classRemoval: #Perforadora stamp: 'sp 5/12/2023 13:24:12'!
+Object subclass: #Perforadora
+	instanceVariableNames: 'mechaPuesta vecesQueGolpeoCapaActual capasDeSueloDebajo container'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2023-1C-Parcial-1'!
+
+!classRemoval: #Widia stamp: 'sp 5/12/2023 13:24:13'!
+Mecha subclass: #Widia
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2023-1C-Parcial-1'!
+
+!classRemoval: #Soft stamp: 'sp 5/12/2023 13:24:13'!
+Mecha subclass: #Soft
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2023-1C-Parcial-1'!
+
+!classRemoval: #Rota stamp: 'sp 5/12/2023 13:24:13'!
+Mecha subclass: #Rota
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2023-1C-Parcial-1'!
+
+!classRemoval: #Diamante stamp: 'sp 5/12/2023 13:24:13'!
+Mecha subclass: #Diamante
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2023-1C-Parcial-1'!
+
+!classRemoval: #Mecha stamp: 'sp 5/12/2023 13:24:13'!
+Object subclass: #Mecha
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2023-1C-Parcial-1'!
+
+!classRemoval: #SueloTierra stamp: 'sp 5/12/2023 13:24:13'!
+CapaDeSuelo subclass: #SueloTierra
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2023-1C-Parcial-1'!
+
+!classRemoval: #SueloConcreto stamp: 'sp 5/12/2023 13:24:14'!
+CapaDeSuelo subclass: #SueloConcreto
+	instanceVariableNames: 'resistencia'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2023-1C-Parcial-1'!
+
+!classRemoval: #SueloArenoso stamp: 'sp 5/12/2023 13:24:14'!
+CapaDeSuelo subclass: #SueloArenoso
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2023-1C-Parcial-1'!
+
+!classRemoval: #CapaDeSuelo stamp: 'sp 5/12/2023 13:24:14'!
+Object subclass: #CapaDeSuelo
+	instanceVariableNames: 'scanNumber altura'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2023-1C-Parcial-1'!
+
+!classRemoval: #TestDePerforación stamp: 'sp 5/12/2023 13:24:14'!
+TestCase subclass: #TestDePerforación
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2023-1C-Parcial-1'!
+
+----End fileIn of D:\Downloads\MarsRoverEjercicio.st----!
+!MarsRover class methodsFor: 'instance creation' stamp: 'sp 5/12/2023 13:25:08'!
+on: initialPosition facing: initialCardinalPoint 
+	
+	^self new initializeWithPosition: initialPosition pointingTo: initialCardinalPoint ! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:25:08' prior: 50605010!
+test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint
+
+
+	self assertMarsRover: (MarsRover on: 1@1 facing: #Norte) isInPosition: 1@1 facing: #Norte
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:25:08' prior: 50605018!
+test02EmptyCommandDoesNothing
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 1@1.
+	initialFacingDirection := #Norte.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection .
+	
+	marsRover readCommands: ''.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: initialFacingDirection 
+	
+	! !
+
+!methodRemoval: MarsRover class #withPosition:pointingTo: stamp: 'sp 5/12/2023 13:25:08'!
+withPosition: initialPosition pointingTo: initialCardinalPoint 
+	
+	^self new initializeWithPosition: initialPosition pointingTo: initialCardinalPoint !
+!MarsRover methodsFor: 'initialization' stamp: 'sp 5/12/2023 13:25:28'!
+initializeOn: initialPosition facing: initialCardinalPoint 
+	
+	position := initialPosition.
+	facingDirection := initialCardinalPoint.! !
+!MarsRover class methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:25:28' prior: 50605084!
+on: initialPosition facing: initialCardinalPoint 
+	
+	^self new initializeOn: initialPosition facing: initialCardinalPoint ! !
+
+!methodRemoval: MarsRover #initializeWithPosition:pointingTo: stamp: 'sp 5/12/2023 13:25:28'!
+initializeWithPosition: initialPosition pointingTo: initialCardinalPoint 
+	
+	position := initialPosition.
+	facingDirection := initialCardinalPoint.!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:25:44'!
+currentPosition
+	
+	^position! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:25:44' prior: 50605001!
+assertMarsRover: aMarsRover isInPosition: aPosition facing: aDirection
+
+
+	self assert: aPosition equals: aMarsRover currentPosition.
+	self assert: aDirection equals: aMarsRover facingDirection.
+	
+	! !
+
+!methodRemoval: MarsRover #position stamp: 'sp 5/12/2023 13:25:44'!
+position
+	
+	^position!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position facingDirection'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+
+!classDefinition: #MarsRover category: 'MarsRoverEjercicio' stamp: 'sp 5/12/2023 13:25:54'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position facingDirection'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+
+!classDefinition: #MarsRover category: 'MarsRoverEjercicio' stamp: 'sp 5/12/2023 13:26:02'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'currentPosition facingDirection'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:26:02' prior: 50605145!
+currentPosition
+	
+	^currentPosition! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:26:02' prior: 50605123!
+initializeOn: initialPosition facing: initialCardinalPoint 
+	
+	currentPosition := initialPosition.
+	facingDirection := initialCardinalPoint.! !
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:26:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:26:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:26:20'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:29:02'!
+test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 1@1.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection .
+	
+	marsRover readCommands: ''.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:29:07' prior: 50605101!
+test02EmptyCommandDoesNothing
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 1@1.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection .
+	
+	marsRover readCommands: ''.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:29:12' prior: 50605092!
+test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint
+
+
+	self assertMarsRover: (MarsRover on: 1@1 facing: #North) isInPosition: 1@1 facing: #North
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:29:29' prior: 50605205!
+test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 1@1.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection .
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (0@1) facing: initialFacingDirection 
+	
+	! !
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:29:34'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:29:42' prior: 50605242!
+test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection .
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (0@1) facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:29:47' prior: 50605220!
+test02EmptyCommandDoesNothing
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection .
+	
+	marsRover readCommands: ''.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:29:55' prior: 50605234!
+test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint
+
+
+	self assertMarsRover: (MarsRover on: 0@0 facing: #North) isInPosition: 0@0 facing: #North
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:30:43' prior: 50605261!
+test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (0@1) facing: initialFacingDirection 
+	
+	! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:31:16' prior: 50605062!
+readCommands: aCommandList
+
+	facingDirection = #North ifTrue: [ currentPosition := currentPosition + (0@1)].! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:31:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:31:17'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:31:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:31:17'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:31:38'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:31:38'!
+FAILURE!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:32:48' prior: 50605314!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [ currentPosition := currentPosition + (0@1)].! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:32:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:32:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:32:59'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:33:22'!
+test03MarsRoverFacingEastKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (1@0) facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:33:30'!
+test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (1@0) facing: initialFacingDirection 
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test03MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:33:30'!
+test03MarsRoverFacingEastKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (1@0) facing: initialFacingDirection 
+	
+	!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:33:34'!
+FAILURE!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:34:22' prior: 50605341!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)]
+		ifFalse: [currentPosition := currentPosition + (1@0)]
+		]! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:34:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:34:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:34:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:34:26'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:34:49'!
+test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #South.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) facing: initialFacingDirection 
+	
+	! !
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:34:55'!
+FAILURE!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:36:36' prior: 50605409!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)]
+		]! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:36:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:36:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:36:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:36:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:36:38'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:36:54'!
+test05MarsRoverFacingWestKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #West.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (1@0) facing: initialFacingDirection 
+	
+	! !
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:36:55'!
+FAILURE!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:37:11' prior: 50605453!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+		]! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:37:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:37:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:37:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:37:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:37:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:37:13'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:40:48'!
+test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #West.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (1@0) facing: initialFacingDirection 
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test05MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:40:48'!
+test05MarsRoverFacingWestKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #West.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (1@0) facing: initialFacingDirection 
+	
+	!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:41:20'!
+test07MarsRoverFacingNorthKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) facing: initialFacingDirection 
+	
+	! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:42:05' prior: 50605504!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+		].
+	
+	aCommandList = 'b' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+		]! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:42:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:42:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:42:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:42:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:42:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:42:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverFacingNorthKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 13:42:09'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:42:35'!
+test07MarsRoverFacingEastKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (1@0) facing: initialFacingDirection 
+	
+	! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:42:48' prior: 50605588!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+		].
+	
+	aCommandList = 'b' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+		]! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:42:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:42:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:42:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:42:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:42:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:42:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverFacingEastKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 13:42:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverFacingNorthKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 13:42:55'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:43:02'!
+test08MarsRoverFacingNorthKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) facing: initialFacingDirection 
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test07MarsRoverFacingNorthKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 13:43:02'!
+test07MarsRoverFacingNorthKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) facing: initialFacingDirection 
+	
+	!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:44:26'!
+test08MarsRoverFacingSouthKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) facing: initialFacingDirection 
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 13:44:26'!
+test08MarsRoverFacingNorthKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) facing: initialFacingDirection 
+	
+	!
+
+!methodRemoval: MarsRoverTest #test08MarsRoverFacingSouthKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 13:45:02'!
+test08MarsRoverFacingSouthKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) facing: initialFacingDirection 
+	
+	!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:45:24'!
+test07MarsRoverKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (1@0) facing: initialFacingDirection 
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test07MarsRoverFacingEastKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 13:45:24'!
+test07MarsRoverFacingEastKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (1@0) facing: initialFacingDirection 
+	
+	!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:45:31' prior: 50605778!
+test07MarsRoverKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) facing: initialFacingDirection 
+	
+	! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:45:50' prior: 50605649!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+		].
+	
+	aCommandList = 'b' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+		].! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:45:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:45:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:45:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:45:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:45:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:45:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 13:45:52'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:51:06'!
+test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #East. 
+	
+	! !
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:51:20'!
+FAILURE!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:52:03' prior: 50605824!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+		].
+	
+	aCommandList = 'b' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+		].
+	
+	aCommandList = 'r' ifTrue: [
+		facingDirection =#North ifTrue: [facingDirection := #East].
+		]! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:52:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:52:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:52:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:52:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:52:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:52:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 13:52:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:52:06'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:52:38'!
+test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #South. 
+	
+	! !
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:52:39'!
+FAILURE!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:53:27' prior: 50605895!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+		].
+	
+	aCommandList = 'b' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+		].
+	
+	aCommandList = 'r' ifTrue: [
+		facingDirection =#North 
+		ifTrue: [facingDirection := #East]
+		ifFalse:[
+			facingDirection =#East ifTrue: [facingDirection := #South].
+			]
+		]! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:53:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:53:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:53:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:53:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:53:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:53:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 13:53:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:53:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:53:34'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:53:59'!
+test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #South.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #West. 
+	
+	! !
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:54:03'!
+FAILURE!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:54:45' prior: 50605973!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+		].
+	
+	aCommandList = 'b' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+		].
+	
+	aCommandList = 'r' ifTrue: [
+		facingDirection =#North ifTrue: [facingDirection := #East]
+		ifFalse:[
+			facingDirection =#East ifTrue: [facingDirection := #South]
+			ifFalse: [
+				facingDirection =#South ifTrue: [facingDirection := #West]]
+			]
+		]! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:54:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:54:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:54:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:54:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:54:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:54:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 13:54:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:54:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:54:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:54:47'!
+PASSED!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:55:35' prior: 50606058!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+		].
+	
+	aCommandList = 'b' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+		].
+	
+	aCommandList = 'r' ifTrue: [
+		facingDirection =#North 
+			ifTrue: [facingDirection := #East]
+			ifFalse:[
+				facingDirection =#East ifTrue: [facingDirection := #South]
+					ifFalse: [	facingDirection =#South 
+					ifTrue: [facingDirection := #West]]
+				]
+		]! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:56:34' prior: 50606131!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+		].
+	
+	aCommandList = 'b' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+		].
+	
+	aCommandList = 'r' ifTrue: [
+		facingDirection =#North ifTrue: [facingDirection := #East]
+			ifFalse:[
+				facingDirection =#East ifTrue: [facingDirection := #South]
+					ifFalse: [
+						facingDirection =#South ifTrue: [facingDirection := #West]]
+				]
+		]! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:57:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:57:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:57:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:57:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:57:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:57:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 13:57:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:57:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:57:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:57:48'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:58:09'!
+test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #West.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #North. 
+	
+	! !
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:58:10'!
+FAILURE!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 13:58:48' prior: 50606166!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+		].
+	
+	aCommandList = 'b' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+		].
+	
+	aCommandList = 'r' ifTrue: [
+		facingDirection =#North ifTrue: [facingDirection := #East]
+			ifFalse:[
+				facingDirection =#East ifTrue: [facingDirection := #South]
+					ifFalse: [
+						facingDirection =#South ifTrue: [facingDirection := #West]
+						ifFalse:[
+							facingDirection =#West ifTrue: [facingDirection := #North]
+							]
+						]
+				]
+		]! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 13:58:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 13:58:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:58:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:58:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:58:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 13:58:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 13:58:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:58:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:58:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:58:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 13:58:50'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:59:22'!
+test12MarsRoverKnowsHowToReceiveLeftRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 13:59:30' prior: 50606338!
+test12MarsRoverKnowsHowToReceiveLeftRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'l'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #West 
+	
+	! !
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 13:59:31'!
+FAILURE!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 14:00:01' prior: 50606258!
+readCommands: aCommandList
+
+	aCommandList = 'f' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+		].
+	
+	aCommandList = 'b' ifTrue: [
+		facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+		facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+		facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+		facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+		].
+	
+	aCommandList = 'r' ifTrue: [
+		facingDirection =#North ifTrue: [facingDirection := #East]
+			ifFalse:[
+				facingDirection =#East ifTrue: [facingDirection := #South]
+					ifFalse: [
+						facingDirection =#South ifTrue: [facingDirection := #West]
+						ifFalse:[
+							facingDirection =#West ifTrue: [facingDirection := #North]
+							]
+						]
+				]
+		].
+	
+	aCommandList = 'l' ifTrue: [
+		facingDirection =#North ifTrue: [facingDirection := #West]
+			ifFalse:[
+				facingDirection =#East ifTrue: [facingDirection := #North]
+					ifFalse: [
+						facingDirection =#South ifTrue: [facingDirection := #East]
+						ifFalse:[
+							facingDirection =#West ifTrue: [facingDirection := #South]
+							]
+						]
+				]
+		]
+	! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 14:00:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 14:00:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 14:00:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 14:00:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 14:00:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 14:00:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 14:00:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 14:00:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 14:00:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 14:00:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 14:00:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 14:00:02'!
+PASSED!
+
+----SNAPSHOT----(12 May 2023 14:01:32) CuisUniversity-5706.image priorSource: 8713034!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 14:26:22'!
+test12MarsRoverKnowsHowToReceiveInvalidCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'x'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 14:26:34'!
+test13MarsRoverKnowsHowToReceiveInvalidCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'x'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: initialFacingDirection 
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test12MarsRoverKnowsHowToReceiveInvalidCommand stamp: 'sp 5/12/2023 14:26:34'!
+test12MarsRoverKnowsHowToReceiveInvalidCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'x'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: initialFacingDirection 
+	
+	!
+
+!methodRemoval: MarsRoverTest #test13MarsRoverKnowsHowToReceiveInvalidCommand stamp: 'sp 5/12/2023 14:27:04'!
+test13MarsRoverKnowsHowToReceiveInvalidCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'x'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: initialFacingDirection 
+	
+	!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 14:27:45'!
+test12MarsRoverKnowsHowToReceiveMoreThanOneCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'rfflbrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #West 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 14:30:02' prior: 50606528!
+test12MarsRoverKnowsHowToReceiveMoreThanOneCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'rfflbrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) facing: #South 
+	
+	! !
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 14:30:04'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 14:30:24'!
+test13MarsRoverKnowsHowToReceiveMoreThanOneCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'rfflbrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) facing: #South 
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test12MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 14:30:24'!
+test12MarsRoverKnowsHowToReceiveMoreThanOneCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'rfflbrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) facing: #South 
+	
+	!
+!MarsRover methodsFor: 'commands' stamp: 'sp 5/12/2023 14:31:41' prior: 50606372!
+readCommands: aCommandList
+
+	aCommandList asOrderedCollection do: [ :command |
+
+		command = $f ifTrue: [
+			facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+			facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+			facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+			facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+			].
+		
+		command = $b ifTrue: [
+			facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+			facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+			facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+			facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+			].
+		
+		command = $r ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #East]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #South]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #West]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #North]
+								]
+							]
+					]
+			].
+		
+		command = $l ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #West]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #North]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #East]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #South]
+								]
+							]
+					]
+			]
+	]! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 14:31:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 14:31:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 14:31:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 14:31:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 14:31:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 14:31:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 14:31:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 14:31:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 14:31:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 14:31:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 14:31:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 14:31:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 14:31:42'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 14:33:45'!
+test14MarsRoverStopsWhenEncounteringInvalidCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facing: initialFacingDirection.
+	
+	marsRover readCommands: 'rfflbxrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) facing: #North 
+	
+	! !
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 14:33:47'!
+FAILURE!
+!MarsRover methodsFor: 'commands' stamp: 'sp 5/12/2023 14:34:18' prior: 50606590!
+readCommands: aCommandList
+
+	aCommandList asOrderedCollection do: [ :command |
+
+		(self isCommandValid: command) ifFalse: [^self].
+
+		command = $f ifTrue: [
+			facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+			facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+			facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+			facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+			].
+		
+		command = $b ifTrue: [
+			facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+			facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+			facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+			facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+			].
+		
+		command = $r ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #East]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #South]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #West]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #North]
+								]
+							]
+					]
+			].
+		
+		command = $l ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #West]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #North]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #East]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #South]
+								]
+							]
+					]
+			]
+	]! !
+!MarsRover methodsFor: 'commands' stamp: 'sp 5/12/2023 14:34:30'!
+isCommandValid: aCommand
+
+        ^'fblr' asOrderedCollection includes: aCommand! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 14:34:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 14:34:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 14:34:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 14:34:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 14:34:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 14:34:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 14:34:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 14:34:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 14:34:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 14:34:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 14:34:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 14:34:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 14:34:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 14:34:35'!
+PASSED!
+
+----SNAPSHOT----(12 May 2023 14:34:43) CuisUniversity-5706.image priorSource: 8794116!
+
+----SNAPSHOT----(12 May 2023 15:05:35) CuisUniversity-5706.image priorSource: 8805418!
+
+Object subclass: #MarsRoverState
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+
+!classDefinition: #MarsRoverState category: 'MarsRoverEjercicio' stamp: 'sp 5/12/2023 15:10:35'!
+Object subclass: #MarsRoverState
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+
+MarsRoverState subclass: #MarsRoverFacingNorth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+
+!classDefinition: #MarsRoverFacingNorth category: 'MarsRoverEjercicio' stamp: 'sp 5/12/2023 15:11:14'!
+MarsRoverState subclass: #MarsRoverFacingNorth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+
+MarsRoverState subclass: #MarsRoverFacingEast
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+
+!classDefinition: #MarsRoverFacingEast category: 'MarsRoverEjercicio' stamp: 'sp 5/12/2023 15:11:18'!
+MarsRoverState subclass: #MarsRoverFacingEast
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+
+MarsRoverState subclass: #MarsRoverFacingSouth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+
+!classDefinition: #MarsRoverFacingSouth category: 'MarsRoverEjercicio' stamp: 'sp 5/12/2023 15:11:21'!
+MarsRoverState subclass: #MarsRoverFacingSouth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+
+MarsRoverState subclass: #MarsRoverFacingWest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+
+!classDefinition: #MarsRoverFacingWest category: 'MarsRoverEjercicio' stamp: 'sp 5/12/2023 15:11:25'!
+MarsRoverState subclass: #MarsRoverFacingWest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+
+!classDefinition: #MarsRover category: 'MarsRoverEjercicio' stamp: 'sp 5/12/2023 15:17:15'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'currentPosition facingDirection marsRoverState'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+!MarsRover methodsFor: 'commands' stamp: 'sp 5/12/2023 15:17:14' prior: 50606709!
+readCommands: aCommandList
+
+	aCommandList asOrderedCollection do: [ :command |
+
+		(self isCommandValid: command) ifFalse: [^self].
+
+		command = $f ifTrue: [marsRoverState moveForward: self			].
+		
+		command = $b ifTrue: [
+			facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+			facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+			facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+			facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+			].
+		
+		command = $r ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #East]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #South]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #West]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #North]
+								]
+							]
+					]
+			].
+		
+		command = $l ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #West]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #North]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #East]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #South]
+								]
+							]
+					]
+			]
+	]
+
+	"aCommandList asOrderedCollection do: [ :command |
+
+		(self isCommandValid: command) ifFalse: [^self].
+
+		command = $f ifTrue: [
+			facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+			facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+			facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+			facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+			].
+		
+		command = $b ifTrue: [
+			facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+			facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+			facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+			facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+			].
+		
+		command = $r ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #East]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #South]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #West]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #North]
+								]
+							]
+					]
+			].
+		
+		command = $l ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #West]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #North]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #East]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #South]
+								]
+							]
+					]
+			]
+	]"! !
+
+!classDefinition: #MarsRover category: 'MarsRoverEjercicio' stamp: 'sp 5/12/2023 15:17:21'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'currentPosition facingDirection state'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:17:22' prior: 50606897!
+readCommands: aCommandList
+
+	aCommandList asOrderedCollection do: [ :command |
+
+		(self isCommandValid: command) ifFalse: [^self].
+
+		command = $f ifTrue: [state moveForward: self			].
+		
+		command = $b ifTrue: [
+			facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+			facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+			facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+			facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+			].
+		
+		command = $r ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #East]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #South]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #West]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #North]
+								]
+							]
+					]
+			].
+		
+		command = $l ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #West]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #North]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #East]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #South]
+								]
+							]
+					]
+			]
+	]
+
+	"aCommandList asOrderedCollection do: [ :command |
+
+		(self isCommandValid: command) ifFalse: [^self].
+
+		command = $f ifTrue: [
+			facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+			facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+			facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+			facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+			].
+		
+		command = $b ifTrue: [
+			facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+			facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+			facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+			facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+			].
+		
+		command = $r ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #East]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #South]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #West]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #North]
+								]
+							]
+					]
+			].
+		
+		command = $l ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #West]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #North]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #East]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #South]
+								]
+							]
+					]
+			]
+	]"! !
+!MarsRover methodsFor: 'commands' stamp: 'sp 5/12/2023 15:18:45' prior: 50606998!
+readCommands: aCommandList
+
+	aCommandList asOrderedCollection do: [ :command |
+
+		(self isCommandValid: command) ifFalse: [^self].
+
+		command = $f ifTrue: [state moveForward: self			].
+		
+		command = $b ifTrue: [state moveBackward: self			].
+		
+		command = $r ifTrue: [state rotateRight: self			].
+		
+		command = $l ifTrue: [state rotateLeft: self].
+	]
+
+	"aCommandList asOrderedCollection do: [ :command |
+
+		(self isCommandValid: command) ifFalse: [^self].
+
+		command = $f ifTrue: [
+			facingDirection =#North ifTrue: [currentPosition := currentPosition + (0@1)].
+			facingDirection =#East ifTrue:  [currentPosition := currentPosition + (1@0)].
+			facingDirection =#South ifTrue:  [currentPosition := currentPosition - (0@1)].
+			facingDirection =#West ifTrue:  [currentPosition := currentPosition - (1@0)].
+			].
+		
+		command = $b ifTrue: [
+			facingDirection =#North ifTrue: [currentPosition := currentPosition - (0@1)].
+			facingDirection =#East ifTrue:  [currentPosition := currentPosition - (1@0)].
+			facingDirection =#South ifTrue:  [currentPosition := currentPosition + (0@1)].
+			facingDirection =#West ifTrue:  [currentPosition := currentPosition + (1@0)].
+			].
+		
+		command = $r ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #East]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #South]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #West]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #North]
+								]
+							]
+					]
+			].
+		
+		command = $l ifTrue: [
+			facingDirection =#North ifTrue: [facingDirection := #West]
+				ifFalse:[
+					facingDirection =#East ifTrue: [facingDirection := #North]
+						ifFalse: [
+							facingDirection =#South ifTrue: [facingDirection := #East]
+							ifFalse:[
+								facingDirection =#West ifTrue: [facingDirection := #South]
+								]
+							]
+					]
+			]
+	]"! !
+!MarsRover methodsFor: 'commands' stamp: 'sp 5/12/2023 15:19:06' prior: 50607090!
+readCommands: aCommandList
+
+	aCommandList asOrderedCollection do: [ :command |
+
+		(self isCommandValid: command) ifFalse: [^self].
+
+		command = $f ifTrue: [state moveForward: self			].
+		
+		command = $b ifTrue: [state moveBackward: self			].
+		
+		command = $r ifTrue: [state rotateRight: self			].
+		
+		command = $l ifTrue: [state rotateLeft: self].
+	]
+
+	! !
+!MarsRover methodsFor: 'commands' stamp: 'sp 5/12/2023 15:19:18' prior: 50607153!
+readCommands: aCommandList
+
+	aCommandList asOrderedCollection do: [ :command |
+
+		(self isCommandValid: command) ifFalse: [^self].
+
+		command = $f ifTrue: [state moveForward: self			].
+		
+		command = $b ifTrue: [state moveBackwards: self			].
+		
+		command = $r ifTrue: [state rotateRight: self			].
+		
+		command = $l ifTrue: [state rotateLeft: self].
+	]
+
+	! !
+!MarsRover methodsFor: 'commands' stamp: 'sp 5/12/2023 15:19:28' prior: 50607167!
+readCommands: aCommandList
+
+	aCommandList asOrderedCollection do: [ :command |
+
+		(self isCommandValid: command) ifFalse: [^self].
+
+		command = $f ifTrue: [state moveForward: self			].
+		command = $b ifTrue: [state moveBackwards: self			].
+		command = $r ifTrue: [state rotateRight: self			].
+		command = $l ifTrue: [state rotateLeft: self].
+	]
+
+	! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 15:19:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 15:19:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:19:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:19:35'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:19:35'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:19:35'!
+ERROR!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 15:19:35'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:19:35'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:19:35'!
+ERROR!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:19:35'!
+ERROR!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:19:35'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 15:19:35'!
+ERROR!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 15:19:35'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 15:19:35'!
+ERROR!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:19:37'!
+ERROR!
+!MarsRoverState methodsFor: 'no messages' stamp: 'sp 5/12/2023 15:20:31'!
+moveBackwards
+
+	self subclassResponsibility ! !
+!MarsRoverState methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:20:35'!
+moveForward
+
+	self subclassResponsibility ! !
+!MarsRoverState methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:20:41'!
+rotateLeft
+
+	self subclassResponsibility ! !
+!MarsRoverState methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:20:44'!
+rotateRight
+
+	self subclassResponsibility ! !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:20:50' overrides: 50607252!
+moveBackwards
+
+	self subclassResponsibility ! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:20:50' overrides: 50607252!
+moveBackwards
+
+	self subclassResponsibility ! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:20:50' overrides: 50607252!
+moveBackwards
+
+	self subclassResponsibility ! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:20:50' overrides: 50607252!
+moveBackwards
+
+	self subclassResponsibility ! !
+
+!methodRemoval: MarsRoverState #moveBackwards stamp: 'sp 5/12/2023 15:20:50'!
+moveBackwards
+
+	self subclassResponsibility !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:21:04' overrides: 50607257!
+moveForward
+
+	self subclassResponsibility ! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:21:04' overrides: 50607257!
+moveForward
+
+	self subclassResponsibility ! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:21:05' overrides: 50607257!
+moveForward
+
+	self subclassResponsibility ! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:21:05' overrides: 50607257!
+moveForward
+
+	self subclassResponsibility ! !
+
+!methodRemoval: MarsRoverState #moveForward stamp: 'sp 5/12/2023 15:21:05'!
+moveForward
+
+	self subclassResponsibility !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:21:09' overrides: 50607261!
+rotateLeft
+
+	self subclassResponsibility ! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:21:09' overrides: 50607261!
+rotateLeft
+
+	self subclassResponsibility ! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:21:09' overrides: 50607261!
+rotateLeft
+
+	self subclassResponsibility ! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:21:09' overrides: 50607261!
+rotateLeft
+
+	self subclassResponsibility ! !
+
+!methodRemoval: MarsRoverState #rotateLeft stamp: 'sp 5/12/2023 15:21:09'!
+rotateLeft
+
+	self subclassResponsibility !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:21:15' overrides: 50607265!
+rotateRight
+
+	self subclassResponsibility ! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:21:16' overrides: 50607265!
+rotateRight
+
+	self subclassResponsibility ! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:21:16' overrides: 50607265!
+rotateRight
+
+	self subclassResponsibility ! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:21:16' overrides: 50607265!
+rotateRight
+
+	self subclassResponsibility ! !
+
+!methodRemoval: MarsRoverState #rotateRight stamp: 'sp 5/12/2023 15:21:16'!
+rotateRight
+
+	self subclassResponsibility !
+!MarsRoverState methodsFor: 'no messages' stamp: 'sp 5/12/2023 15:22:00'!
+moveBackwards
+
+	self subclassResponsibility ! !
+!MarsRoverState methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:22:06'!
+moveForward
+
+	self subclassResponsibility ! !
+!MarsRoverState methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:22:14'!
+rotateLeft
+
+	self subclassResponsibility ! !
+!MarsRoverState methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:22:17'!
+rotateRight
+
+	self subclassResponsibility ! !
+!MarsRoverState methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:22:53'!
+moveBackwards: aMarsRoverToMove
+
+	self subclassResponsibility ! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:22:53' overrides: 50607382!
+moveBackwards: aMarsRoverToMove
+
+	self subclassResponsibility ! !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:22:53' overrides: 50607382!
+moveBackwards: aMarsRoverToMove
+
+	self subclassResponsibility ! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:22:53' overrides: 50607382!
+moveBackwards: aMarsRoverToMove
+
+	self subclassResponsibility ! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:22:53' overrides: 50607382!
+moveBackwards: aMarsRoverToMove
+
+	self subclassResponsibility ! !
+
+!methodRemoval: MarsRoverState #moveBackwards stamp: 'sp 5/12/2023 15:22:54'!
+moveBackwards
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingEast #moveBackwards stamp: 'sp 5/12/2023 15:22:54'!
+moveBackwards
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingNorth #moveBackwards stamp: 'sp 5/12/2023 15:22:54'!
+moveBackwards
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingSouth #moveBackwards stamp: 'sp 5/12/2023 15:22:54'!
+moveBackwards
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingWest #moveBackwards stamp: 'sp 5/12/2023 15:22:54'!
+moveBackwards
+
+	self subclassResponsibility !
+!MarsRoverState methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:18'!
+moveForward: aMarsRoverToMove
+
+	self subclassResponsibility ! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:18' overrides: 50607431!
+moveForward: aMarsRoverToMove
+
+	self subclassResponsibility ! !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:18' overrides: 50607431!
+moveForward: aMarsRoverToMove
+
+	self subclassResponsibility ! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:18' overrides: 50607431!
+moveForward: aMarsRoverToMove
+
+	self subclassResponsibility ! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:18' overrides: 50607431!
+moveForward: aMarsRoverToMove
+
+	self subclassResponsibility ! !
+
+!methodRemoval: MarsRoverState #moveForward stamp: 'sp 5/12/2023 15:23:18'!
+moveForward
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingEast #moveForward stamp: 'sp 5/12/2023 15:23:18'!
+moveForward
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingNorth #moveForward stamp: 'sp 5/12/2023 15:23:18'!
+moveForward
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingSouth #moveForward stamp: 'sp 5/12/2023 15:23:18'!
+moveForward
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingWest #moveForward stamp: 'sp 5/12/2023 15:23:18'!
+moveForward
+
+	self subclassResponsibility !
+!MarsRoverState methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:34'!
+rotateLeft: aMarsRoverToRotate
+
+	self subclassResponsibility ! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:34' overrides: 50607480!
+rotateLeft: aMarsRoverToRotate
+
+	self subclassResponsibility ! !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:34' overrides: 50607480!
+rotateLeft: aMarsRoverToRotate
+
+	self subclassResponsibility ! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:34' overrides: 50607480!
+rotateLeft: aMarsRoverToRotate
+
+	self subclassResponsibility ! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:34' overrides: 50607480!
+rotateLeft: aMarsRoverToRotate
+
+	self subclassResponsibility ! !
+
+!methodRemoval: MarsRoverState #rotateLeft stamp: 'sp 5/12/2023 15:23:34'!
+rotateLeft
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingEast #rotateLeft stamp: 'sp 5/12/2023 15:23:34'!
+rotateLeft
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingNorth #rotateLeft stamp: 'sp 5/12/2023 15:23:34'!
+rotateLeft
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingSouth #rotateLeft stamp: 'sp 5/12/2023 15:23:34'!
+rotateLeft
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingWest #rotateLeft stamp: 'sp 5/12/2023 15:23:34'!
+rotateLeft
+
+	self subclassResponsibility !
+!MarsRoverState methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:51'!
+rotateRight: aMarsRoverToRotate
+
+	self subclassResponsibility ! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:52' overrides: 50607528!
+rotateRight: aMarsRoverToRotate
+
+	self subclassResponsibility ! !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:52' overrides: 50607528!
+rotateRight: aMarsRoverToRotate
+
+	self subclassResponsibility ! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:52' overrides: 50607528!
+rotateRight: aMarsRoverToRotate
+
+	self subclassResponsibility ! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:23:52' overrides: 50607528!
+rotateRight: aMarsRoverToRotate
+
+	self subclassResponsibility ! !
+
+!methodRemoval: MarsRoverState #rotateRight stamp: 'sp 5/12/2023 15:23:52'!
+rotateRight
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingEast #rotateRight stamp: 'sp 5/12/2023 15:23:52'!
+rotateRight
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingNorth #rotateRight stamp: 'sp 5/12/2023 15:23:52'!
+rotateRight
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingSouth #rotateRight stamp: 'sp 5/12/2023 15:23:52'!
+rotateRight
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingWest #rotateRight stamp: 'sp 5/12/2023 15:23:52'!
+rotateRight
+
+	self subclassResponsibility !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:24:28' prior: 50607388 overrides: 50607382!
+moveBackwards: aMarsRoverToMove
+
+	aMarsRoverToMove moveBackwardsWhenFacingEast! !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:24:54' prior: 50607394 overrides: 50607382!
+moveBackwards: aMarsRoverToMove
+
+	aMarsRoverToMove moveBackwardsWhenFacingNorth! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:25:02' prior: 50607400 overrides: 50607382!
+moveBackwards: aMarsRoverToMove
+
+	aMarsRoverToMove moveBackwardsWhenFacingSouth! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:25:10' prior: 50607406 overrides: 50607382!
+moveBackwards: aMarsRoverToMove
+
+	aMarsRoverToMove moveBackwardsWhenFacingWest! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:25:26' prior: 50607437 overrides: 50607431!
+moveForward: aMarsRoverToMove
+
+	aMarsRoverToMove moveForwardWhenFacingEast! !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:25:37' prior: 50607443 overrides: 50607431!
+moveForward: aMarsRoverToMove
+
+	aMarsRoverToMove moveForwardWhenFacingNorth! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:25:44' prior: 50607449 overrides: 50607431!
+moveForward: aMarsRoverToMove
+
+	aMarsRoverToMove moveForwardWhenFacingSouth! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:25:54' prior: 50607455 overrides: 50607431!
+moveForward: aMarsRoverToMove
+
+	aMarsRoverToMove moveForwardWhenFacingWest! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:26:10' prior: 50607486 overrides: 50607480!
+rotateLeft: aMarsRoverToRotate
+
+	aMarsRoverToRotate rotateLeftWhenFacingEast! !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:26:16' prior: 50607492 overrides: 50607480!
+rotateLeft: aMarsRoverToRotate
+
+	aMarsRoverToRotate rotateLeftWhenFacingNorth! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:26:24' prior: 50607498 overrides: 50607480!
+rotateLeft: aMarsRoverToRotate
+
+	aMarsRoverToRotate rotateLeftWhenFacingSouth! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:26:32' prior: 50607504 overrides: 50607480!
+rotateLeft: aMarsRoverToRotate
+
+	aMarsRoverToRotate rotateLeftWhenFacingWest! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:26:48' prior: 50607534 overrides: 50607528!
+rotateRight: aMarsRoverToRotate
+
+	aMarsRoverToRotate rotateRightWhenFacingEast! !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:26:57' prior: 50607540 overrides: 50607528!
+rotateRight: aMarsRoverToRotate
+
+	aMarsRoverToRotate rotateRightWhenFacingNorth! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:27:06' prior: 50607546 overrides: 50607528!
+rotateRight: aMarsRoverToRotate
+
+	aMarsRoverToRotate rotateRightWhenFacingSouth! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:27:12' prior: 50607552 overrides: 50607528!
+rotateRight: aMarsRoverToRotate
+
+	aMarsRoverToRotate rotateRightWhenFacingWest! !
+
+!classRenamed: #MarsRoverState as: #MarsRoverDirectionState stamp: 'sp 5/12/2023 15:30:25'!
+Smalltalk renameClassNamed: #MarsRoverState as: #MarsRoverDirectionState!
+
+!classRenamed: #MarsRoverDirectionState as: #MarsRoverFacingState stamp: 'sp 5/12/2023 15:30:35'!
+Smalltalk renameClassNamed: #MarsRoverDirectionState as: #MarsRoverFacingState!
+!MarsRover class methodsFor: 'instance creation' stamp: 'sp 5/12/2023 15:30:43'!
+on: initialPosition facingState: initialCardinalPoint 
+	
+	^self new initializeOn: initialPosition facing: initialCardinalPoint ! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:43' prior: 50605809!
+test07MarsRoverKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:43' prior: 50606039!
+test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #South.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #West. 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:43' prior: 50606691!
+test14MarsRoverStopsWhenEncounteringInvalidCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'rfflbxrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) facing: #North 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:44' prior: 50605433!
+test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #South.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:44' prior: 50606561!
+test13MarsRoverKnowsHowToReceiveMoreThanOneCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'rfflbrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) facing: #South 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:44' prior: 50605541!
+test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #West.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (1@0) facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:44' prior: 50605298!
+test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (0@1) facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:44' prior: 50605876!
+test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #East. 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:44' prior: 50605276!
+test02EmptyCommandDoesNothing
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection .
+	
+	marsRover readCommands: ''.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:44' prior: 50606353!
+test12MarsRoverKnowsHowToReceiveLeftRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'l'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #West 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:44' prior: 50606239!
+test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #West.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #North. 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:44' prior: 50605373!
+test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (1@0) facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:44' prior: 50605954!
+test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #South. 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:30:44' prior: 50605290!
+test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint
+
+
+	self assertMarsRover: (MarsRover on: 0@0 facingState: #North) isInPosition: 0@0 facing: #North
+	
+	! !
+
+!methodRemoval: MarsRover class #on:facing: stamp: 'sp 5/12/2023 15:30:44'!
+on: initialPosition facing: initialCardinalPoint 
+	
+	^self new initializeOn: initialPosition facing: initialCardinalPoint !
+!MarsRover class methodsFor: 'instance creation' stamp: 'sp 5/12/2023 15:30:53' prior: 50607699!
+on: initialPosition facingState: initialFacingState 
+	
+	^self new initializeOn: initialPosition facing: initialFacingState ! !
+!MarsRover methodsFor: 'initialization' stamp: 'sp 5/12/2023 15:31:07'!
+initializeOn: initialPosition facingState: initialCardinalPoint 
+	
+	currentPosition := initialPosition.
+	facingDirection := initialCardinalPoint.! !
+!MarsRover class methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:31:07' prior: 50607922!
+on: initialPosition facingState: initialFacingState 
+	
+	^self new initializeOn: initialPosition facingState: initialFacingState ! !
+
+!methodRemoval: MarsRover #initializeOn:facing: stamp: 'sp 5/12/2023 15:31:07'!
+initializeOn: initialPosition facing: initialCardinalPoint 
+	
+	currentPosition := initialPosition.
+	facingDirection := initialCardinalPoint.!
+!MarsRover methodsFor: 'initialization' stamp: 'sp 5/12/2023 15:31:15' prior: 50607929!
+initializeOn: initialPosition facingState: initialFacingState 
+	
+	currentPosition := initialPosition.
+	facingDirection := initialFacingState.! !
+!MarsRover methodsFor: 'initialization' stamp: 'sp 5/12/2023 15:31:20' prior: 50607951!
+initializeOn: initialPosition facingState: initialFacingState 
+	
+	currentPosition := initialPosition.
+	state := initialFacingState.! !
+!MarsRover methodsFor: 'accessing' stamp: 'sp 5/12/2023 15:31:53' prior: 50605054!
+facingDirection
+	
+	^state facingDirection! !
+
+!classDefinition: #MarsRover category: 'MarsRoverEjercicio' stamp: 'sp 5/12/2023 15:32:07'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'currentPosition facingDirection facingState'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:32:07' prior: 50607181!
+readCommands: aCommandList
+
+	aCommandList asOrderedCollection do: [ :command |
+
+		(self isCommandValid: command) ifFalse: [^self].
+
+		command = $f ifTrue: [facingState moveForward: self			].
+		command = $b ifTrue: [facingState moveBackwards: self			].
+		command = $r ifTrue: [facingState rotateRight: self			].
+		command = $l ifTrue: [facingState rotateLeft: self].
+	]
+
+	! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:32:07' prior: 50607959!
+initializeOn: initialPosition facingState: initialFacingState 
+	
+	currentPosition := initialPosition.
+	facingState := initialFacingState.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:32:07' prior: 50607966!
+facingDirection
+	
+	^facingState facingDirection! !
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'currentPosition facingState'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+
+!classDefinition: #MarsRover category: 'MarsRoverEjercicio' stamp: 'sp 5/12/2023 15:32:16'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'currentPosition facingState'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRoverEjercicio'!
+!MarsRoverFacingState methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:32:42'!
+facingDirection
+
+	self subclassResponsibility ! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:32:55' overrides: 50608020!
+facingDirection
+
+	^#East! !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:33:03' overrides: 50608020!
+facingDirection
+
+	^#North! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:33:09' overrides: 50608020!
+facingDirection
+
+	^#South! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:33:16' overrides: 50608020!
+facingDirection
+
+	^#West! !
+
+!classRenamed: #MarsRoverFacingState as: #PuntoCardinal stamp: 'sp 5/12/2023 15:39:40'!
+Smalltalk renameClassNamed: #MarsRoverFacingState as: #PuntoCardinal!
+
+!classRenamed: #MarsRoverFacingEast as: #East stamp: 'sp 5/12/2023 15:39:45'!
+Smalltalk renameClassNamed: #MarsRoverFacingEast as: #East!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:39:45' prior: 50607816!
+test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #East. 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:39:45' prior: 50607876!
+test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (1@0) facing: initialFacingDirection 
+	
+	! !
+!East methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:39:45' prior: 50608025 overrides: 50608020!
+facingDirection
+
+	^#East! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:39:45' prior: 50607892!
+test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #South. 
+	
+	! !
+
+!classRenamed: #PuntoCardinal as: #CardinalPoint stamp: 'sp 5/12/2023 15:39:56'!
+Smalltalk renameClassNamed: #PuntoCardinal as: #CardinalPoint!
+
+!methodRemoval: CardinalPoint #facingDirection stamp: 'sp 5/12/2023 15:40:02'!
+facingDirection
+
+	self subclassResponsibility !
+
+!methodRemoval: East #facingDirection stamp: 'sp 5/12/2023 15:40:05'!
+facingDirection
+
+	^#East!
+
+!methodRemoval: MarsRoverFacingNorth #facingDirection stamp: 'sp 5/12/2023 15:40:07'!
+facingDirection
+
+	^#North!
+
+!methodRemoval: MarsRoverFacingSouth #facingDirection stamp: 'sp 5/12/2023 15:40:09'!
+facingDirection
+
+	^#South!
+
+!methodRemoval: MarsRoverFacingWest #facingDirection stamp: 'sp 5/12/2023 15:40:11'!
+facingDirection
+
+	^#West!
+
+!classRenamed: #CardinalPoint as: #MarsRoverFacingState stamp: 'sp 5/12/2023 15:42:03'!
+Smalltalk renameClassNamed: #CardinalPoint as: #MarsRoverFacingState!
+
+!classRenamed: #East as: #MarsRoverFacingEast stamp: 'sp 5/12/2023 15:42:15'!
+Smalltalk renameClassNamed: #East as: #MarsRoverFacingEast!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:42:15' prior: 50608054!
+test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #MarsRoverFacingEast. 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:42:15' prior: 50608069!
+test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #MarsRoverFacingEast.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (1@0) facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:42:15' prior: 50608089!
+test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #MarsRoverFacingEast.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #South. 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:42:31' prior: 50608152!
+test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (1@0) facing: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:42:39' prior: 50608168!
+test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition facing: #South. 
+	
+	! !
+!MarsRoverFacingState methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:44:00'!
+facingDirection
+
+	self subclassResponsibility ! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:44:11' overrides: 50608214!
+facingDirection
+
+	^#East! !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:44:26' overrides: 50608214!
+facingDirection
+
+	^#North! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:44:34' overrides: 50608214!
+facingDirection
+
+	^#South! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:44:40' overrides: 50608214!
+facingDirection
+
+	^#West! !
+!MarsRoverTest methodsFor: 'assertions' stamp: 'sp 5/12/2023 15:45:52'!
+assertMarsRover: aMarsRover isInPosition: aPosition withFacingState: aDirection
+
+
+	self assert: aPosition equals: aMarsRover currentPosition.
+	self assert: aDirection equals: aMarsRover facingDirection.
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50607769!
+test13MarsRoverKnowsHowToReceiveMoreThanOneCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'rfflbrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) withFacingState: #South 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50607753!
+test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #South.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) withFacingState: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50607738!
+test14MarsRoverStopsWhenEncounteringInvalidCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'rfflbxrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) withFacingState: #North 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50608183!
+test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (1@0) withFacingState: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50608136!
+test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition withFacingState: #MarsRoverFacingEast. 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50607831!
+test02EmptyCommandDoesNothing
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection .
+	
+	marsRover readCommands: ''.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition withFacingState: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50607707!
+test07MarsRoverKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) withFacingState: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50607723!
+test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #South.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition withFacingState: #West. 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50607907!
+test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint
+
+
+	self assertMarsRover: (MarsRover on: 0@0 facingState: #North) isInPosition: 0@0 withFacingState: #North
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50607800!
+test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (0@1) withFacingState: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50607861!
+test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #West.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition withFacingState: #North. 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50607846!
+test12MarsRoverKnowsHowToReceiveLeftRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'l'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition withFacingState: #West 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50607784!
+test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #West.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (1@0) withFacingState: initialFacingDirection 
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:45:53' prior: 50608199!
+test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := #East.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition withFacingState: #South. 
+	
+	! !
+
+!methodRemoval: MarsRoverTest #assertMarsRover:isInPosition:facing: stamp: 'sp 5/12/2023 15:45:53'!
+assertMarsRover: aMarsRover isInPosition: aPosition facing: aDirection
+
+
+	self assert: aPosition equals: aMarsRover currentPosition.
+	self assert: aDirection equals: aMarsRover facingDirection.
+	
+	!
+!MarsRoverTest methodsFor: 'assertions' stamp: 'sp 5/12/2023 15:46:03' prior: 50608238!
+assertMarsRover: aMarsRover isInPosition: aPosition withFacingState: aFacingState
+
+
+	self assert: aPosition equals: aMarsRover currentPosition.
+	self assert: aFacingState equals: aMarsRover facingDirection.
+	
+	! !
+!MarsRoverTest methodsFor: 'assertions' stamp: 'sp 5/12/2023 15:46:10' prior: 50608470!
+assertMarsRover: aMarsRover isInPosition: aPosition withFacingState: aFacingState
+
+
+	self assert: aPosition equals: aMarsRover currentPosition.
+	self assert: aFacingState facingDirection equals: aMarsRover facingDirection.
+	
+	! !
+!MarsRoverTest methodsFor: 'assertions' stamp: 'sp 5/12/2023 15:46:37' prior: 50608480!
+assertMarsRover: aMarsRover isInPosition: aPosition withFacingState: aFacingState
+
+
+	self assert: aPosition equals: aMarsRover currentPosition.
+	self assert: aFacingState equals: aMarsRover facingState.
+	
+	! !
+!MarsRover methodsFor: 'accessing' stamp: 'sp 5/12/2023 15:46:53'!
+facingState
+	
+	^facingState facingDirection! !
+!MarsRoverFacingState methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:46:53'!
+facingState
+
+	self subclassResponsibility ! !
+!MarsRoverFacingEast methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:46:53' overrides: 50608504!
+facingState
+
+	^#East! !
+!MarsRoverFacingNorth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:46:53' overrides: 50608504!
+facingState
+
+	^#North! !
+!MarsRoverFacingSouth methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:46:53' overrides: 50608504!
+facingState
+
+	^#South! !
+!MarsRoverFacingWest methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:46:53' overrides: 50608504!
+facingState
+
+	^#West! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:46:53' prior: 50608002!
+facingDirection
+	
+	^facingState facingState! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:46:53' prior: 50608499!
+facingState
+	
+	^facingState facingState! !
+
+!methodRemoval: MarsRover #facingDirection stamp: 'sp 5/12/2023 15:46:53'!
+facingDirection
+	
+	^facingState facingState!
+
+!methodRemoval: MarsRoverFacingState #facingDirection stamp: 'sp 5/12/2023 15:46:53'!
+facingDirection
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingEast #facingDirection stamp: 'sp 5/12/2023 15:46:53'!
+facingDirection
+
+	^#East!
+
+!methodRemoval: MarsRoverFacingNorth #facingDirection stamp: 'sp 5/12/2023 15:46:53'!
+facingDirection
+
+	^#North!
+
+!methodRemoval: MarsRoverFacingSouth #facingDirection stamp: 'sp 5/12/2023 15:46:53'!
+facingDirection
+
+	^#South!
+
+!methodRemoval: MarsRoverFacingWest #facingDirection stamp: 'sp 5/12/2023 15:46:53'!
+facingDirection
+
+	^#West!
+!MarsRover methodsFor: 'accessing' stamp: 'sp 5/12/2023 15:47:25' prior: 50608533!
+facingState
+	
+	^facingState class! !
+
+!methodRemoval: MarsRoverFacingState #facingState stamp: 'sp 5/12/2023 15:47:47'!
+facingState
+
+	self subclassResponsibility !
+
+!methodRemoval: MarsRoverFacingEast #facingState stamp: 'sp 5/12/2023 15:47:50'!
+facingState
+
+	^#East!
+
+!methodRemoval: MarsRoverFacingNorth #facingState stamp: 'sp 5/12/2023 15:47:52'!
+facingState
+
+	^#North!
+
+!methodRemoval: MarsRoverFacingSouth #facingState stamp: 'sp 5/12/2023 15:47:54'!
+facingState
+
+	^#South!
+
+!methodRemoval: MarsRoverFacingWest #facingState stamp: 'sp 5/12/2023 15:47:57'!
+facingState
+
+	^#West!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:48:52' prior: 50608373!
+test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint
+
+
+	self assertMarsRover: (MarsRover on: 0@0 facingState: MarsRoverFacingNorth ) isInPosition: 0@0 withFacingState: MarsRoverFacingNorth 
+	
+	! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 15:48:55'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 15:48:55'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:49:01' prior: 50608581!
+test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint
+
+
+	self assertMarsRover: (MarsRover on: 0@0 facingState: MarsRoverFacingNorth new ) isInPosition: 0@0 withFacingState: MarsRoverFacingNorth 
+	
+	! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 15:49:03'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:49:07' prior: 50608599!
+test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint
+
+
+	self assertMarsRover: (MarsRover on: 0@0 facingState: MarsRoverFacingNorth new) isInPosition: 0@0 withFacingState: MarsRoverFacingNorth 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:49:22' prior: 50608326!
+test02EmptyCommandDoesNothing
+
+	| marsRover initialFacingState initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingState := #North.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingState .
+	
+	marsRover readCommands: ''.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition withFacingState: initialFacingState 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:49:42' prior: 50608623!
+test02EmptyCommandDoesNothing
+
+	| marsRover initialFacingState initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingState := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingState .
+	
+	marsRover readCommands: ''.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition withFacingState: MarsRoverFacingNorth 
+	
+	! !
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 15:49:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 15:49:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 15:49:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:49:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:49:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:49:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:49:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 15:49:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:49:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:49:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:49:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:49:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 15:49:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 15:49:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 15:49:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 15:49:48'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:50:37' prior: 50608382!
+test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (0@1) withFacingState: MarsRoverFacingNorth. 
+	
+	! !
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:50:39'!
+ERROR!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:50:39'!
+ERROR!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:50:55' prior: 50608711!
+test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (0@1) withFacingState: initialFacingDirection 
+	
+	! !
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:50:55'!
+ERROR!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:51:00' prior: 50608735!
+test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (0@1) withFacingState: MarsRoverFacingNorth. 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:51:11' prior: 50608294!
+test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingEast new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition + (1@0) withFacingState: MarsRoverFacingEast 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:51:23' prior: 50608263!
+test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingSouth new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) withFacingState: MarsRoverFacingEast
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:51:38' prior: 50608429!
+test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingWest new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (1@0) withFacingState: MarsRoverFacingWest
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:51:46' prior: 50608787!
+test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingSouth new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) withFacingState: MarsRoverFacingSouth
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:52:05' prior: 50608341!
+test07MarsRoverKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition - (0@1) withFacingState: MarsRoverFacingNorth 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:52:38' prior: 50608310!
+test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition withFacingState: MarsRoverFacingEast. 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:52:58' prior: 50608445!
+test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingEast new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition withFacingState: MarsRoverFacingSouth
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:53:13' prior: 50608357!
+test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingSouth new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition withFacingState: MarsRoverFacingWest
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:53:34' prior: 50608398!
+test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingWest new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition withFacingState: MarsRoverFacingNorth 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:53:48' prior: 50608414!
+test12MarsRoverKnowsHowToReceiveLeftRotationCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'l'.	
+	
+	self assertMarsRover: marsRover isInPosition: initialPosition withFacingState: MarsRoverFacingWest
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:53:58' prior: 50608248!
+test13MarsRoverKnowsHowToReceiveMoreThanOneCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'rfflbrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) withFacingState: MarsRoverFacingSouth.
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 15:54:05' prior: 50608279!
+test14MarsRoverStopsWhenEncounteringInvalidCommand
+
+	| marsRover initialFacingDirection initialPosition |
+	
+	initialPosition := 0@0.
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: initialPosition facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'rfflbxrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) withFacingState: MarsRoverFacingNorth
+	
+	! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 15:54:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 15:54:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:54:14'!
+ERROR!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:54:14'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:54:22'!
+moveForwardWhenFacingNorth
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:54:32' prior: 50608978!
+moveForwardWhenFacingNorth
+	
+	currentPosition := currentPosition + (0@1)! !
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:54:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:54:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:54:40'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:54:45'!
+moveForwardWhenFacingEast
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:54:53' prior: 50609000!
+moveForwardWhenFacingEast
+	
+	currentPosition := currentPosition + (1@0)! !
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:54:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 15:54:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 15:54:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:54:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:54:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:54:54'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:54:54'!
+ERROR!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 15:54:54'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:54:54'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:54:54'!
+ERROR!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:54:54'!
+ERROR!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:54:54'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 15:54:54'!
+ERROR!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 15:54:54'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 15:54:54'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:54:55'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:54:59'!
+moveForwardWhenFacingSouth
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:55:07' prior: 50609071!
+moveForwardWhenFacingSouth
+	
+	currentPosition := currentPosition - (0@1)! !
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:55:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:55:09'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:55:12'!
+moveForwardWhenFacingWest
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:55:20' prior: 50609089!
+moveForwardWhenFacingWest
+	
+	currentPosition := currentPosition - (1@0)! !
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:55:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 15:55:23'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:55:30'!
+moveBackwardsWhenFacingNorth
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:55:34' prior: 50609107!
+moveBackwardsWhenFacingNorth
+	
+	currentPosition := currentPosition - (0@1)! !
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 15:55:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:55:36'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:55:41'!
+rotateRightWhenFacingNorth
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:56:05' prior: 50609125!
+rotateRightWhenFacingNorth
+	
+	facingState := MarsRoverFacingEast new.! !
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:56:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:56:09'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:56:15'!
+rotateRightWhenFacingEast
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:56:34' prior: 50609143!
+rotateRightWhenFacingEast
+	
+	facingState := MarsRoverFacingSouth new.! !
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:56:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:56:36'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:56:40'!
+rotateRightWhenFacingSouth
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:56:55' prior: 50609161!
+rotateRightWhenFacingSouth
+	
+	facingState := MarsRoverFacingWest new.! !
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:56:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:56:57'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:57:02'!
+rotateRightWhenFacingWest
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:57:13' prior: 50609179!
+rotateRightWhenFacingWest
+	
+	facingState := MarsRoverFacingNorth new.! !
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:57:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 15:57:15'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:57:19'!
+rotateLeftWhenFacingNorth
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:57:39' prior: 50609197!
+rotateLeftWhenFacingNorth
+	
+	facingState := MarsRoverFacingWest ! !
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 15:57:40'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 15:57:54'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 15:57:54'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 15:58:02'!
+FAILURE!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:58:42' prior: 50609202!
+rotateLeftWhenFacingNorth
+	
+	facingState := MarsRoverFacingWest new.! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 15:58:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 15:58:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:58:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:58:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:58:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:58:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 15:58:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:58:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:58:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:58:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:58:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 15:58:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 15:58:44'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 15:58:44'!
+ERROR!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 15:58:46'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:58:55'!
+rotateLeftWhenFacingEast
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'sp 5/12/2023 15:59:12' prior: 50609289!
+rotateLeftWhenFacingEast
+	
+	facingState := MarsRoverFacingNorth new.! !
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 15:59:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 15:59:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 15:59:18'!
+PASSED!
+
+----SNAPSHOT----(12 May 2023 16:02:03) CuisUniversity-5706.image priorSource: 8805506!
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 16:02:05'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:02:51' prior: 50608637!
+test02EmptyCommandDoesNothing
+
+	| marsRover initialFacingState |
+	
+	initialFacingState := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: 0@0 facingState: initialFacingState .
+	
+	marsRover readCommands: ''.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingNorth 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:03:10' prior: 50608755!
+test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection |
+	
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: 0@0 facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 + (0@1) withFacingState: MarsRoverFacingNorth. 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:03:14' prior: 50608771!
+test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection |
+	
+	initialFacingDirection := MarsRoverFacingEast new.
+	marsRover := MarsRover on: 0@0 facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 + (1@0) withFacingState: MarsRoverFacingEast 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:03:17' prior: 50608819!
+test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection |
+	
+	initialFacingDirection := MarsRoverFacingSouth new.
+	marsRover := MarsRover on: 0@0 facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 - (0@1) withFacingState: MarsRoverFacingSouth
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:03:20' prior: 50608803!
+test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand
+
+	| marsRover initialFacingDirection |
+	
+	initialFacingDirection := MarsRoverFacingWest new.
+	marsRover := MarsRover on: 0@0 facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 - (1@0) withFacingState: MarsRoverFacingWest
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:03:24' prior: 50608835!
+test07MarsRoverKnowsHowToReceiveBackwardCommand
+
+	| marsRover initialFacingDirection |
+	
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: 0@0 facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 - (0@1) withFacingState: MarsRoverFacingNorth 
+	
+	! !
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 16:03:29'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:03:31' prior: 50608851!
+test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection |
+	
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: 0@0 facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingEast. 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:03:34' prior: 50608867!
+test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection |
+	
+	initialFacingDirection := MarsRoverFacingEast new.
+	marsRover := MarsRover on: 0@0 facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingSouth
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:03:38' prior: 50608883!
+test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection |
+	
+	initialFacingDirection := MarsRoverFacingSouth new.
+	marsRover := MarsRover on: 0@0 facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingWest
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:03:40' prior: 50608899!
+test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand
+
+	| marsRover initialFacingDirection |
+	
+	initialFacingDirection := MarsRoverFacingWest new.
+	marsRover := MarsRover on: 0@0 facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingNorth 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:03:43' prior: 50608915!
+test12MarsRoverKnowsHowToReceiveLeftRotationCommand
+
+	| marsRover initialFacingDirection |
+	
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: 0@0 facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'l'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingWest
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:03:45' prior: 50608931!
+test13MarsRoverKnowsHowToReceiveMoreThanOneCommand
+
+	| marsRover initialFacingDirection |
+	
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: 0@0 facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'rfflbrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) withFacingState: MarsRoverFacingSouth.
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:03:48' prior: 50608947!
+test14MarsRoverStopsWhenEncounteringInvalidCommand
+
+	| marsRover initialFacingDirection |
+	
+	initialFacingDirection := MarsRoverFacingNorth new.
+	marsRover := MarsRover on: 0@0 facingState: initialFacingDirection.
+	
+	marsRover readCommands: 'rfflbxrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) withFacingState: MarsRoverFacingNorth
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:01' prior: 50609417!
+test02EmptyCommandDoesNothing
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingNorth new .
+	
+	marsRover readCommands: ''.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingNorth 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:04' prior: 50609430!
+test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingNorth new.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 + (0@1) withFacingState: MarsRoverFacingNorth. 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:07' prior: 50609444!
+test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingEast new.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 + (1@0) withFacingState: MarsRoverFacingEast 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:10' prior: 50609458!
+test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingSouth new.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 - (0@1) withFacingState: MarsRoverFacingSouth
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:12' prior: 50609472!
+test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingWest new.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 - (1@0) withFacingState: MarsRoverFacingWest
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:14' prior: 50609486!
+test07MarsRoverKnowsHowToReceiveBackwardCommand
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingNorth new.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 - (0@1) withFacingState: MarsRoverFacingNorth 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:16' prior: 50609558!
+test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingNorth new.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingEast. 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:18' prior: 50609572!
+test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingEast new.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingSouth
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:20' prior: 50609586!
+test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingSouth new.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingWest
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:23' prior: 50609600!
+test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingWest new.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingNorth 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:25' prior: 50609614!
+test12MarsRoverKnowsHowToReceiveLeftRotationCommand
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingNorth new.
+	
+	marsRover readCommands: 'l'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingWest
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:27' prior: 50609628!
+test13MarsRoverKnowsHowToReceiveMoreThanOneCommand
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingNorth new.
+	
+	marsRover readCommands: 'rfflbrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) withFacingState: MarsRoverFacingSouth.
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:29' prior: 50609642!
+test14MarsRoverStopsWhenEncounteringInvalidCommand
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingNorth new.
+	
+	marsRover readCommands: 'rfflbxrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) withFacingState: MarsRoverFacingNorth
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:04:52' prior: 50609656!
+test02EmptyCommandDoesNothing
+
+	| marsRover |
+	
+	marsRover := MarsRover on: 0@0 facingState: MarsRoverFacingNorth new.
+	
+	marsRover readCommands: ''.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingNorth 
+	
+	! !
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 16:04:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 16:04:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 16:04:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:04:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:04:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:04:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:04:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 16:04:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:04:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:04:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:04:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:04:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 16:04:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 16:04:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 16:04:57'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:13'!
+marsRoverFacingNorth
+
+	^ MarsRover on: 0@0 facingState: MarsRoverFacingNorth new! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:13' prior: 50609811!
+test02EmptyCommandDoesNothing
+
+	| marsRover |
+	
+	marsRover := self marsRoverFacingNorth.
+	
+	marsRover readCommands: ''.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingNorth 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:13' prior: 50608613!
+test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint
+
+
+	self assertMarsRover: (self marsRoverFacingNorth) isInPosition: 0@0 withFacingState: MarsRoverFacingNorth 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:13' prior: 50609799!
+test14MarsRoverStopsWhenEncounteringInvalidCommand
+
+	| marsRover |
+	
+	marsRover := self marsRoverFacingNorth.
+	
+	marsRover readCommands: 'rfflbxrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) withFacingState: MarsRoverFacingNorth
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:13' prior: 50609787!
+test13MarsRoverKnowsHowToReceiveMoreThanOneCommand
+
+	| marsRover |
+	
+	marsRover := self marsRoverFacingNorth.
+	
+	marsRover readCommands: 'rfflbrr'.	
+	
+	self assertMarsRover: marsRover isInPosition: (2@-1) withFacingState: MarsRoverFacingSouth.
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:13' prior: 50609667!
+test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand
+
+	| marsRover |
+	
+	marsRover := self marsRoverFacingNorth.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 + (0@1) withFacingState: MarsRoverFacingNorth. 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:13' prior: 50609775!
+test12MarsRoverKnowsHowToReceiveLeftRotationCommand
+
+	| marsRover |
+	
+	marsRover := self marsRoverFacingNorth.
+	
+	marsRover readCommands: 'l'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingWest
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:13' prior: 50609727!
+test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover |
+	
+	marsRover := self marsRoverFacingNorth.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingEast. 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:13' prior: 50609715!
+test07MarsRoverKnowsHowToReceiveBackwardCommand
+
+	| marsRover |
+	
+	marsRover := self marsRoverFacingNorth.
+	
+	marsRover readCommands: 'b'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 - (0@1) withFacingState: MarsRoverFacingNorth 
+	
+	! !
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 16:05:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 16:05:16'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:43'!
+marsRoverFacingEast
+
+	^ MarsRover on: 0@0 facingState: MarsRoverFacingEast new! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:43' prior: 50609679!
+test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand
+
+	| marsRover |
+	
+	marsRover := self marsRoverFacingEast.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 + (1@0) withFacingState: MarsRoverFacingEast 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:43' prior: 50609739!
+test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand
+
+	| marsRover |
+	
+	marsRover := self marsRoverFacingEast.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingSouth
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:55'!
+marsRoverFacingSouth
+
+	^ MarsRover on: 0@0 facingState: MarsRoverFacingSouth new! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:55' prior: 50609691!
+test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand
+
+	| marsRover |
+	
+	marsRover := self marsRoverFacingSouth.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 - (0@1) withFacingState: MarsRoverFacingSouth
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:05:55' prior: 50609751!
+test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand
+
+	| marsRover |
+	
+	marsRover := self marsRoverFacingSouth.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingWest
+	
+	! !
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 16:05:56'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:06:09'!
+marsRoverFacingWest
+
+	^ MarsRover on: 0@0 facingState: MarsRoverFacingWest new! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:06:09' prior: 50609703!
+test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand
+
+	| marsRover |
+	
+	marsRover := self marsRoverFacingWest.
+	
+	marsRover readCommands: 'f'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 - (1@0) withFacingState: MarsRoverFacingWest
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:06:09' prior: 50609763!
+test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand
+
+	| marsRover |
+	
+	marsRover := self marsRoverFacingWest.
+	
+	marsRover readCommands: 'r'.	
+	
+	self assertMarsRover: marsRover isInPosition: 0@0 withFacingState: MarsRoverFacingNorth 
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'sp 5/12/2023 16:07:29' prior: 50609894!
+test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint
+
+
+	self assertMarsRover: (self marsRoverFacingNorth) 
+		isInPosition: 0@0
+		withFacingState: MarsRoverFacingNorth 
+	
+	! !
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01MarsRoverIsInInitialPositionPointingToInitialCardinalPoint stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02EmptyCommandDoesNothing stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverFacingNorthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverFacingEastKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverFacingSouthKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverFacingWestKnowsHowToReceiveForwardCommand stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverKnowsHowToReceiveBackwardCommand stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverFacingNorthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverFacingEastKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverFacingSouthKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverFacingWestKnowsHowToReceiveRightRotationCommand stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverKnowsHowToReceiveLeftRotationCommand stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverKnowsHowToReceiveMoreThanOneCommand stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverStopsWhenEncounteringInvalidCommand stamp: 'sp 5/12/2023 16:07:30'!
+PASSED!
+
+----SNAPSHOT----(12 May 2023 16:08:53) CuisUniversity-5706.image priorSource: 8886698!
+!MarsRover methodsFor: 'moving backward - private' stamp: 'sp 5/12/2023 17:06:50'!
+moveBackwardsWhenFacingSouth
+	
+	currentPosition := currentPosition + (0@1)! !
+!MarsRover methodsFor: 'moving backward - private' stamp: 'sp 5/12/2023 17:07:01'!
+moveBackwardsWhenFacingEast
+	
+	currentPosition := currentPosition - (1@0)! !
+!MarsRover methodsFor: 'moving backward - private' stamp: 'sp 5/12/2023 17:07:06'!
+moveBackwardsWhenFacingWest
+	
+	currentPosition := currentPosition + (1@0)! !
+!MarsRover methodsFor: 'rotating left - private' stamp: 'sp 5/12/2023 17:07:29'!
+rotateLeftWhenFacingWest
+	
+	facingState := MarsRoverFacingSouth new.! !
+!MarsRover methodsFor: 'rotating left - private' stamp: 'sp 5/12/2023 17:07:57'!
+rotateLeftWhenFacingSouth
+	
+	facingState := MarsRoverFacingEast new.! !
+
+----SNAPSHOT----(12 May 2023 17:08:07) CuisUniversity-5706.image priorSource: 8914581!
+
+----QUIT----(12 May 2023 17:21:57) CuisUniversity-5706.image priorSource: 8915527!
