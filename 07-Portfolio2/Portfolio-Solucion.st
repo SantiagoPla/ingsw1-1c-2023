@@ -312,12 +312,12 @@ TestCase subclass: #ReportsTest
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:34'!
+!ReportsTest methodsFor: 'account summary' stamp: 'FP 5/31/2023 13:12:34'!
 test01AccountSummaryOfEmptyReceptiveAccountIsEmpty
 
 	self assert: (OrderedCollection with: 'Balance = 0') equals: (AccountSummaryPrinter with: ReceptiveAccount new) generateReport .! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:34'!
+!ReportsTest methodsFor: 'account summary' stamp: 'FP 5/31/2023 13:12:34'!
 test02AccountSummaryOfReceptiveAccountShowsDeposits
 	
 	|receptiveAccount expectedSummary|
@@ -333,7 +333,7 @@ test02AccountSummaryOfReceptiveAccountShowsDeposits
 	
 	self assert: expectedSummary equals: (AccountSummaryPrinter with: receptiveAccount) generateReport .! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:34'!
+!ReportsTest methodsFor: 'account summary' stamp: 'FP 5/31/2023 13:12:34'!
 test03AccountSummaryOfReceptiveAccountShowsWithdraws
 	
 	|receptiveAccount expectedSummary|
@@ -351,7 +351,7 @@ test03AccountSummaryOfReceptiveAccountShowsWithdraws
 	
 	self assert: expectedSummary equals: (AccountSummaryPrinter with: receptiveAccount) generateReport .! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:34'!
+!ReportsTest methodsFor: 'account summary' stamp: 'FP 5/31/2023 13:12:34'!
 test04AccountSummaryOfReceptiveAccountShowsDepositPaws
 	
 	|receptiveAccount expectedSummary|
@@ -369,7 +369,7 @@ test04AccountSummaryOfReceptiveAccountShowsDepositPaws
 	
 	self assert: expectedSummary equals: (AccountSummaryPrinter with: receptiveAccount) generateReport .! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:34'!
+!ReportsTest methodsFor: 'account summary' stamp: 'FP 5/31/2023 13:12:34'!
 test05AccountSummaryOfReceptiveAccountShowsWithdrawPaws
 	
 	|receptiveAccount expectedSummary|
@@ -387,12 +387,12 @@ test05AccountSummaryOfReceptiveAccountShowsWithdrawPaws
 	
 	self assert: expectedSummary equals: (AccountSummaryPrinter with: receptiveAccount) generateReport .! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:34'!
+!ReportsTest methodsFor: 'account summary' stamp: 'FP 5/31/2023 13:12:34'!
 test06AccountSummaryOfEmptyPortfolioIsEmpty
 
 	self assert: (OrderedCollection with: 'Balance = 0') equals: (AccountSummaryPrinter with: Portfolio new) generateReport .! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:34'!
+!ReportsTest methodsFor: 'account summary' stamp: 'FP 5/31/2023 13:12:34'!
 test07AccountSummaryOfPortfolioWithOnlyReceptiveAccountsShowsTheirTransactions
 	|portfolio receptiveAccount1 receptiveAccount2 expectedSummary|
 	
@@ -411,7 +411,7 @@ test07AccountSummaryOfPortfolioWithOnlyReceptiveAccountsShowsTheirTransactions
 		
 	self assert: expectedSummary equals:  (AccountSummaryPrinter with: portfolio) generateReport .! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:34'!
+!ReportsTest methodsFor: 'account summary' stamp: 'FP 5/31/2023 13:12:34'!
 test08AccountSummaryOfPortfolioContainingPortfoliosShowsAllTransactions
 	|portfolio innerPortfolio receptiveAccount1 receptiveAccount2 expectedSummary|
 	
@@ -432,12 +432,13 @@ test08AccountSummaryOfPortfolioContainingPortfoliosShowsAllTransactions
 		
 	self assert: expectedSummary equals:  (AccountSummaryPrinter with: portfolio) generateReport .! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:55'!
+
+!ReportsTest methodsFor: 'transfer net' stamp: 'FP 5/31/2023 13:12:55'!
 test09TransferNetOfEmptyReceptiveAccountIsZero
 
 	self assert:  0 equals: (TransferNetCalculator with: ReceptiveAccount new) generateReport ! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:55'!
+!ReportsTest methodsFor: 'transfer net' stamp: 'FP 5/31/2023 13:12:55'!
 test10TransferNetOfReceptiveAccountSumsDepositPaws
 	|receptiveAccount |
 	
@@ -447,7 +448,7 @@ test10TransferNetOfReceptiveAccountSumsDepositPaws
 	
 	self assert: 300 equals: (TransferNetCalculator with: receptiveAccount) generateReport ! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:55'!
+!ReportsTest methodsFor: 'transfer net' stamp: 'FP 5/31/2023 13:12:55'!
 test11TransferNetOfReceptiveAccountDoesNotSumDeposits
 	|receptiveAccount |
 	
@@ -457,7 +458,7 @@ test11TransferNetOfReceptiveAccountDoesNotSumDeposits
 	
 	self assert: 100 equals: (TransferNetCalculator with: receptiveAccount) generateReport ! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:55'!
+!ReportsTest methodsFor: 'transfer net' stamp: 'FP 5/31/2023 13:12:55'!
 test12TransferNetOfReceptiveAccountDoesNotSumWithdraws
 	|receptiveAccount |
 	
@@ -467,7 +468,7 @@ test12TransferNetOfReceptiveAccountDoesNotSumWithdraws
 	
 	self assert: 100 equals: (TransferNetCalculator with: receptiveAccount) generateReport ! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:55'!
+!ReportsTest methodsFor: 'transfer net' stamp: 'FP 5/31/2023 13:12:55'!
 test13TransferNetOfReceptiveAccountSubtractsWithdrawPaws
 	|receptiveAccount |
 	
@@ -477,12 +478,12 @@ test13TransferNetOfReceptiveAccountSubtractsWithdrawPaws
 	
 	self assert: 50 equals: (TransferNetCalculator with: receptiveAccount) generateReport ! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:55'!
+!ReportsTest methodsFor: 'transfer net' stamp: 'FP 5/31/2023 13:12:55'!
 test14TransferNetOfEmptyPortfolioIsZero
 
 	self assert: 0 equals: (TransferNetCalculator with: Portfolio new) generateReport ! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:55'!
+!ReportsTest methodsFor: 'transfer net' stamp: 'FP 5/31/2023 13:12:55'!
 test15TransferNetOfPortfolioWithOnlyReceptiveAccountsShowsTheirTransferNet
 	|portfolio receptiveAccount1 receptiveAccount2|
 	
@@ -499,7 +500,7 @@ test15TransferNetOfPortfolioWithOnlyReceptiveAccountsShowsTheirTransferNet
 
 	self assert: 15 equals:  (TransferNetCalculator with: portfolio) generateReport ! !
 
-!ReportsTest methodsFor: 'as yet unclassified' stamp: 'FP 5/31/2023 13:12:55'!
+!ReportsTest methodsFor: 'transfer net' stamp: 'FP 5/31/2023 13:12:55'!
 test16TransferNetOfPortfolioContainingPortfoliosAddsAllTransferNets
 	|portfolio innerPortfolio receptiveAccount1 receptiveAccount2 |
 	
@@ -517,6 +518,90 @@ test16TransferNetOfPortfolioContainingPortfoliosAddsAllTransferNets
 	portfolio := Portfolio with: innerPortfolio with: receptiveAccount2.
 	
 	self assert: 15 equals:  (TransferNetCalculator with: portfolio) generateReport ! !
+
+
+!ReportsTest methodsFor: 'tree' stamp: 'FP 6/1/2023 13:04:23'!
+test17TreeReportOfEmptyPortfolioOnlyShowsItsName
+
+	self 
+		assert: (OrderedCollection with: 'Portfolio de la familia') 
+		equals: (PortfolioTreePrinter with: (Portfolio named: 'Portfolio de la familia')) generatePortfolioReport ! !
+
+!ReportsTest methodsFor: 'tree' stamp: 'FP 6/1/2023 13:04:23'!
+test18TreeReportOfPortfolioWithOnlyReceptiveAccountsShowsNamesCorrectlyIndented
+	|portfolio receptiveAccount1 receptiveAccount2 expectedReport|
+	
+	receptiveAccount1 := ReceptiveAccount named: 'Cuenta de Juan'.
+	receptiveAccount2 := ReceptiveAccount named: 'Cuenta de Angeles'.
+
+	portfolio := Portfolio named: 'Portfolio de la familia' with: receptiveAccount1 with: receptiveAccount2.
+	
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '    Cuenta de Juan'.
+	expectedReport add: '    Cuenta de Angeles'.
+
+	self assert: expectedReport equals:  (PortfolioTreePrinter with: portfolio) generatePortfolioReport ! !
+
+!ReportsTest methodsFor: 'tree' stamp: 'FP 6/1/2023 13:59:19'!
+test19TreeReportOfPortfolioContainingPortfoliosShowsAllNamesCorrectlyIndented
+	|portfolio innerPortfolio receptiveAccount1 receptiveAccount2 receptiveAccount3 expectedReport|
+	
+	receptiveAccount1 := ReceptiveAccount named: 'Cuenta Mia'.	
+	receptiveAccount2 := ReceptiveAccount named: 'Cuenta de Juan'.
+	receptiveAccount3 := ReceptiveAccount named: 'Cuenta de Angeles'.
+		
+	innerPortfolio := Portfolio named: 'Portfolio de hijos' with: receptiveAccount2 with: receptiveAccount3.
+	
+	portfolio := Portfolio named: 'Portfolio de la familia' with: receptiveAccount1 with: innerPortfolio .
+	
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '    Cuenta Mia'.
+	expectedReport add: '    Portfolio de hijos'.
+	expectedReport add: '        Cuenta de Juan'.
+	expectedReport add: '        Cuenta de Angeles'.	
+	
+
+	
+	self assert: expectedReport equals:  (PortfolioTreePrinter with: portfolio) generatePortfolioReport ! !
+
+
+!ReportsTest methodsFor: 'transactions tree' stamp: 'FP 6/1/2023 13:34:32'!
+test20TransactionsTreeReportOfPortfolioContainingPortfoliosShowsEverythingCorrectlyIndented
+	|portfolio innerPortfolio receptiveAccount1 receptiveAccount2 receptiveAccount3 expectedReport|
+	
+	receptiveAccount1 := ReceptiveAccount named: 'Cuenta Mia'.	
+	Deposit register: 100 on: receptiveAccount1.
+	Withdraw register: 50 on: receptiveAccount1.
+	
+	receptiveAccount2 := ReceptiveAccount named: 'Cuenta de Juan'.
+	receptiveAccount3 := ReceptiveAccount named: 'Cuenta de Angeles'.
+	
+	Transfer from: receptiveAccount2 to:  receptiveAccount3 for: 50.
+		
+	innerPortfolio := Portfolio named: 'Portfolio de hijos' with: receptiveAccount2 with: receptiveAccount3.
+	
+	portfolio := Portfolio named: 'Portfolio de la familia' with: receptiveAccount1 with: innerPortfolio .
+	
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '    Cuenta Mia'.
+	expectedReport add: '        Deposito por 100'.
+	expectedReport add: '        Extraccion por 50'.
+	expectedReport add: '        Balance = 50'.
+	expectedReport add: '    Portfolio de hijos'.
+	expectedReport add: '        Cuenta de Juan'.
+	expectedReport add: '            Salida por transferencia de 50'.
+	expectedReport add: '            Balance = -50'.
+	expectedReport add: '        Cuenta de Angeles'.	
+	expectedReport add: '            Entrada por transferencia de 50'.
+	expectedReport add: '            Balance = 50'.
+	expectedReport add: '        Balance = 0'.	
+	expectedReport add: '    Balance = 50'.
+
+	
+	self assert: expectedReport equals:  (PortfolioTransactionsTreePrinter with: portfolio) generatePortfolioReport ! !
 
 
 !classDefinition: #TransferTest category: 'Portfolio-Solucion'!
@@ -602,7 +687,7 @@ test06CannotTransferNonPositiveAmount
 
 !classDefinition: #Account category: 'Portfolio-Solucion'!
 Object subclass: #Account
-	instanceVariableNames: ''
+	instanceVariableNames: 'name'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
@@ -641,8 +726,20 @@ addedTo: aPortfolio
 	self subclassResponsibility ! !
 
 
-!Account methodsFor: 'reports' stamp: 'FP 5/31/2023 21:51:11'!
-affectReportOn: anAccountSummaryPrinter
+!Account methodsFor: 'account reports' stamp: 'FP 6/1/2023 10:13:07'!
+affectReportOn: aReportGenerator
+
+	self subclassResponsibility ! !
+
+
+!Account methodsFor: 'accessing' stamp: 'FP 6/1/2023 10:31:35'!
+name 
+
+	^name! !
+
+
+!Account methodsFor: 'portfolio reports' stamp: 'FP 6/1/2023 13:05:00'!
+affectPortfolioReportOn: aTreeReportPrinter
 
 	self subclassResponsibility ! !
 
@@ -694,6 +791,13 @@ initialize
 
 	accounts := OrderedCollection new.
 	parents := OrderedCollection new.! !
+
+!Portfolio methodsFor: 'initialization' stamp: 'FP 6/1/2023 10:20:54'!
+initializeNamed: aName
+
+	accounts := OrderedCollection new.
+	parents := OrderedCollection new.
+	name := aName! !
 
 
 !Portfolio methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:19:36'!
@@ -759,13 +863,29 @@ signalCanNotAddAccount
 	self error: self class canNotAddAccountErrorMessage! !
 
 
-!Portfolio methodsFor: 'reports' stamp: 'FP 5/31/2023 21:51:11'!
-affectReportOn: anAccountSummaryPrinter 
+!Portfolio methodsFor: 'account reports' stamp: 'FP 6/1/2023 10:13:26'!
+affectReportOn: aReportGenerator 
 	
 	accounts do:
-		[ :anAccount | anAccount affectReportOn: anAccountSummaryPrinter ].
+		[ :anAccount | anAccount affectReportOn: aReportGenerator ].
 		
 	! !
+
+
+!Portfolio methodsFor: 'portfolio reports' stamp: 'FP 6/1/2023 13:58:03'!
+affectPortfolioReportOn: aPortfolioReportGenerator
+
+	aPortfolioReportGenerator affectPortfolioReportWithPortfolio: self
+
+	
+! !
+
+!Portfolio methodsFor: 'portfolio reports' stamp: 'FP 6/1/2023 13:58:10'!
+makeInnerAccountsAffectPortfolioReportOn: aPortfolioReportGenerator
+
+	accounts do: [:anAccount | anAccount affectPortfolioReportOn: aPortfolioReportGenerator ].
+	
+! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -777,6 +897,14 @@ Portfolio class
 canNotAddAccountErrorMessage
 	
 	^'Can not add repeated account to a portfolio'! !
+
+!Portfolio class methodsFor: 'as yet unclassified' stamp: 'FP 6/1/2023 10:29:41'!
+named: aName with: anAccount with: anotherAccount
+
+	^self new initializeNamed: aName;
+		add: anAccount;
+		add: anotherAccount;
+		yourself! !
 
 !Portfolio class methodsFor: 'as yet unclassified' stamp: 'HAW 5/25/2019 11:18:21'!
 with: anAccount
@@ -793,6 +921,12 @@ with: anAccount with: anotherAccount
 		add: anotherAccount;
 		yourself! !
 
+
+!Portfolio class methodsFor: 'instance creation' stamp: 'FP 6/1/2023 10:20:32'!
+named: aName 
+
+	^self new initializeNamed: aName ! !
+
 
 !classDefinition: #ReceptiveAccount category: 'Portfolio-Solucion'!
 Account subclass: #ReceptiveAccount
@@ -806,6 +940,13 @@ initialize
 
 	super initialize.
 	transactions := OrderedCollection new.! !
+
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'FP 6/1/2023 10:27:12'!
+initializeNamed: aName
+
+	super initialize.
+	transactions := OrderedCollection new.
+	name := aName! !
 
 
 !ReceptiveAccount methodsFor: 'transactions' stamp: 'HAW 5/25/2019 11:38:52'!
@@ -851,7 +992,7 @@ addedTo: aPortfolio
 	! !
 
 
-!ReceptiveAccount methodsFor: 'reports' stamp: 'FP 5/31/2023 21:51:11'!
+!ReceptiveAccount methodsFor: 'account reports' stamp: 'FP 5/31/2023 21:51:11'!
 affectReportOn: aReportGenerator
 
 	
@@ -859,284 +1000,76 @@ affectReportOn: aReportGenerator
 	
 ! !
 
-
-!classDefinition: #AccountTransaction category: 'Portfolio-Solucion'!
-Object subclass: #AccountTransaction
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
 
-!AccountTransaction methodsFor: 'value' stamp: 'HernanWilkinson 9/12/2011 12:25'!
-value 
+!ReceptiveAccount methodsFor: 'portfolio reports' stamp: 'FP 6/1/2023 13:55:05'!
+affectPortfolioReportOn: aPortfolioReportGenerator
 
-	self subclassResponsibility ! !
-
-
-!AccountTransaction methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:25:39'!
-affectBalance: aBalance
-
-	self subclassResponsibility ! !
-
-
-!AccountTransaction methodsFor: 'reports' stamp: 'FP 5/31/2023 21:41:24'!
-affectReportOn: anAccountSummaryPrinter
-
-	self subclassResponsibility ! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'AccountTransaction class' category: 'Portfolio-Solucion'!
-AccountTransaction class
-	instanceVariableNames: ''!
-
-!AccountTransaction class methodsFor: 'instance creation' stamp: 'NR 10/21/2019 18:54:27'!
-register: aValue on: account
-
-	| transaction |
+	aPortfolioReportGenerator affectPortfolioReportWithReceptiveAccount: self.
 	
-	transaction := self for: aValue.
-	account register: transaction.
-		
-	^ transaction! !
-
-
-!classDefinition: #Deposit category: 'Portfolio-Solucion'!
-AccountTransaction subclass: #Deposit
-	instanceVariableNames: 'value'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!Deposit methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:45'!
-initializeFor: aValue
-
-	value := aValue ! !
-
-
-!Deposit methodsFor: 'value' stamp: 'HernanWilkinson 7/13/2011 18:38'!
-value
-
-	^ value! !
-
-
-!Deposit methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:25:02'!
-affectBalance: aBalance
-
-	^aBalance + value ! !
-
-
-!Deposit methodsFor: 'reports' stamp: 'FP 5/31/2023 21:45:58'!
-affectReportOn: aReportGenerator
 	
-	^aReportGenerator affectReportWithDeposit: self! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'Deposit class' category: 'Portfolio-Solucion'!
-Deposit class
-	instanceVariableNames: ''!
-
-!Deposit class methodsFor: 'instance creation' stamp: 'HernanWilkinson 7/13/2011 18:38'!
-for: aValue
-
-	^ self new initializeFor: aValue ! !
-
-
-!classDefinition: #TransferPaw category: 'Portfolio-Solucion'!
-AccountTransaction subclass: #TransferPaw
-	instanceVariableNames: 'transfer'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!TransferPaw methodsFor: 'initialization' stamp: 'FP 5/31/2023 11:21:44'!
-initializeRegister: anAmount onAccount: aReceptiveAccount onTransfer: aTransfer
-	
-	aReceptiveAccount register: self.
-	transfer := aTransfer. 
 ! !
 
+!ReceptiveAccount methodsFor: 'portfolio reports' stamp: 'FP 6/1/2023 13:44:05'!
+makeTransactionsAffectPortfolioReportOn: aPortfolioReportGenerator
 
-!TransferPaw methodsFor: 'balance' stamp: 'FP 5/31/2023 11:20:58'!
-affectBalance: aBalance
-
-	self subclassResponsibility ! !
-
-
-!TransferPaw methodsFor: 'reports' stamp: 'FP 5/31/2023 21:41:24'!
-affectReportOn: anAccountSummaryPrinter
-
-	self subclassResponsibility ! !
-
-
-!TransferPaw methodsFor: 'transfer' stamp: 'FP 5/31/2023 11:22:27'!
-otherPaw
-
-	self subclassResponsibility ! !
-
-!TransferPaw methodsFor: 'transfer' stamp: 'FP 5/31/2023 11:21:58'!
-value
-
-	^transfer value! !
-
-
-!classDefinition: #DepositPaw category: 'Portfolio-Solucion'!
-TransferPaw subclass: #DepositPaw
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!DepositPaw methodsFor: 'balance' stamp: 'FP 5/29/2023 14:24:18'!
-affectBalance: aBalance
-
-	^aBalance + self value ! !
-
-
-!DepositPaw methodsFor: 'transfer' stamp: 'FP 5/29/2023 12:57:16'!
-otherPaw
+	transactions do: [:aTransaction | aTransaction affectPortfolioReportOn: aPortfolioReportGenerator ]
 	
-	^transfer withdrawPaw ! !
-
-
-!DepositPaw methodsFor: 'reports' stamp: 'FP 5/31/2023 21:46:26'!
-affectReportOn: anAccountSummaryPrinter
-	
-	^anAccountSummaryPrinter affectReportWithDepositPaw: self ! !
+! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'DepositPaw class' category: 'Portfolio-Solucion'!
-DepositPaw class
+!classDefinition: 'ReceptiveAccount class' category: 'Portfolio-Solucion'!
+ReceptiveAccount class
 	instanceVariableNames: ''!
 
-!DepositPaw class methodsFor: 'as yet unclassified' stamp: 'FP 5/29/2023 12:22:55'!
-register: anAmount onAccount: anAccountToTransferTo onTransfer: aTransfer
+!ReceptiveAccount class methodsFor: 'instance creation' stamp: 'FP 6/1/2023 10:26:40'!
+named: aName 
 
-	^self new initializeRegister: anAmount onAccount: anAccountToTransferTo onTransfer: aTransfer ! !
-
-
-!classDefinition: #WithdrawPaw category: 'Portfolio-Solucion'!
-TransferPaw subclass: #WithdrawPaw
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!WithdrawPaw methodsFor: 'balance' stamp: 'FP 5/29/2023 14:24:06'!
-affectBalance: aBalance
-
-	^aBalance - self value! !
-
-
-!WithdrawPaw methodsFor: 'transfer' stamp: 'FP 5/29/2023 12:18:36'!
-otherPaw
-	
-	^transfer depositPaw! !
-
-
-!WithdrawPaw methodsFor: 'reports' stamp: 'FP 5/31/2023 21:46:39'!
-affectReportOn: anAccountSummaryPrinter
-	
-	^anAccountSummaryPrinter affectReportWithWithdrawPaw: self ! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'WithdrawPaw class' category: 'Portfolio-Solucion'!
-WithdrawPaw class
-	instanceVariableNames: ''!
-
-!WithdrawPaw class methodsFor: 'as yet unclassified' stamp: 'FP 5/29/2023 12:22:55'!
-register: anAmount onAccount: anAccountToTransferTo onTransfer: aTransfer
-
-	^self new initializeRegister: anAmount onAccount: anAccountToTransferTo onTransfer: aTransfer ! !
+	^self new initializeNamed: aName ! !
 
 
-!classDefinition: #Withdraw category: 'Portfolio-Solucion'!
-AccountTransaction subclass: #Withdraw
-	instanceVariableNames: 'value'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!Withdraw methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:46'!
-initializeFor: aValue
-
-	value := aValue ! !
-
-
-!Withdraw methodsFor: 'value' stamp: 'HernanWilkinson 7/13/2011 18:33'!
-value
-
-	^ value! !
-
-
-!Withdraw methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:25:15'!
-affectBalance: aBalance
-
-	^aBalance - value! !
-
-
-!Withdraw methodsFor: 'reports' stamp: 'FP 5/31/2023 21:46:56'!
-affectReportOn: anAccountSummaryPrinter
-	
-	^anAccountSummaryPrinter affectReportWithWithdraw: self! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'Withdraw class' category: 'Portfolio-Solucion'!
-Withdraw class
-	instanceVariableNames: ''!
-
-!Withdraw class methodsFor: 'instance creation' stamp: 'HernanWilkinson 7/13/2011 18:33'!
-for: aValue
-
-	^ self new initializeFor: aValue ! !
-
-
-!classDefinition: #ReportGenerator category: 'Portfolio-Solucion'!
-Object subclass: #ReportGenerator
+!classDefinition: #AccountReportGenerator category: 'Portfolio-Solucion'!
+Object subclass: #AccountReportGenerator
 	instanceVariableNames: 'account report'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!ReportGenerator methodsFor: 'initialization' stamp: 'FP 5/31/2023 21:13:30'!
+!AccountReportGenerator methodsFor: 'initialization' stamp: 'FP 5/31/2023 21:13:30'!
 initializeWith: anAccount
 
 	self subclassResponsibility ! !
 
 
-!ReportGenerator methodsFor: 'report generation' stamp: 'FP 5/31/2023 21:14:48'!
+!AccountReportGenerator methodsFor: 'report generation' stamp: 'FP 5/31/2023 21:14:48'!
 generateReport
 
 	self subclassResponsibility ! !
 
 
-!ReportGenerator methodsFor: 'transaction operations' stamp: 'FP 5/31/2023 21:45:52'!
+!AccountReportGenerator methodsFor: 'transaction operations' stamp: 'FP 5/31/2023 21:45:52'!
 affectReportWithDeposit: aValue
 
 	self subclassResponsibility ! !
 
-!ReportGenerator methodsFor: 'transaction operations' stamp: 'FP 5/31/2023 21:46:23'!
+!AccountReportGenerator methodsFor: 'transaction operations' stamp: 'FP 5/31/2023 21:46:23'!
 affectReportWithDepositPaw: aValue
 
 	self subclassResponsibility ! !
 
-!ReportGenerator methodsFor: 'transaction operations' stamp: 'FP 5/31/2023 21:46:53'!
+!AccountReportGenerator methodsFor: 'transaction operations' stamp: 'FP 5/31/2023 21:46:53'!
 affectReportWithWithdraw: aValue
 
 	self subclassResponsibility ! !
 
-!ReportGenerator methodsFor: 'transaction operations' stamp: 'FP 5/31/2023 21:46:37'!
+!AccountReportGenerator methodsFor: 'transaction operations' stamp: 'FP 5/31/2023 21:46:37'!
 affectReportWithWithdrawPaw: aValue
 
 	self subclassResponsibility ! !
 
 
 !classDefinition: #AccountSummaryPrinter category: 'Portfolio-Solucion'!
-ReportGenerator subclass: #AccountSummaryPrinter
+AccountReportGenerator subclass: #AccountSummaryPrinter
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
@@ -1190,7 +1123,7 @@ with: anAccount
 
 
 !classDefinition: #TransferNetCalculator category: 'Portfolio-Solucion'!
-ReportGenerator subclass: #TransferNetCalculator
+AccountReportGenerator subclass: #TransferNetCalculator
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
@@ -1241,6 +1174,506 @@ TransferNetCalculator class
 with: anAccount
 
 	^self new initializeWith: anAccount! !
+
+
+!classDefinition: #AccountTransaction category: 'Portfolio-Solucion'!
+Object subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!AccountTransaction methodsFor: 'value' stamp: 'HernanWilkinson 9/12/2011 12:25'!
+value 
+
+	self subclassResponsibility ! !
+
+
+!AccountTransaction methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:25:39'!
+affectBalance: aBalance
+
+	self subclassResponsibility ! !
+
+
+!AccountTransaction methodsFor: 'portfolio reports' stamp: 'FP 6/1/2023 13:14:28'!
+affectPortfolioReportOn: aPortfolioReportGenerator
+
+	self subclassResponsibility ! !
+
+
+!AccountTransaction methodsFor: 'account reports' stamp: 'FP 6/1/2023 10:14:46'!
+affectReportOn: aReportGenerator
+
+	self subclassResponsibility ! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'AccountTransaction class' category: 'Portfolio-Solucion'!
+AccountTransaction class
+	instanceVariableNames: ''!
+
+!AccountTransaction class methodsFor: 'instance creation' stamp: 'NR 10/21/2019 18:54:27'!
+register: aValue on: account
+
+	| transaction |
+	
+	transaction := self for: aValue.
+	account register: transaction.
+		
+	^ transaction! !
+
+
+!classDefinition: #Deposit category: 'Portfolio-Solucion'!
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!Deposit methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:45'!
+initializeFor: aValue
+
+	value := aValue ! !
+
+
+!Deposit methodsFor: 'value' stamp: 'HernanWilkinson 7/13/2011 18:38'!
+value
+
+	^ value! !
+
+
+!Deposit methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:25:02'!
+affectBalance: aBalance
+
+	^aBalance + value ! !
+
+
+!Deposit methodsFor: 'portfolio reports' stamp: 'FP 6/1/2023 13:15:19'!
+affectPortfolioReportOn: aPortfolioReportGenerator
+
+	aPortfolioReportGenerator affectPortfolioReportWithDeposit: self! !
+
+
+!Deposit methodsFor: 'account reports' stamp: 'FP 5/31/2023 21:45:58'!
+affectReportOn: aReportGenerator
+	
+	^aReportGenerator affectReportWithDeposit: self! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'Deposit class' category: 'Portfolio-Solucion'!
+Deposit class
+	instanceVariableNames: ''!
+
+!Deposit class methodsFor: 'instance creation' stamp: 'HernanWilkinson 7/13/2011 18:38'!
+for: aValue
+
+	^ self new initializeFor: aValue ! !
+
+
+!classDefinition: #TransferPaw category: 'Portfolio-Solucion'!
+AccountTransaction subclass: #TransferPaw
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!TransferPaw methodsFor: 'initialization' stamp: 'FP 5/31/2023 11:21:44'!
+initializeRegister: anAmount onAccount: aReceptiveAccount onTransfer: aTransfer
+	
+	aReceptiveAccount register: self.
+	transfer := aTransfer. 
+! !
+
+
+!TransferPaw methodsFor: 'balance' stamp: 'FP 5/31/2023 11:20:58'!
+affectBalance: aBalance
+
+	self subclassResponsibility ! !
+
+
+!TransferPaw methodsFor: 'transfer' stamp: 'FP 5/31/2023 11:22:27'!
+otherPaw
+
+	self subclassResponsibility ! !
+
+!TransferPaw methodsFor: 'transfer' stamp: 'FP 5/31/2023 11:21:58'!
+value
+
+	^transfer value! !
+
+
+!classDefinition: #DepositPaw category: 'Portfolio-Solucion'!
+TransferPaw subclass: #DepositPaw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!DepositPaw methodsFor: 'balance' stamp: 'FP 5/29/2023 14:24:18'!
+affectBalance: aBalance
+
+	^aBalance + self value ! !
+
+
+!DepositPaw methodsFor: 'transfer' stamp: 'FP 5/29/2023 12:57:16'!
+otherPaw
+	
+	^transfer withdrawPaw ! !
+
+
+!DepositPaw methodsFor: 'account reports' stamp: 'FP 6/1/2023 10:15:08'!
+affectReportOn: aReportGenerator
+	
+	^aReportGenerator affectReportWithDepositPaw: self ! !
+
+
+!DepositPaw methodsFor: 'portfolio reports' stamp: 'FP 6/1/2023 13:15:33'!
+affectPortfolioReportOn: aPortfolioReportGenerator
+
+	aPortfolioReportGenerator affectPortfolioReportWithDepositPaw: self! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'DepositPaw class' category: 'Portfolio-Solucion'!
+DepositPaw class
+	instanceVariableNames: ''!
+
+!DepositPaw class methodsFor: 'as yet unclassified' stamp: 'FP 5/29/2023 12:22:55'!
+register: anAmount onAccount: anAccountToTransferTo onTransfer: aTransfer
+
+	^self new initializeRegister: anAmount onAccount: anAccountToTransferTo onTransfer: aTransfer ! !
+
+
+!classDefinition: #WithdrawPaw category: 'Portfolio-Solucion'!
+TransferPaw subclass: #WithdrawPaw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!WithdrawPaw methodsFor: 'balance' stamp: 'FP 5/29/2023 14:24:06'!
+affectBalance: aBalance
+
+	^aBalance - self value! !
+
+
+!WithdrawPaw methodsFor: 'transfer' stamp: 'FP 5/29/2023 12:18:36'!
+otherPaw
+	
+	^transfer depositPaw! !
+
+
+!WithdrawPaw methodsFor: 'portfolio reports' stamp: 'FP 6/1/2023 13:16:02'!
+affectPortfolioReportOn: aPortfolioReportGenerator
+
+	aPortfolioReportGenerator affectPortfolioReportWithWithdrawPaw: self! !
+
+
+!WithdrawPaw methodsFor: 'account reports' stamp: 'FP 6/1/2023 10:15:14'!
+affectReportOn: aReportGenerator
+	
+	^aReportGenerator affectReportWithWithdrawPaw: self ! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'WithdrawPaw class' category: 'Portfolio-Solucion'!
+WithdrawPaw class
+	instanceVariableNames: ''!
+
+!WithdrawPaw class methodsFor: 'as yet unclassified' stamp: 'FP 5/29/2023 12:22:55'!
+register: anAmount onAccount: anAccountToTransferTo onTransfer: aTransfer
+
+	^self new initializeRegister: anAmount onAccount: anAccountToTransferTo onTransfer: aTransfer ! !
+
+
+!classDefinition: #Withdraw category: 'Portfolio-Solucion'!
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!Withdraw methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:46'!
+initializeFor: aValue
+
+	value := aValue ! !
+
+
+!Withdraw methodsFor: 'value' stamp: 'HernanWilkinson 7/13/2011 18:33'!
+value
+
+	^ value! !
+
+
+!Withdraw methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:25:15'!
+affectBalance: aBalance
+
+	^aBalance - value! !
+
+
+!Withdraw methodsFor: 'account reports' stamp: 'FP 6/1/2023 10:15:20'!
+affectReportOn: aReportGenerator
+	
+	^aReportGenerator affectReportWithWithdraw: self! !
+
+
+!Withdraw methodsFor: 'portfolio reports' stamp: 'FP 6/1/2023 13:16:46'!
+affectPortfolioReportOn: aPortfolioReportGenerator
+
+	aPortfolioReportGenerator affectPortfolioReportWithWithdraw: self! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'Withdraw class' category: 'Portfolio-Solucion'!
+Withdraw class
+	instanceVariableNames: ''!
+
+!Withdraw class methodsFor: 'instance creation' stamp: 'HernanWilkinson 7/13/2011 18:33'!
+for: aValue
+
+	^ self new initializeFor: aValue ! !
+
+
+!classDefinition: #PortfolioReportGenerator category: 'Portfolio-Solucion'!
+Object subclass: #PortfolioReportGenerator
+	instanceVariableNames: 'portfolio report'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!PortfolioReportGenerator methodsFor: 'initialization' stamp: 'FP 6/1/2023 12:57:07'!
+initializeWith: aPortfolio 
+
+	self subclassResponsibility ! !
+
+
+!PortfolioReportGenerator methodsFor: 'account operations' stamp: 'FP 6/1/2023 13:03:44'!
+affectPortfolioReportWithPortfolio: aPortfolio
+
+	self subclassResponsibility ! !
+
+!PortfolioReportGenerator methodsFor: 'account operations' stamp: 'FP 6/1/2023 13:04:01'!
+affectPortfolioReportWithReceptiveAccount: aReceptiveAccount
+
+	self subclassResponsibility ! !
+
+
+!PortfolioReportGenerator methodsFor: 'transaction operations' stamp: 'FP 6/1/2023 13:20:27'!
+affectPortfolioReportWithDeposit: aDeposit
+
+	self subclassResponsibility ! !
+
+!PortfolioReportGenerator methodsFor: 'transaction operations' stamp: 'FP 6/1/2023 13:20:31'!
+affectPortfolioReportWithDepositPaw: aDepositPaw
+
+	self subclassResponsibility ! !
+
+!PortfolioReportGenerator methodsFor: 'transaction operations' stamp: 'FP 6/1/2023 13:20:45'!
+affectPortfolioReportWithWithdraw: aWithdraw
+
+	self subclassResponsibility ! !
+
+!PortfolioReportGenerator methodsFor: 'transaction operations' stamp: 'FP 6/1/2023 13:20:42'!
+affectPortfolioReportWithWithdrawPaw: aWithdrawPaw
+
+	self subclassResponsibility ! !
+
+
+!PortfolioReportGenerator methodsFor: 'report generation' stamp: 'FP 6/1/2023 13:04:23'!
+generatePortfolioReport
+
+	self subclassResponsibility ! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'PortfolioReportGenerator class' category: 'Portfolio-Solucion'!
+PortfolioReportGenerator class
+	instanceVariableNames: ''!
+
+!PortfolioReportGenerator class methodsFor: 'as yet unclassified' stamp: 'FP 6/1/2023 13:48:43'!
+with: aPortfolio
+
+	^self new initializeWith: aPortfolio! !
+
+
+!classDefinition: #PortfolioTransactionsTreePrinter category: 'Portfolio-Solucion'!
+PortfolioReportGenerator subclass: #PortfolioTransactionsTreePrinter
+	instanceVariableNames: 'indentation'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!PortfolioTransactionsTreePrinter methodsFor: 'indentation' stamp: 'FP 6/1/2023 14:08:20'!
+decreaseIndentation
+
+	4 timesRepeat: [indentation := indentation allButLast]! !
+
+!PortfolioTransactionsTreePrinter methodsFor: 'indentation' stamp: 'FP 6/1/2023 14:08:23'!
+increaseIndentation
+
+	4 timesRepeat: [indentation := indentation , ' ']! !
+
+!PortfolioTransactionsTreePrinter methodsFor: 'indentation' stamp: 'FP 6/1/2023 14:04:50'!
+indented: aBlock
+
+	self increaseIndentation .
+	aBlock value.
+	self decreaseIndentation ! !
+
+
+!PortfolioTransactionsTreePrinter methodsFor: 'transaction operations' stamp: 'FP 6/1/2023 13:46:48'!
+affectPortfolioReportWithDeposit: aDeposit
+
+
+	report add: (indentation , ('Deposito por ', aDeposit value asString)).
+! !
+
+!PortfolioTransactionsTreePrinter methodsFor: 'transaction operations' stamp: 'FP 6/1/2023 13:46:52'!
+affectPortfolioReportWithDepositPaw: aDepositPaw
+
+
+	report add: (indentation , ('Entrada por transferencia de ', aDepositPaw value asString)).
+! !
+
+!PortfolioTransactionsTreePrinter methodsFor: 'transaction operations' stamp: 'FP 6/1/2023 13:46:55'!
+affectPortfolioReportWithWithdraw: aWithdraw
+
+
+	report add: (indentation , ('Extraccion por ', aWithdraw value asString)).
+! !
+
+!PortfolioTransactionsTreePrinter methodsFor: 'transaction operations' stamp: 'FP 6/1/2023 13:46:59'!
+affectPortfolioReportWithWithdrawPaw: aWithdrawPaw
+
+
+	report add: (indentation , ('Salida por transferencia de ', aWithdrawPaw value asString)).
+! !
+
+
+!PortfolioTransactionsTreePrinter methodsFor: 'account operations' stamp: 'FP 6/1/2023 14:06:01'!
+affectPortfolioReportWithPortfolio: aPortfolio
+
+	self indented: [
+		report add: (indentation , aPortfolio name).
+		aPortfolio makeInnerAccountsAffectPortfolioReportOn: self.
+	
+		self indented: [report add: (indentation , ('Balance = ', aPortfolio balance asString)).]
+	]! !
+
+!PortfolioTransactionsTreePrinter methodsFor: 'account operations' stamp: 'FP 6/1/2023 14:06:45'!
+affectPortfolioReportWithReceptiveAccount: aReceptiveAccount
+	
+	self indented: [
+		report add: (indentation , aReceptiveAccount name).
+	
+		self indented: [
+			aReceptiveAccount makeTransactionsAffectPortfolioReportOn: self.
+			report add: (indentation , ('Balance = ', aReceptiveAccount balance asString)).
+		]
+	]
+	! !
+
+
+!PortfolioTransactionsTreePrinter methodsFor: 'report generation' stamp: 'FP 6/1/2023 13:56:51'!
+generatePortfolioReport
+
+	report add: portfolio name.
+	portfolio makeInnerAccountsAffectPortfolioReportOn: self.
+	
+	report add: ('    ', 'Balance = ', portfolio balance asString).
+	
+	
+	^report! !
+
+
+!PortfolioTransactionsTreePrinter methodsFor: 'initialization' stamp: 'FP 6/1/2023 13:35:51'!
+initializeWith: aPortfolio
+
+	portfolio := aPortfolio.
+	report := OrderedCollection new.
+	indentation := ''.! !
+
+
+!classDefinition: #PortfolioTreePrinter category: 'Portfolio-Solucion'!
+PortfolioReportGenerator subclass: #PortfolioTreePrinter
+	instanceVariableNames: 'indentation'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!PortfolioTreePrinter methodsFor: 'initialization' stamp: 'FP 6/1/2023 12:30:14'!
+initializeWith: aPortfolio
+
+	portfolio := aPortfolio.
+	report := OrderedCollection new.
+	indentation := ''.! !
+
+
+!PortfolioTreePrinter methodsFor: 'report generation' stamp: 'FP 6/1/2023 13:42:53'!
+generatePortfolioReport
+
+	report add: portfolio name.
+	portfolio makeInnerAccountsAffectPortfolioReportOn: self.
+	
+	^report! !
+
+
+!PortfolioTreePrinter methodsFor: 'account operations' stamp: 'FP 6/1/2023 14:07:30'!
+affectPortfolioReportWithPortfolio: aPortfolio
+
+	self indented: [
+		report add: (indentation , aPortfolio name).
+		aPortfolio makeInnerAccountsAffectPortfolioReportOn: self.
+	]! !
+
+!PortfolioTreePrinter methodsFor: 'account operations' stamp: 'FP 6/1/2023 14:07:43'!
+affectPortfolioReportWithReceptiveAccount: aReceptiveAccount
+	
+	self indented: [
+		report add: (indentation , aReceptiveAccount name).
+	]
+
+	! !
+
+
+!PortfolioTreePrinter methodsFor: 'indentation' stamp: 'FP 6/1/2023 14:08:13'!
+decreaseIndentation
+
+	4 timesRepeat: [indentation := indentation allButLast]! !
+
+!PortfolioTreePrinter methodsFor: 'indentation' stamp: 'FP 6/1/2023 14:08:16'!
+increaseIndentation
+
+	4 timesRepeat: [indentation := indentation , ' ']! !
+
+!PortfolioTreePrinter methodsFor: 'indentation' stamp: 'FP 6/1/2023 14:07:16'!
+indented: aBlock
+
+	self increaseIndentation .
+	aBlock value.
+	self decreaseIndentation ! !
+
+
+!PortfolioTreePrinter methodsFor: 'transaction operations' stamp: 'FP 6/1/2023 13:21:21'!
+affectPortfolioReportWithDeposit: aDeposit
+
+	! !
+
+!PortfolioTreePrinter methodsFor: 'transaction operations' stamp: 'FP 6/1/2023 13:21:16'!
+affectPortfolioReportWithDepositPaw: aDepositPaw
+
+	! !
+
+!PortfolioTreePrinter methodsFor: 'transaction operations' stamp: 'FP 6/1/2023 13:21:04'!
+affectPortfolioReportWithWithdraw: aWithdraw
+
+	! !
+
+!PortfolioTreePrinter methodsFor: 'transaction operations' stamp: 'FP 6/1/2023 13:21:08'!
+affectPortfolioReportWithWithdrawPaw: aWithdrawPaw
+
+	! !
 
 
 !classDefinition: #Transfer category: 'Portfolio-Solucion'!
