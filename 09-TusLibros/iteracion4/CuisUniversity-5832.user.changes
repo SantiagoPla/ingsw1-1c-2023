@@ -1,0 +1,2224 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (21 June 2023 20:24:36) as C:\Users\Santiago\Desktop\uba\inge1-general\cuisworkspace\windows6444444444\windows64\CuisUniversity-5832.image!
+
+
+----End fileIn of C:\Users\Santiago\Desktop\uba\inge1-general\cuisworkspace\windows6444444444\windows64\TusLibrosREST Ejercicio it4.st----!
+
+----End fileIn of C:\Users\Santiago\Desktop\uba\inge1-general\cuisworkspace\windows6444444444\windows64\TusLibros-Model Ejercicio it4.st----!
+
+!testRun: #BlockNodeTest #testItDoesNotSendsAGivenMessageToSelfWhenTheBlockIsEmpty stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #BlockNodeTest #testItSendsAGivenMessageToSelfWhenItContainsAnStatementWithAMessageSendToSelf stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #MessageNodeTest #testItDoesNotSendTheMessageToSelfWhenTheReceiverIsNotSelf stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #MessageNodeTest #testItDoesNotSendTheMessageToSelfWhenTheReceiverIsSelfButTheSelectorIsDifferent stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #MessageNodeTest #testItSendsTheMessageToSelfWhenTheReceiverIsSelf stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #StringCuisUniversityExtentionsTest #test01_IfBeginsWith_a_AndContinuesWithUppercase_RemovesTheA stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #StringCuisUniversityExtentionsTest #test02_IfBeginsWith_a_AndContinuesWithLowercase_Adds_CHANGE_ME stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #StringCuisUniversityExtentionsTest #test03_IfBeginsWith_an_AndContinuesWithUppercase_RemovesTheAn stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #StringCuisUniversityExtentionsTest #test04_IfBeginsWith_an_AndContinuesWithLowercase_Adds_CHANGE_ME stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #StringCuisUniversityExtentionsTest #test05_IfBeginsWith_un_AndContinuesWithUppercase_RemovesThe_un stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #StringCuisUniversityExtentionsTest #test06_IfBeginsWith_un_AndContinuesWithLowercase_Adds_CHANGE_ME stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #StringCuisUniversityExtentionsTest #test07_IfBeginsWith_una_AndContinuesWithUppercase_RemovesThe_una stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #StringCuisUniversityExtentionsTest #test08_IfBeginsWith_una_AndContinuesWithLowercase_Adds_CHANGE_ME stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #StringCuisUniversityExtentionsTest #test08_IfItIsNotTheOtherCases_Add_CHANGE_ME stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #VariableNodeTest #testItDoesNotReferencesSelfWhenTheVariableNameIsNotSelf stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+!testRun: #VariableNodeTest #testItReferencesSelfWhenTheVariableNameIsSelf stamp: 'sp 6/21/2023 20:27:06'!
+PASSED!
+
+----End fileIn of C:\Users\Santiago\Desktop\uba\inge1-general\cuisworkspace\windows6444444444\windows64\Packages\System\Collections-CompactArrays.pck.st----!
+
+----End fileIn of C:\Users\Santiago\Desktop\uba\inge1-general\cuisworkspace\windows6444444444\windows64\Packages\Features\Compression.pck.st----!
+
+----End fileIn of C:\Users\Santiago\Desktop\uba\inge1-general\cuisworkspace\windows6444444444\windows64\Packages\Features\Sound.pck.st----!
+
+----End fileIn of C:\Users\Santiago\Desktop\uba\inge1-general\cuisworkspace\windows6444444444\windows64\Packages\Features\Cryptography-DigitalSignatures.pck.st----!
+
+----End fileIn of C:\Users\Santiago\Desktop\uba\inge1-general\cuisworkspace\windows6444444444\windows64\Packages\Features\Identities-UUID.pck.st----!
+
+----End fileIn of C:\Users\Santiago\Desktop\uba\inge1-general\cuisworkspace\windows6444444444\windows64\Packages\System\Network-Kernel.pck.st----!
+
+----End fileIn of C:\Users\Santiago\Desktop\uba\inge1-general\cuisworkspace\windows6444444444\windows64\WebClient.pck.st----!
+
+----End fileIn of C:\Users\Santiago\Desktop\uba\inge1-general\cuisworkspace\windows6444444444\windows64\TusLibros-Tests Ejercicio it4.st----!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'sp 6/21/2023 20:28:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'sp 6/21/2023 20:28:09'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'sp 6/21/2023 20:28:09'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'sp 6/21/2023 20:28:09'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'sp 6/21/2023 20:28:09'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'sp 6/21/2023 20:28:09'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'sp 6/21/2023 20:28:09'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'sp 6/21/2023 20:28:11'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'sp 6/21/2023 20:28:13'!
+FAILURE!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'sp 6/21/2023 20:29:04' prior: 50625894!
+bookPerformance: anItem
+
+    | bookPerformance totalMoney totalSales  |
+
+    bookPerformance := Dictionary new.
+
+    self runInParallelAndWait:     (OrderedCollection 
+            with: [totalSales := self totalSalesOf: anItem] 
+            with:
+                 [totalMoney := self totalMoneyRaisedBy: anItem]).
+
+    bookPerformance at: 'quantity' put: totalSales.
+    bookPerformance at: 'total' put: totalMoney.
+    bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+
+    ^bookPerformance! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'sp 6/21/2023 20:29:11'!
+runInParallelAndWait: aCollectionOfBlocks
+
+    | semaphore |
+    semaphore := Semaphore new.
+
+    aCollectionOfBlocks do: [:aBlockToFork | [aBlockToFork value. semaphore signal] fork].
+
+    aCollectionOfBlocks size timesRepeat: [semaphore wait].! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'sp 6/21/2023 20:29:18' prior: 50625935!
+storePerformance
+
+    | totalMoney totalSales performance  |
+
+    performance := Dictionary new.
+
+
+    self runInParallelAndWait: (OrderedCollection 
+        with: [totalSales := self totalSales]
+        with: [totalMoney := self totalMoneyRaised]).
+
+    performance at: 'quantity' put: totalSales.
+    performance at: 'total' put: totalMoney.
+    performance at: 'summary' put: 'The store selled a total of ',totalSales asString, ' books and raised a total amount of money equal to: ', totalMoney asString.
+
+    ^performance! !
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'sp 6/21/2023 20:29:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'sp 6/21/2023 20:29:20'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'sp 6/21/2023 20:29:21'!
+PASSED!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientRestInterface open.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/21/2023 20:39:02' prior: 50624776!
+addToCart
+
+	| cartId bookIsbn |
+
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface 
+			asyncAdd: 1 
+			of: bookIsbn 
+			toCartIdentifiedAs: cartId
+			andWithResultsDo: [		self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)] 
+		]! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'sp 6/21/2023 20:39:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'sp 6/21/2023 20:39:15'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'sp 6/21/2023 20:39:15'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'sp 6/21/2023 20:39:15'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'sp 6/21/2023 20:39:15'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'sp 6/21/2023 20:39:15'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'sp 6/21/2023 20:39:15'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'sp 6/21/2023 20:39:15'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'sp 6/21/2023 20:39:16'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'sp 6/21/2023 20:39:17'!
+PASSED!
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'as yet unclassified' stamp: 'sp 6/21/2023 20:39:56'!
+asyncAdd: aRenameMe1 of: bookIsbn toCartIdentifiedAs: cartId andWithResultsDo: aRenameMe2 
+	self shouldBeImplemented.! !
+
+!methodRemoval: TusLibrosClientRestInterface #asyncAdd:of:toCartIdentifiedAs:andWithResultsDo: stamp: 'sp 6/21/2023 20:40:55'!
+asyncAdd: aRenameMe1 of: bookIsbn toCartIdentifiedAs: cartId andWithResultsDo: aRenameMe2 
+	self shouldBeImplemented.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 20:41:32'!
+asyncAdd: quantity of: bookIsbn toCartIdentifiedAs: cartId andWithResultsDo: aBlock
+
+	| fieldDict resp |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+		
+	resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+		
+	resp isSuccess 
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream))]
+		ifFalse:[^self error: resp content]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 20:42:04' prior: 50664449!
+asyncAdd: quantity of: bookIsbn toCartIdentifiedAs: cartId andWithResultsDo: aBlock
+
+	[ | fieldDict resp |
+
+		fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+			
+		resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+			
+		resp isSuccess 
+			ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[^self error: resp content]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 20:43:09' prior: 50664466!
+asyncAdd: quantity of: bookIsbn toCartIdentifiedAs: cartId andWithResultsDo: aBlock
+
+	[ | fieldDict resp |
+
+		fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+			
+		resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+			
+		resp isSuccess 
+			ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[^self error: resp content].
+			
+		aBlock value.
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+----SNAPSHOT----(21 June 2023 20:43:46) CuisUniversity-5832.image priorSource: 9366758!
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 20:45:28' prior: 50664483!
+asyncAdd: quantity of: bookIsbn toCartIdentifiedAs: cartId andWithResultsDo: aBlock
+
+	[ | fieldDict resp |
+
+		[fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+			
+		resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+			
+		resp isSuccess 
+			ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[^self error: resp content]].
+			
+		aBlock value.
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 20:46:15' prior: 50664510!
+asyncAdd: quantity of: bookIsbn toCartIdentifiedAs: cartId andWithResultsDo: aBlock
+
+	[ | fieldDict resp |
+
+		fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+			
+		resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+			
+		resp isSuccess 
+			ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[^self error: resp content].
+			
+		aBlock value.
+	] fork! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/21/2023 20:53:24' prior: 50664268!
+addToCart
+
+	| cartId bookIsbn |
+
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface 
+			asyncAdd: 1 
+			of: bookIsbn 
+			toCartIdentifiedAs: cartId
+			andWithResultsDo: [	:aResult | self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)] 
+		]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 20:53:51' prior: 50664531!
+asyncAdd: quantity of: bookIsbn toCartIdentifiedAs: cartId andWithResultsDo: aBlock
+
+	[ | fieldDict resp |
+
+		fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+			
+		resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[self error: resp content].
+
+	] fork! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/21/2023 20:55:29' prior: 50624789!
+createCart
+
+	restInterface 
+		asyncCreateCartFor: 'hernan' 
+		password: 'smalltalk'
+		andWithResultDo: [:aResult | 
+			cartIds add: aResult.
+			self triggerEvent: #newCartIdArrived]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 20:55:43'!
+asyncAdd: quantity of: bookIsbn toCartIdentifiedAs: cartId andWithResultDo: aBlock
+
+	[ | fieldDict resp |
+
+		fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+			
+		resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[self error: resp content].
+
+	] fork! !
+!TusLibrosClientTestWindowModel methodsFor: 'as yet unclassified' stamp: 'sp 6/21/2023 20:55:43' prior: 50664549!
+addToCart
+
+	| cartId bookIsbn |
+
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface 
+			asyncAdd: 1 
+			of: bookIsbn 
+			toCartIdentifiedAs: cartId
+			andWithResultDo: [	:aResult | self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)] 
+		]! !
+
+!methodRemoval: TusLibrosClientRestInterface #asyncAdd:of:toCartIdentifiedAs:andWithResultsDo: stamp: 'sp 6/21/2023 20:55:43'!
+asyncAdd: quantity of: bookIsbn toCartIdentifiedAs: cartId andWithResultsDo: aBlock
+
+	[ | fieldDict resp |
+
+		fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+			
+		resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[self error: resp content].
+
+	] fork!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 20:56:16'!
+asyncCreateCartFor: aUser password: aPassword andWithResultDo: aBlock
+
+	[| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	resp := WebClient htmlSubmit: (self url,'/createCart') fields: fieldDict.
+		
+	resp isSuccess 
+		ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))] 
+		ifFalse:[self error: resp content]
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/21/2023 21:02:07' prior: 50624798!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue:[
+		cartId := self selectedCartId.
+		restInterface 
+			asyncListCart: cartId
+			andWithResultDo: [:aResult | 
+				currentSelectedCartContent := aResult.
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId]
+		 ].! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:02:45'!
+asyncListCart: cartId andWithResultDo: aBlock
+
+	[| fieldDict resp |
+		
+		fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+		
+		resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream)) asOrderedCollection] 
+			ifFalse:[self error: resp content]
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:07:08'!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[self error: resp content].
+
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:08:57' prior: 50664591!
+asyncAdd: quantity of: bookIsbn toCartIdentifiedAs: cartId andWithResultDo: aBlock
+
+	| fieldDict  |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+			
+	self asyncRequest: '/addToCart'  withFieldDict: fieldDict andWithResultDo: aBlock.
+! !
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:10:12' prior: 50664641!
+asyncCreateCartFor: aUser password: aPassword andWithResultDo: aBlock
+
+	| fieldDict  |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self asyncRequest: '/createCart' withFieldDict: fieldDict andWithResultDo: aBlock ! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:10:39' prior: 50664673!
+asyncListCart: cartId andWithResultDo: aBlock
+
+	| fieldDict  |
+		
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+		
+	self asyncRequest: '/listCart' withFieldDict: fieldDict andWithResultDo: aBlock.
+			
+! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientTestWindow methodsFor: 'initialization' stamp: 'sp 6/21/2023 21:16:28' prior: 50624559!
+initializeWith: aTitle
+
+	self setLabel: aTitle.
+	self model: (TusLibrosClientTestWindowModel new).
+	self morphExtent: (self defaultExtent).
+	self buildMorphicWindow.
+	self openInWorld.
+			
+	self model when: #newCartIdArrived send: #refreshListOfCartIds to: self.		
+	self model when: #selectedCartChanged send: #refreshCartButtonsLabels: to: self.	
+	self model when: #bookAddedToCart send: #informBook:addedToCart: to: self.
+	self model when: #newCurrentSelectedCartContentArrived send: #refreshCurrentSelectedCartContent: to: self.
+	self model when: #serverRestInterfaceError send: #informServerRestInterfaceError to: self.
+	! !
+!TusLibrosClientTestWindow methodsFor: 'initialization' stamp: 'sp 6/21/2023 21:16:47' prior: 50664746!
+initializeWith: aTitle
+
+	self setLabel: aTitle.
+	self model: (TusLibrosClientTestWindowModel new).
+	self morphExtent: (self defaultExtent).
+	self buildMorphicWindow.
+	self openInWorld.
+			
+	self model when: #newCartIdArrived send: #refreshListOfCartIds to: self.		
+	self model when: #selectedCartChanged send: #refreshCartButtonsLabels: to: self.	
+	self model when: #bookAddedToCart send: #informBook:addedToCart: to: self.
+	self model when: #newCurrentSelectedCartContentArrived send: #refreshCurrentSelectedCartContent: to: self.
+	self model when: #serverRestInterfaceError send: #informServerRestInterfaceError: to: self.
+	! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:19:25'!
+asyncAdd: quantity of: bookIsbn toCartIdentifiedAs: cartId andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	| fieldDict  |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+			
+	self asyncRequest: '/addToCart'  withFieldDict: fieldDict andWithResultDo: aBlock.
+! !
+!TusLibrosClientTestWindowModel methodsFor: 'as yet unclassified' stamp: 'sp 6/21/2023 21:19:25' prior: 50664609!
+addToCart
+
+	| cartId bookIsbn |
+
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface 
+			asyncAdd: 1 
+			of: bookIsbn 
+			toCartIdentifiedAs: cartId
+			andWithResultDo: [	:aResult | self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)] withFailureBlock: [self triggerEvent: #serverRestInterfaceError] 
+		]! !
+
+!methodRemoval: TusLibrosClientRestInterface #asyncAdd:of:toCartIdentifiedAs:andWithResultDo: stamp: 'sp 6/21/2023 21:19:25'!
+asyncAdd: quantity of: bookIsbn toCartIdentifiedAs: cartId andWithResultDo: aBlock
+
+	| fieldDict  |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+			
+	self asyncRequest: '/addToCart'  withFieldDict: fieldDict andWithResultDo: aBlock.
+!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/21/2023 21:19:48' prior: 50664807!
+addToCart
+
+	| cartId bookIsbn |
+
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface 
+			asyncAdd: 1 
+			of: bookIsbn 
+			toCartIdentifiedAs: cartId
+			andWithResultDo: [	:aResult | self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)] 
+			withFailureBlock: [self triggerEvent: #serverRestInterfaceError] 
+		]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/21/2023 21:20:37' prior: 50664837!
+addToCart
+
+	| cartId bookIsbn |
+
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface 
+			asyncAdd: 1 
+			of: bookIsbn 
+			toCartIdentifiedAs: cartId
+			andWithResultDo: [	:aResult | self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)] 
+			withFailureBlock: [:aResult | self triggerEvent: #serverRestInterfaceError withArguments:  aResult ] 
+		]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/21/2023 21:20:56' prior: 50664582!
+createCart
+
+	restInterface 
+		asyncCreateCartFor: 'hernan' 
+		password: 'smalltalk'
+		andWithResultDo: [:aResult | 
+			cartIds add: aResult. self triggerEvent: #newCartIdArrived]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:21:29'!
+asyncCreateCartFor: aUser password: aPassword andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	| fieldDict  |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self asyncRequest: '/createCart' withFieldDict: fieldDict andWithResultDo: aBlock ! !
+!TusLibrosClientTestWindowModel methodsFor: 'as yet unclassified' stamp: 'sp 6/21/2023 21:21:29' prior: 50664872!
+createCart
+
+	restInterface 
+		asyncCreateCartFor: 'hernan' 
+		password: 'smalltalk'
+		andWithResultDo: [:aResult | 
+			cartIds add: aResult. self triggerEvent: #newCartIdArrived] withFailureBlock: [:aResult | self triggerEvent: #serverRestInterfaceError withArguments:  aResult ]! !
+
+!methodRemoval: TusLibrosClientRestInterface #asyncCreateCartFor:password:andWithResultDo: stamp: 'sp 6/21/2023 21:21:29'!
+asyncCreateCartFor: aUser password: aPassword andWithResultDo: aBlock
+
+	| fieldDict  |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self asyncRequest: '/createCart' withFieldDict: fieldDict andWithResultDo: aBlock !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/21/2023 21:21:33' prior: 50664894!
+createCart
+
+	restInterface 
+		asyncCreateCartFor: 'hernan' 
+		password: 'smalltalk'
+		andWithResultDo: [:aResult | 
+			cartIds add: aResult. self triggerEvent: #newCartIdArrived] 
+		withFailureBlock: [:aResult | self triggerEvent: #serverRestInterfaceError withArguments:  aResult ]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:21:59'!
+asyncListCart: cartId andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	| fieldDict  |
+		
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+		
+	self asyncRequest: '/listCart' withFieldDict: fieldDict andWithResultDo: aBlock.
+			
+! !
+!TusLibrosClientTestWindowModel methodsFor: 'as yet unclassified' stamp: 'sp 6/21/2023 21:21:59' prior: 50664661!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue:[
+		cartId := self selectedCartId.
+		restInterface 
+			asyncListCart: cartId
+			andWithResultDo: [:aResult | 
+				currentSelectedCartContent := aResult.
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId] withFailureBlock: [:aResult | self triggerEvent: #serverRestInterfaceError withArguments:  aResult ]
+		 ].! !
+
+!methodRemoval: TusLibrosClientRestInterface #asyncListCart:andWithResultDo: stamp: 'sp 6/21/2023 21:21:59'!
+asyncListCart: cartId andWithResultDo: aBlock
+
+	| fieldDict  |
+		
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+		
+	self asyncRequest: '/listCart' withFieldDict: fieldDict andWithResultDo: aBlock.
+			
+!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/21/2023 21:22:03' prior: 50664943!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue:[
+		cartId := self selectedCartId.
+		restInterface 
+			asyncListCart: cartId
+			andWithResultDo: [:aResult | 
+				currentSelectedCartContent := aResult.
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId] 
+			withFailureBlock: [:aResult | self triggerEvent: #serverRestInterfaceError withArguments:  aResult ]
+		 ].! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:23:33'!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[self error: resp content].
+
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'as yet unclassified' stamp: 'sp 6/21/2023 21:23:33' prior: 50664792!
+asyncAdd: quantity of: bookIsbn toCartIdentifiedAs: cartId andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	| fieldDict  |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+			
+	self asyncRequest: '/addToCart'  withFieldDict: fieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock.
+! !
+!TusLibrosClientRestInterface methodsFor: 'as yet unclassified' stamp: 'sp 6/21/2023 21:23:33' prior: 50664931!
+asyncListCart: cartId andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	| fieldDict  |
+		
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+		
+	self asyncRequest: '/listCart' withFieldDict: fieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock.
+			
+! !
+!TusLibrosClientRestInterface methodsFor: 'as yet unclassified' stamp: 'sp 6/21/2023 21:23:33' prior: 50664881!
+asyncCreateCartFor: aUser password: aPassword andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	| fieldDict  |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self asyncRequest: '/createCart' withFieldDict: fieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock ! !
+
+!methodRemoval: TusLibrosClientRestInterface #asyncRequest:withFieldDict:andWithResultDo: stamp: 'sp 6/21/2023 21:23:33'!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[self error: resp content].
+
+	] fork!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:24:17' prior: 50664986!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content].
+
+	] fork! !
+
+----SNAPSHOT----(21 June 2023 21:24:20) CuisUniversity-5832.image priorSource: 10651282!
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'sp 6/21/2023 21:26:33'!
+informServerRestInterfaceError: anError
+
+	self inform: anError
+	
+! !
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'sp 6/21/2023 21:27:22' prior: 50665073!
+informServerRestInterfaceError: anError
+
+	self inform: anError asString
+	
+! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/21/2023 21:28:08' prior: 50664854!
+addToCart
+
+	| cartId bookIsbn |
+
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface 
+			asyncAdd: 1 
+			of: 'aa' "bookIsbn" 
+			toCartIdentifiedAs: cartId
+			andWithResultDo: [	:aResult | self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)] 
+			withFailureBlock: [:aResult | self triggerEvent: #serverRestInterfaceError withArguments:  aResult ] 
+		]! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:29:09' prior: 50665056!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: (WebUtils jsonDecode: ((resp content) readStream))].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'sp 6/21/2023 21:31:48' prior: 50665079!
+informServerRestInterfaceError: anError
+
+	self inform: 'Hubo un error al realizar la acción' 
+	
+! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:32:05' prior: 50665110!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'sp 6/21/2023 21:33:48' prior: 50665129!
+informServerRestInterfaceError: anError
+
+	self inform: anError messageText 
+	
+! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+'aaa' content!
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'sp 6/21/2023 21:37:39' prior: 50665154!
+informServerRestInterfaceError: anError
+
+	self inform: anError  
+	
+! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:39:36' prior: 50665136!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:40:56' prior: 50665173!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content messageText ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:41:34' prior: 50665191!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content readStream ].
+
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:41:42' prior: 50665210!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: (resp content readStream) ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:42:16' prior: 50665225!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: (resp content readStream) messageText ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:43:17' prior: 50665244!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: (resp content readStream)  ].
+
+	] fork! !
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'sp 6/21/2023 21:43:32' prior: 50665164!
+informServerRestInterfaceError: anError
+
+	self inform: anError asString 
+	
+! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:44:08' prior: 50665263!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: (resp content) readStream  ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:46:31' prior: 50665288!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp   ].
+
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:46:35' prior: 50665307!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp  ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'sp 6/21/2023 21:55:13' prior: 50665278!
+informServerRestInterfaceError: anError
+
+	self inform: anError  
+	
+! !
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'sp 6/21/2023 21:55:17' prior: 50665343!
+informServerRestInterfaceError: anErrorMessageText
+
+	self inform: anErrorMessageText  
+	
+! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:55:31' prior: 50665322!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp messageText ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:55:52' prior: 50665356!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content ].
+
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:55:59' prior: 50665374!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content asString ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:56:32' prior: 50665389!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content asString readStream ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:57:45' prior: 50665407!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content readStream asString].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:58:07' prior: 50665426!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content asString readStream ].
+
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:58:15' prior: 50665445!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content readStream ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:58:58' prior: 50665460!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content readStream upToEnd ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 21:59:25' prior: 50665479!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content readStream upToEnd asString ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 22:00:13' prior: 50665498!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content readStream contents].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 22:00:44' prior: 50665517!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: 'asd'].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 22:01:18' prior: 50665536!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content ].
+
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 22:02:07' prior: 50665554!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[[self error: resp content] on: Error do: [:anError | aFailureBlock value: anError messageText ]].
+
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 22:02:18' prior: 50665569!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[[self error: resp content] 
+					on: Error 
+					do: [:anError | aFailureBlock value: anError messageText ]].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 22:05:23' prior: 50665586!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[		[self error: resp content] 
+					on: Error 
+					do: [:anError | aFailureBlock value: anError messageText ]].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+----QUIT----(21 June 2023 22:07:13) CuisUniversity-5832.image priorSource: 10669410!
+
+----STARTUP---- (22 June 2023 14:02:52) as C:\Users\Santiago\Desktop\uba\inge1-general\cuisworkspace\windows6444444444\windows64\CuisUniversity-5832.image!
+
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:13:33' prior: 50665606!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[		[self error: resp content] 
+					].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:14:04' prior: 50665641!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[		[^self error: resp content] 
+					].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:15:21' prior: 50665659!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[		[self error: resp content readStream ] 
+					].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:16:10' prior: 50665677!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[	^self error: resp content  
+					].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:16:41' prior: 50665696!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[	self error: resp content  
+					].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/21/2023 22:00:44' prior: 50665714!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: 'asd'].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:19:05' prior: 50665732!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: 'asd' readStream ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:19:43' prior: 50665750!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: ('asd' readStream) ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:20:19' prior: 50665768!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value:  (WebUtils jsonDecode: ((resp content) readStream))].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:21:50' prior: 50665786!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value:  resp content].
+
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:32:05' prior: 50665805!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content asUnHtml ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:32:40' prior: 50665820!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[self error: resp content asUnHtml ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:34:13' prior: 50665838!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[[self error: resp content asUnHtml] on: Error do: [:anError | aFailureBlock value: anError messageText ].]
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:34:40' prior: 50665856!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[[self error: resp content asUnHtml] on: Error do: [:anError | aFailureBlock value: anError messageText readStream ].]
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:35:57' prior: 50665876!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[[aFailureBlock value: resp content asUnHtml] on: Error do: [:anError | aFailureBlock value: anError messageText readStream ].]
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:36:10' prior: 50665897!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[[aFailureBlock value: resp content asUnHtml] on: Error do: [:anError | aFailureBlock value: anError messageText  ].]
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:37:54' prior: 50665918!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ [| resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[self error: resp content asUnHtml ]
+			
+			] on: Error do: [:anError | aFailureBlock value: anError messageText ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:38:29' prior: 50665939!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ [| resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[self error: resp content  ]
+			
+			] on: Error do: [:anError | aFailureBlock value: anError messageText ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:38:51' prior: 50665960!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ [| resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content  ]
+			
+			] on: Error do: [:anError | aFailureBlock value: anError messageText ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/22/2023 14:41:47' prior: 50665089!
+addToCart
+
+	| cartId bookIsbn |
+
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface 
+			asyncAdd: 1 
+			of: 'aa' "bookIsbn" 
+			toCartIdentifiedAs: cartId
+			andWithResultDo: [	:aResult | self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)] 
+			withFailureBlock: [:aResult | self triggerEvent: #serverRestInterfaceError with:  aResult ] 
+		]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/22/2023 14:42:01' prior: 50664919!
+createCart
+
+	restInterface 
+		asyncCreateCartFor: 'hernan' 
+		password: 'smalltalk'
+		andWithResultDo: [:aResult | 
+			cartIds add: aResult. self triggerEvent: #newCartIdArrived] 
+		withFailureBlock: [:aResult | self triggerEvent: #serverRestInterfaceError with:  aResult ]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/22/2023 14:42:04' prior: 50664970!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue:[
+		cartId := self selectedCartId.
+		restInterface 
+			asyncListCart: cartId
+			andWithResultDo: [:aResult | 
+				currentSelectedCartContent := aResult.
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId] 
+			withFailureBlock: [:aResult | self triggerEvent: #serverRestInterfaceError with:  aResult ]
+		 ].! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:42:47' prior: 50665980!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ [| resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: 'asd'  ]
+			
+			] on: Error do: [:anError | aFailureBlock value: anError messageText ].
+
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'sp 6/22/2023 14:43:27' prior: 50666051!
+asyncRequest: aRequest withFieldDict: aFieldDict andWithResultDo: aBlock withFailureBlock: aFailureBlock 
+
+	[ | resp |
+			
+		resp := WebClient htmlSubmit: (self url, aRequest) fields: aFieldDict.
+			
+		resp isSuccess 
+			ifTrue:[aBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[aFailureBlock value: resp content asUnHtml ]
+			
+	] fork! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'sp 6/22/2023 14:44:45' prior: 50666001!
+addToCart
+
+	| cartId bookIsbn |
+
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface 
+			asyncAdd: 1 
+			of: bookIsbn
+			toCartIdentifiedAs: cartId
+			andWithResultDo: [	:aResult | self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)] 
+			withFailureBlock: [:aResult | self triggerEvent: #serverRestInterfaceError with:  aResult ] 
+		]! !
+
+----SNAPSHOT----(22 June 2023 14:47:04) CuisUniversity-5832.image priorSource: 10687195!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'sp 6/22/2023 15:21:02' prior: 50664151!
+runInParallelAndWait: aCollectionOfBlocksToFork
+
+    | semaphore |
+    semaphore := Semaphore new.
+
+    aCollectionOfBlocksToFork do: [:aBlockToFork | [aBlockToFork value. semaphore signal] fork].
+
+    aCollectionOfBlocksToFork size timesRepeat: [semaphore wait].! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'sp 6/22/2023 15:22:11' prior: 50664129!
+bookPerformance: anItem
+
+    | bookPerformance totalMoney totalSales  |
+
+    bookPerformance := Dictionary new.
+
+    self runInParallelAndWait: (OrderedCollection  
+					with: [totalSales := self totalSalesOf: anItem]  
+					with: [totalMoney := self totalMoneyRaisedBy: anItem]).
+
+    bookPerformance at: 'quantity' put: totalSales.
+    bookPerformance at: 'total' put: totalMoney.
+    bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+
+    ^bookPerformance! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'sp 6/22/2023 15:22:16' prior: 50664162!
+storePerformance
+
+    | totalMoney totalSales performance  |
+
+    performance := Dictionary new.
+
+
+    self runInParallelAndWait: (OrderedCollection 
+				        with: [totalSales := self totalSales]
+				        with: [totalMoney := self totalMoneyRaised]).
+
+    performance at: 'quantity' put: totalSales.
+    performance at: 'total' put: totalMoney.
+    performance at: 'summary' put: 'The store selled a total of ',totalSales asString, ' books and raised a total amount of money equal to: ', totalMoney asString.
+
+    ^performance! !
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'sp 6/22/2023 15:22:25'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'sp 6/22/2023 15:22:26'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'sp 6/22/2023 15:22:27'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'sp 6/22/2023 15:22:31'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'sp 6/22/2023 15:22:31'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'sp 6/22/2023 15:22:31'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'sp 6/22/2023 15:22:31'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'sp 6/22/2023 15:22:31'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'sp 6/22/2023 15:22:31'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'sp 6/22/2023 15:22:31'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'sp 6/22/2023 15:22:31'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'sp 6/22/2023 15:22:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'sp 6/22/2023 15:22:33'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'sp 6/22/2023 15:22:34'!
+PASSED!
+
+----QUIT----(22 June 2023 15:23:22) CuisUniversity-5832.image priorSource: 10702684!
