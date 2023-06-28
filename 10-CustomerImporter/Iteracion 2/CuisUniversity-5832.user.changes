@@ -1,0 +1,2437 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (28 June 2023 16:29:10) as /Users/fabrizioprida/Desktop/1erCuat2023/Inge1/macos64_ej10/CuisUniversity-5832.image!
+
+
+----End fileIn of /Users/fabrizioprida/Desktop/1erCuat2023/Inge1/repoMateria/2023-1c/10-CustomerImporter/Step1/SoluStep1/CustomerImporter-35.st----!
+
+!testRun: #ImportTest #test01Import stamp: 'FP 6/28/2023 16:30:35'!
+PASSED!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:32:52' prior: 50624631 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'FP 6/28/2023 16:32:52'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream newCustomer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:32:54' prior: 50624787 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'FP 6/28/2023 16:32:54'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream newCustomer line'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:33:26' prior: 50624828 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:35:08' prior: 50624869 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'FP 6/28/2023 16:35:28'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:35:37' prior: 50624901 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		(line beginsWith: 'C') ifTrue: [ | customerData record |
+			record := line findTokens: $,.
+	customerData := record.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:36:14' prior: 50624935 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		(line beginsWith: 'C') ifTrue: [ | customerData record |
+			record := line findTokens: $,.
+			customerData := record.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:36:17' prior: 50624967 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		(line beginsWith: 'C') ifTrue: [ | customerData  |
+			record := line findTokens: $,.
+			customerData := record.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'FP 6/28/2023 16:36:17'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream newCustomer line record'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:36:44' prior: 50625000 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ | customerData  |
+			customerData := record.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:36:45' prior: 50625041 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:37:00' prior: 50625073 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := record.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:37:01' prior: 50625103 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'FP 6/28/2023 16:37:04'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:37:13' prior: 50625133 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := line findTokens: $,.
+		
+		(line beginsWith: 'C') ifTrue: [ newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:37:49'!
+isCustomerLine
+
+	^ line beginsWith: 'C'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:37:49' prior: 50625163 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := line findTokens: $,.
+		
+		(self isCustomerLine) ifTrue: [ newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:37:55'!
+isAddressLine
+
+	^ line beginsWith: 'A'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:37:55' prior: 50625195 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := line findTokens: $,.
+		
+		(self isCustomerLine) ifTrue: [ newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(self isAddressLine) ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:38:00' prior: 50625227 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := line findTokens: $,.
+		
+		self isCustomerLine ifTrue: [ newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(self isAddressLine) ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:38:03' prior: 50625255 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := line findTokens: $,.
+		
+		self isCustomerLine ifTrue: [ newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		self isAddressLine ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:38:37'!
+isCustomerRecord
+
+	^ line beginsWith: 'C'! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:38:37' prior: 50625283 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := line findTokens: $,.
+		
+		self isCustomerRecord ifTrue: [ newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		self isAddressLine ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!methodRemoval: CustomerImporter #isCustomerLine stamp: 'FP 6/28/2023 16:38:37'!
+isCustomerLine
+
+	^ line beginsWith: 'C'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:38:44'!
+isAddressRecord
+
+	^ line beginsWith: 'A'! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:38:44' prior: 50625315 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := line findTokens: $,.
+		
+		self isCustomerRecord ifTrue: [ newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		self isAddressRecord ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!methodRemoval: CustomerImporter #isAddressLine stamp: 'FP 6/28/2023 16:38:44'!
+isAddressLine
+
+	^ line beginsWith: 'A'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:39:13'!
+getRecordFromLine
+
+	^ line findTokens: $,! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:39:13' prior: 50625351 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := self getRecordFromLine.
+		
+		self isCustomerRecord ifTrue: [ newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		self isAddressRecord ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:40:02'!
+processCustomerRecord
+
+	newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:40:02' prior: 50625386 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := self getRecordFromLine.
+		
+		self isCustomerRecord ifTrue: [ self processCustomerRecord ].
+
+		self isAddressRecord ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:40:10'!
+processAddressRecord
+
+	| newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:40:10' prior: 50625425 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := self getRecordFromLine.
+		
+		self isCustomerRecord ifTrue: [ self processCustomerRecord ].
+
+		self isAddressRecord ifTrue: [ self processAddressRecord ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:40:22' prior: 50625459 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		record := self getRecordFromLine.
+		
+		self isCustomerRecord ifTrue: [self processCustomerRecord].
+
+		self isAddressRecord ifTrue: [self processAddressRecord].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:41:02'!
+linesDo: aBlock
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [aBlock value. line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:42:05' prior: 50625472 overrides: 16902254!
+value
+
+	self linesDo: [
+		record := self getRecordFromLine.
+		self isCustomerRecord ifTrue: [self processCustomerRecord].
+		self isAddressRecord ifTrue: [self processAddressRecord]]! !
+
+!testRun: #ImportTest #test01Import stamp: 'FP 6/28/2023 16:42:07'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:42:39'!
+processLine
+
+	record := self getRecordFromLine.
+		self isCustomerRecord ifTrue: [self processCustomerRecord].
+		self isAddressRecord ifTrue: [self processAddressRecord]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:42:39' prior: 50625491 overrides: 16902254!
+value
+
+	self linesDo: [
+		self processLine]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:42:44' prior: 50625511 overrides: 16902254!
+value
+
+	self linesDo: [self processLine]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:42:54' prior: 50625502!
+processLine
+
+	record := self getRecordFromLine.
+	self isCustomerRecord ifTrue: [self processCustomerRecord].
+	self isAddressRecord ifTrue: [self processAddressRecord]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:42:59' prior: 50625413!
+processCustomerRecord
+
+	newCustomer := Customer new.
+	newCustomer firstName: record second.
+	newCustomer lastName: record third.
+	newCustomer identificationType: record fourth.
+	newCustomer identificationNumber: record fifth.
+	session persist: newCustomer! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:43:03' prior: 50625445!
+processAddressRecord
+
+	| newAddress |
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:43:28' prior: 50625530!
+processCustomerRecord
+
+	newCustomer := Customer new.
+	
+	newCustomer firstName: record second.
+	newCustomer lastName: record third.
+	newCustomer identificationType: record fourth.
+	newCustomer identificationNumber: record fifth.
+	
+	session persist: newCustomer! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:43:34' prior: 50625541!
+processAddressRecord
+
+	| newAddress |
+	newAddress := Address new.
+	
+	newCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	
+	newAddress province: record sixth! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'FP 6/28/2023 16:43:40'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream currentCustomer line record'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:43:40' prior: 50625554!
+processCustomerRecord
+
+	currentCustomer := Customer new.
+	
+	currentCustomer firstName: record second.
+	currentCustomer lastName: record third.
+	currentCustomer identificationType: record fourth.
+	currentCustomer identificationNumber: record fifth.
+	
+	session persist: currentCustomer! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:43:40' prior: 50625566!
+processAddressRecord
+
+	| newAddress |
+	newAddress := Address new.
+	
+	currentCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	
+	newAddress province: record sixth! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:43:57' prior: 50625601!
+processAddressRecord
+
+	 
+	newAddress := Address new.
+	
+	currentCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	
+	newAddress province: record sixth! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'FP 6/28/2023 16:43:57'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream currentCustomer line record newAddress'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:44:06' prior: 50625614!
+processAddressRecord
+
+	newAddress := Address new.
+	
+	currentCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	
+	newAddress province: record sixth! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'FP 6/28/2023 16:44:09'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream currentCustomer line record currentAddress'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:44:09' prior: 50625636!
+processAddressRecord
+
+	currentAddress := Address new.
+	
+	currentCustomer addAddress: currentAddress.
+	currentAddress streetName: record second.
+	currentAddress streetNumber: record third asNumber .
+	currentAddress town: record fourth.
+	currentAddress zipCode: record fifth asNumber .
+	
+	currentAddress province: record sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:44:21' prior: 50625658!
+processAddressRecord
+
+	currentAddress := Address new.
+	
+	currentCustomer addAddress: currentAddress.
+	currentAddress streetName: record second.
+	currentAddress streetNumber: record third asNumber .
+	currentAddress town: record fourth.
+	currentAddress zipCode: record fifth asNumber .
+	currentAddress province: record sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:45:01'!
+streamLinesDo: aBlock
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [aBlock value. line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:45:01' prior: 50625516 overrides: 16902254!
+value
+
+	self streamLinesDo: [self processLine]! !
+
+!methodRemoval: CustomerImporter #linesDo: stamp: 'FP 6/28/2023 16:45:01'!
+linesDo: aBlock
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [aBlock value. line := readStream nextLine. ].
+
+	!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'FP 6/28/2023 16:45:27'!
+import
+
+	self streamLinesDo: [self processLine]! !
+!CustomerImporter class methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:45:27' prior: 50624678!
+valueFrom: aReadStream into: aSession
+
+	^(self from: aReadStream into: aSession) import! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:45:27' prior: 50625685!
+streamLinesDo: aBlock
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [aBlock import. line := readStream nextLine. ].
+
+	! !
+
+!methodRemoval: CustomerImporter #value stamp: 'FP 6/28/2023 16:45:27'!
+value
+
+	self streamLinesDo: [self processLine]!
+!ImportTest methodsFor: 'tests' stamp: 'FP 6/28/2023 16:46:52'!
+test01ValidInputStreamIsImportedCorrectly
+
+	CustomerImporter valueFrom: self validImportData into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+
+!methodRemoval: ImportTest #test01Import stamp: 'FP 6/28/2023 16:46:52'!
+test01Import
+
+	CustomerImporter valueFrom: self validImportData into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly !
+!ImportTest methodsFor: 'tests' stamp: 'FP 6/28/2023 16:48:14'!
+test02CannotImportEmptyStream
+
+	self 
+		should:  [CustomerImporter valueFrom: (ReadStream on: '')  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: anError messageText equals: 'Error al importar el archivo']
+
+	! !
+!CustomerImporter class methodsFor: 'importing' stamp: 'FP 6/28/2023 16:48:22'!
+importFrom: aReadStream into: aSession
+
+	^(self from: aReadStream into: aSession) import! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:48:22' prior: 50625725!
+test01ValidInputStreamIsImportedCorrectly
+
+	CustomerImporter importFrom: self validImportData into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:48:22' prior: 50625744!
+test02CannotImportEmptyStream
+
+	self 
+		should:  [CustomerImporter importFrom: (ReadStream on: '')  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: anError messageText equals: 'Error al importar el archivo']
+
+	! !
+
+!methodRemoval: CustomerImporter class #valueFrom:into: stamp: 'FP 6/28/2023 16:48:22'!
+valueFrom: aReadStream into: aSession
+
+	^(self from: aReadStream into: aSession) import!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 16:48:28'!
+FAILURE!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 16:48:28'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'FP 6/28/2023 16:49:37' prior: 50625773!
+test02CannotImportEmptyStream
+
+	self 
+		should:  [CustomerImporter importFrom: (ReadStream on: '')  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) isEmpty]
+
+	! !
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 16:49:40'!
+FAILURE!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 16:49:40'!
+FAILURE!
+!CustomerImporter class methodsFor: 'importing' stamp: 'FP 6/28/2023 16:50:23' prior: 50625756!
+importFrom: aReadStream into: aSession
+	
+	aReadStream isEmpty ifTrue: [self error: 'Error al importar el archivo'].
+	^(self from: aReadStream into: aSession) import! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 16:50:24'!
+ERROR!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 16:50:24'!
+PASSED!
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 16:50:24'!
+ERROR!
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 16:50:47'!
+ERROR!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 16:50:47'!
+PASSED!
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 16:50:47'!
+ERROR!
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 16:51:15'!
+ERROR!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 16:52:03' prior: 50625715!
+streamLinesDo: aBlock
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [aBlock value. line := readStream nextLine. ].
+
+	! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 16:52:04'!
+ERROR!
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 16:52:09'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 16:52:09'!
+PASSED!
+!CustomerImporter class methodsFor: 'importing' stamp: 'FP 6/28/2023 16:52:27'!
+assertReadStreamIsNotEmpty: aReadStream
+
+	^ aReadStream isEmpty ifTrue: [self error: 'Error al importar el archivo']! !
+!CustomerImporter class methodsFor: 'importing' stamp: 'FP 6/28/2023 16:52:27' prior: 50625816!
+importFrom: aReadStream into: aSession
+	
+	self assertReadStreamIsNotEmpty: aReadStream.
+	^(self from: aReadStream into: aSession) import! !
+!ImportTest methodsFor: 'nil' stamp: 'FP 6/28/2023 16:52:45'!
+test03CannotImportStreamContainingAddressWithoutCustomer
+
+	|inputStream|
+	inputStream := (ReadStream on: 'A,San Martin,3322,Olivos,1636,BsAs').
+	
+	self 
+		should:  [CustomerImporter valueFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:52:50' prior: 50625878!
+test03CannotImportStreamContainingAddressWithoutCustomer
+
+	|inputStream|
+	inputStream := (ReadStream on: 'A,San Martin,3322,Olivos,1636,BsAs').
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+! !
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 16:52:52'!
+FAILURE!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 16:52:56'!
+FAILURE!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 16:53:46' prior: 50625672!
+processAddressRecord
+
+	currentCustomer ifNil: [self error: 'Error al importar el archivo'].
+	
+	currentAddress := Address new.
+	
+	currentCustomer addAddress: currentAddress.
+	currentAddress streetName: record second.
+	currentAddress streetNumber: record third asNumber .
+	currentAddress town: record fourth.
+	currentAddress zipCode: record fifth asNumber .
+	currentAddress province: record sixth! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 16:53:48'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 16:53:48'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 16:53:48'!
+PASSED!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 16:53:57'!
+assertCurrentCustomerIsNotNil
+
+	^ currentCustomer ifNil: [self error: 'Error al importar el archivo']! !
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 16:53:57' prior: 50625918!
+processAddressRecord
+
+	self assertCurrentCustomerIsNotNil.
+	
+	currentAddress := Address new.
+	
+	currentCustomer addAddress: currentAddress.
+	currentAddress streetName: record second.
+	currentAddress streetNumber: record third asNumber .
+	currentAddress town: record fourth.
+	currentAddress zipCode: record fifth asNumber .
+	currentAddress province: record sixth! !
+!ImportTest methodsFor: 'nil' stamp: 'FP 6/28/2023 16:54:17'!
+test04CannotImportStreamContainingIncompleteCustomer
+
+	|inputStream|
+	inputStream := (ReadStream on: 'C,Pepe,Sanchez').
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+	! !
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 16:54:19'!
+FAILURE!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 16:55:24' prior: 50625588!
+processCustomerRecord
+
+	record size < 5 ifTrue: [self error: 'Error al importar el archivo.'].
+	
+	currentCustomer := Customer new.
+	
+	currentCustomer firstName: record second.
+	currentCustomer lastName: record third.
+	currentCustomer identificationType: record fourth.
+	currentCustomer identificationNumber: record fifth.
+	
+	session persist: currentCustomer! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 16:55:26'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 16:55:26'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 16:55:26'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 16:55:26'!
+FAILURE!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 16:55:26'!
+FAILURE!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 16:55:32' prior: 50625983!
+processCustomerRecord
+
+	record size < 5 ifTrue: [self error: 'Error al importar el archivo'].
+	
+	currentCustomer := Customer new.
+	
+	currentCustomer firstName: record second.
+	currentCustomer lastName: record third.
+	currentCustomer identificationType: record fourth.
+	currentCustomer identificationNumber: record fifth.
+	
+	session persist: currentCustomer! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 16:55:33'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 16:55:34'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 16:55:34'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 16:55:34'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:55:54'!
+test05CannotImportStreamContainingOverflowedCustomer
+
+	|inputStream|
+	inputStream := (ReadStream on: 'C,Pepe,Sanchez, D, 22333444,estoy,pasado').
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+	! !
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 16:55:56'!
+FAILURE!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 16:55:56'!
+FAILURE!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 16:56:18' prior: 50626015!
+processCustomerRecord
+
+	record size = 5 ifFalse: [self error: 'Error al importar el archivo'].
+	
+	currentCustomer := Customer new.
+	
+	currentCustomer firstName: record second.
+	currentCustomer lastName: record third.
+	currentCustomer identificationType: record fourth.
+	currentCustomer identificationNumber: record fifth.
+	
+	session persist: currentCustomer! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 16:56:20'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 16:56:20'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 16:56:20'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 16:56:20'!
+PASSED!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 16:56:21'!
+PASSED!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 16:56:58'!
+assertRecordHasFiveEntries
+
+	^ record size = 5 ifFalse: [self error: 'Error al importar el archivo']! !
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 16:56:58' prior: 50626067!
+processCustomerRecord
+
+	self assertRecordHasFiveEntries.
+	
+	currentCustomer := Customer new.
+	
+	currentCustomer firstName: record second.
+	currentCustomer lastName: record third.
+	currentCustomer identificationType: record fourth.
+	currentCustomer identificationNumber: record fifth.
+	
+	session persist: currentCustomer! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:57:19'!
+test06CannotImportStreamContainingIncompleteAddress
+
+	|inputStream|
+	inputStream := (ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,Maipu,888').
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | self assert: 'Error al importar el archivo' equals: anError messageText]
+
+	! !
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 16:57:21'!
+FAILURE!
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 16:57:22'!
+FAILURE!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 16:58:11' prior: 50625950!
+processAddressRecord
+
+	self assertCurrentCustomerIsNotNil.
+	record size  < 6 ifTrue: [self error: 'Error al importar el archivo'].
+	
+	currentAddress := Address new.
+	
+	currentCustomer addAddress: currentAddress.
+	currentAddress streetName: record second.
+	currentAddress streetNumber: record third asNumber .
+	currentAddress town: record fourth.
+	currentAddress zipCode: record fifth asNumber .
+	currentAddress province: record sixth! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 16:58:13'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 16:58:13'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 16:58:13'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 16:58:14'!
+PASSED!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 16:58:14'!
+PASSED!
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 16:58:14'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 16:58:33'!
+test07CannotImportStreamContainingOverflowedAddress
+
+	|inputStream|
+	inputStream := (ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,Maipu,888,Florida,1122,Buenos Aires,estoy,pasado').
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | self assert: 'Error al importar el archivo' equals: anError messageText]
+
+	! !
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 16:58:36'!
+FAILURE!
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 16:58:36'!
+FAILURE!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 16:58:49' prior: 50626139!
+processAddressRecord
+
+	self assertCurrentCustomerIsNotNil.
+	record size  = 6 ifFalse: [self error: 'Error al importar el archivo'].
+	
+	currentAddress := Address new.
+	
+	currentCustomer addAddress: currentAddress.
+	currentAddress streetName: record second.
+	currentAddress streetNumber: record third asNumber .
+	currentAddress town: record fourth.
+	currentAddress zipCode: record fifth asNumber .
+	currentAddress province: record sixth! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 16:58:51'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 16:58:52'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 16:58:52'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 16:58:52'!
+PASSED!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 16:58:52'!
+PASSED!
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 16:58:52'!
+PASSED!
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 16:58:52'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:02:26' prior: 50626118!
+test06CannotImportStreamContainingIncompleteAddress
+
+	|inputStream|
+	inputStream := (ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,Maipu,888').
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty 
+			]
+
+	! !
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 17:02:28'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:02:49' prior: 50626177!
+test07CannotImportStreamContainingOverflowedAddress
+
+	|inputStream|
+	inputStream := (ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,Maipu,888,Florida,1122,Buenos Aires,estoy,pasado').
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty ]
+
+	! !
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 17:02:50'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:06:56'!
+test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC
+
+	|inputStream|
+	inputStream := (ReadStream on: 'Customer,Pepe,Sanchez,D,22333444').
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) isEmpty]
+
+	! !
+
+!testRun: #ImportTest #test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC stamp: 'FP 6/28/2023 17:06:58'!
+FAILURE!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:08:22' prior: 50625309!
+isCustomerRecord
+
+	^record first = 'C' ! !
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:09:28' prior: 50625521!
+processLine
+
+	record := self getRecordFromLine.
+	self isCustomerRecord ifTrue: [self processCustomerRecord]
+		ifFalse:[self isAddressRecord ifTrue: [self processAddressRecord] ifFalse: [self error: 'Error al importar el archivo']]
+	! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 17:09:32'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 17:09:33'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 17:09:33'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 17:09:33'!
+PASSED!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 17:09:33'!
+PASSED!
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 17:09:33'!
+PASSED!
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 17:09:34'!
+PASSED!
+
+!testRun: #ImportTest #test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC stamp: 'FP 6/28/2023 17:09:34'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:10:46'!
+test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA
+
+	|inputStream|
+	inputStream := (ReadStream on: 'C,Pepe,Sanchez,D,22333444
+Address,San Martin,3322,Olivos,1636,BsAs').
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty]
+
+	! !
+
+!testRun: #ImportTest #test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA stamp: 'FP 6/28/2023 17:10:47'!
+FAILURE!
+
+!testRun: #ImportTest #test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA stamp: 'FP 6/28/2023 17:10:47'!
+FAILURE!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:11:01' prior: 50625345!
+isAddressRecord
+
+	^ record first = 'A'! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 17:11:03'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 17:11:03'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 17:11:03'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 17:11:03'!
+PASSED!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 17:11:03'!
+PASSED!
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 17:11:04'!
+PASSED!
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 17:11:04'!
+PASSED!
+
+!testRun: #ImportTest #test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC stamp: 'FP 6/28/2023 17:11:04'!
+PASSED!
+
+!testRun: #ImportTest #test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA stamp: 'FP 6/28/2023 17:11:04'!
+PASSED!
+
+----SNAPSHOT----(28 June 2023 17:11:14) CuisUniversity-5832.image priorSource: 9366758!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:13:48'!
+test10ShouldNotImportAddressWhenStreetNumberIsNotANumber
+
+	|inputStream|
+	inputStream := (ReadStream on: 'C,Pepe,Sanchez,D,22333444
+Address,San Martin,treinta,Olivos,1636,BsAs').
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty]
+
+	! !
+
+!testRun: #ImportTest #test10ShouldNotImportAddressWhenStreetNumberIsNotANumber stamp: 'FP 6/28/2023 17:13:50'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:13:59' prior: 50626417!
+test10ShouldNotImportAddressWhenStreetNumberIsNotANumber
+
+	|inputStream|
+	inputStream := (ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Martin,treinta,Olivos,1636,BsAs').
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty]
+
+	! !
+
+!testRun: #ImportTest #test10ShouldNotImportAddressWhenStreetNumberIsNotANumber stamp: 'FP 6/28/2023 17:14:01'!
+FAILURE!
+
+!testRun: #ImportTest #test10ShouldNotImportAddressWhenStreetNumberIsNotANumber stamp: 'FP 6/28/2023 17:14:01'!
+FAILURE!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:14:24'!
+assertRecordHasSixEntries
+
+	^ record size  = 6 ifFalse: [self error: 'Error al importar el archivo']! !
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:14:24' prior: 50626200!
+processAddressRecord
+
+	self assertCurrentCustomerIsNotNil.
+	self assertRecordHasSixEntries.
+	
+	currentAddress := Address new.
+	
+	currentCustomer addAddress: currentAddress.
+	currentAddress streetName: record second.
+	currentAddress streetNumber: record third asNumber .
+	currentAddress town: record fourth.
+	currentAddress zipCode: record fifth asNumber .
+	currentAddress province: record sixth! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 17:17:11'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 17:17:11'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 17:17:11'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 17:17:11'!
+PASSED!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 17:17:11'!
+PASSED!
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 17:17:12'!
+PASSED!
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 17:17:12'!
+PASSED!
+
+!testRun: #ImportTest #test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC stamp: 'FP 6/28/2023 17:17:12'!
+PASSED!
+
+!testRun: #ImportTest #test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA stamp: 'FP 6/28/2023 17:17:12'!
+PASSED!
+
+!testRun: #ImportTest #test10ShouldNotImportAddressWhenStreetNumberIsNotANumber stamp: 'FP 6/28/2023 17:17:12'!
+FAILURE!
+
+!testRun: #ImportTest #test10ShouldNotImportAddressWhenStreetNumberIsNotANumber stamp: 'FP 6/28/2023 17:17:13'!
+FAILURE!
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 17:19:05'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 17:19:06'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 17:19:06'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 17:19:06'!
+PASSED!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 17:19:06'!
+PASSED!
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 17:19:06'!
+PASSED!
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 17:19:07'!
+PASSED!
+
+!testRun: #ImportTest #test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC stamp: 'FP 6/28/2023 17:19:07'!
+PASSED!
+
+!testRun: #ImportTest #test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA stamp: 'FP 6/28/2023 17:19:07'!
+PASSED!
+
+!testRun: #ImportTest #test10ShouldNotImportAddressWhenStreetNumberIsNotANumber stamp: 'FP 6/28/2023 17:19:07'!
+FAILURE!
+
+!testRun: #ImportTest #test10ShouldNotImportAddressWhenStreetNumberIsNotANumber stamp: 'FP 6/28/2023 17:19:07'!
+FAILURE!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:21:51' prior: 50626473!
+processAddressRecord
+
+	self assertCurrentCustomerIsNotNil.
+	self assertRecordHasSixEntries.
+	(record third allSatisfy: [:aCharacter | aCharacter isDigit]) ifFalse: [self error: 'Error al importar el archivo'].
+	
+	currentAddress := Address new.
+	
+	currentCustomer addAddress: currentAddress.
+	currentAddress streetName: record second.
+	currentAddress streetNumber: record third asNumber .
+	currentAddress town: record fourth.
+	currentAddress zipCode: record fifth asNumber .
+	currentAddress province: record sixth! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 17:21:53'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 17:21:53'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 17:21:53'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 17:21:53'!
+PASSED!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 17:21:54'!
+PASSED!
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 17:21:54'!
+PASSED!
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 17:21:54'!
+PASSED!
+
+!testRun: #ImportTest #test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC stamp: 'FP 6/28/2023 17:21:54'!
+PASSED!
+
+!testRun: #ImportTest #test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA stamp: 'FP 6/28/2023 17:21:55'!
+PASSED!
+
+!testRun: #ImportTest #test10ShouldNotImportAddressWhenStreetNumberIsNotANumber stamp: 'FP 6/28/2023 17:21:55'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:22:29'!
+test11ShouldNotImportAddressWhenZipCodeIsNotANumber
+
+	|inputStream|
+	inputStream := (ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,diez,BsAs').
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty]
+
+	! !
+
+!testRun: #ImportTest #test11ShouldNotImportAddressWhenZipCodeIsNotANumber stamp: 'FP 6/28/2023 17:22:31'!
+FAILURE!
+
+!testRun: #ImportTest #test11ShouldNotImportAddressWhenZipCodeIsNotANumber stamp: 'FP 6/28/2023 17:22:31'!
+FAILURE!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:22:50' prior: 50626569!
+processAddressRecord
+
+	self assertCurrentCustomerIsNotNil.
+	self assertRecordHasSixEntries.
+	(record third allSatisfy: [:aCharacter | aCharacter isDigit]) ifFalse: [self error: 'Error al importar el archivo'].
+	(record fifth allSatisfy: [:aCharacter | aCharacter isDigit]) ifFalse: [self error: 'Error al importar el archivo'].
+	
+	currentAddress := Address new.
+	
+	currentCustomer addAddress: currentAddress.
+	currentAddress streetName: record second.
+	currentAddress streetNumber: record third asNumber .
+	currentAddress town: record fourth.
+	currentAddress zipCode: record fifth asNumber .
+	currentAddress province: record sixth! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 17:22:51'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 17:22:51'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 17:22:51'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 17:22:51'!
+PASSED!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 17:22:51'!
+PASSED!
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 17:22:52'!
+PASSED!
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 17:22:52'!
+PASSED!
+
+!testRun: #ImportTest #test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC stamp: 'FP 6/28/2023 17:22:52'!
+PASSED!
+
+!testRun: #ImportTest #test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA stamp: 'FP 6/28/2023 17:22:52'!
+PASSED!
+
+!testRun: #ImportTest #test10ShouldNotImportAddressWhenStreetNumberIsNotANumber stamp: 'FP 6/28/2023 17:22:53'!
+PASSED!
+
+!testRun: #ImportTest #test11ShouldNotImportAddressWhenZipCodeIsNotANumber stamp: 'FP 6/28/2023 17:22:53'!
+PASSED!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:23:30'!
+assertStreetNumberCanBeConvertedToNumber
+
+	^ (record third allSatisfy: [:aCharacter | aCharacter isDigit]) ifFalse: [self error: 'Error al importar el archivo']! !
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:23:30' prior: 50626650!
+processAddressRecord
+
+	self assertCurrentCustomerIsNotNil.
+	self assertRecordHasSixEntries.
+	self assertStreetNumberCanBeConvertedToNumber.
+	(record fifth allSatisfy: [:aCharacter | aCharacter isDigit]) ifFalse: [self error: 'Error al importar el archivo'].
+	
+	currentAddress := Address new.
+	
+	currentCustomer addAddress: currentAddress.
+	currentAddress streetName: record second.
+	currentAddress streetNumber: record third asNumber .
+	currentAddress town: record fourth.
+	currentAddress zipCode: record fifth asNumber .
+	currentAddress province: record sixth! !
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:23:45'!
+assertZipCodeCanBeConvertedToNumber
+
+	^ (record fifth allSatisfy: [:aCharacter | aCharacter isDigit]) ifFalse: [self error: 'Error al importar el archivo']! !
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:23:45' prior: 50626720!
+processAddressRecord
+
+	self assertCurrentCustomerIsNotNil.
+	self assertRecordHasSixEntries.
+	self assertStreetNumberCanBeConvertedToNumber.
+	self assertZipCodeCanBeConvertedToNumber.
+	
+	currentAddress := Address new.
+	
+	currentCustomer addAddress: currentAddress.
+	currentAddress streetName: record second.
+	currentAddress streetNumber: record third asNumber .
+	currentAddress town: record fourth.
+	currentAddress zipCode: record fifth asNumber .
+	currentAddress province: record sixth! !
+
+----SNAPSHOT----(28 June 2023 17:23:51) CuisUniversity-5832.image priorSource: 9432435!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:25:38' prior: 50626312!
+processLine
+
+	record := self getRecordFromLine.
+	self isCustomerRecord 
+		ifTrue: [self processCustomerRecord]
+		ifFalse:[self isAddressRecord 
+				ifTrue: [self processAddressRecord]
+				ifFalse: [self error: 'Error al importar el archivo']]
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'FP 6/28/2023 17:29:37' prior: 50625762!
+test01ValidInputStreamIsImportedCorrectly
+
+	CustomerImporter importFrom: self validImportData into: session.
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 17:29:39'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 17:29:40'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 17:29:40'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 17:29:40'!
+PASSED!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 17:29:40'!
+PASSED!
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 17:29:40'!
+PASSED!
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 17:29:40'!
+PASSED!
+
+!testRun: #ImportTest #test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC stamp: 'FP 6/28/2023 17:29:41'!
+PASSED!
+
+!testRun: #ImportTest #test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA stamp: 'FP 6/28/2023 17:29:41'!
+PASSED!
+
+!testRun: #ImportTest #test10ShouldNotImportAddressWhenStreetNumberIsNotANumber stamp: 'FP 6/28/2023 17:29:41'!
+PASSED!
+
+!testRun: #ImportTest #test11ShouldNotImportAddressWhenZipCodeIsNotANumber stamp: 'FP 6/28/2023 17:29:42'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:30:00'!
+addressWithoutCustomer
+
+	^ ReadStream on: 'A,San Martin,3322,Olivos,1636,BsAs'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:30:00' prior: 50625894!
+test03CannotImportStreamContainingAddressWithoutCustomer
+
+	|inputStream|
+	inputStream := (self addressWithoutCustomer).
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:30:05' prior: 50626836!
+test03CannotImportStreamContainingAddressWithoutCustomer
+
+	|inputStream|
+	inputStream := self addressWithoutCustomer.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:30:46'!
+incompleteCustomerRecord
+
+	^ ReadStream on: 'C,Pepe,Sanchez'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:30:46' prior: 50625964!
+test04CannotImportStreamContainingIncompleteCustomer
+
+	|inputStream|
+	inputStream := (self incompleteCustomerRecord).
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:30:50' prior: 50626872!
+test04CannotImportStreamContainingIncompleteCustomer
+
+	|inputStream|
+	inputStream := self incompleteCustomerRecord.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:31:09'!
+streamWithIncompleteCustomer
+
+	^ ReadStream on: 'C,Pepe,Sanchez'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:31:09' prior: 50626887!
+test04CannotImportStreamContainingIncompleteCustomer
+
+	|inputStream|
+	inputStream := self streamWithIncompleteCustomer.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+	! !
+
+!methodRemoval: ImportTest #incompleteCustomerRecord stamp: 'FP 6/28/2023 17:31:09'!
+incompleteCustomerRecord
+
+	^ ReadStream on: 'C,Pepe,Sanchez'!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:31:25'!
+streamWithAddressAndNoCustomers
+
+	^ ReadStream on: 'A,San Martin,3322,Olivos,1636,BsAs'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:31:25' prior: 50626852!
+test03CannotImportStreamContainingAddressWithoutCustomer
+
+	|inputStream|
+	inputStream := self streamWithAddressAndNoCustomers.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+! !
+
+!methodRemoval: ImportTest #addressWithoutCustomer stamp: 'FP 6/28/2023 17:31:25'!
+addressWithoutCustomer
+
+	^ ReadStream on: 'A,San Martin,3322,Olivos,1636,BsAs'!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:31:44'!
+streamWithOverflowedCustomer
+
+	^ ReadStream on: 'C,Pepe,Sanchez, D, 22333444,estoy,pasado'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:31:44' prior: 50626043!
+test05CannotImportStreamContainingOverflowedCustomer
+
+	|inputStream|
+	inputStream := (self streamWithOverflowedCustomer).
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:31:48' prior: 50626960!
+test05CannotImportStreamContainingOverflowedCustomer
+
+	|inputStream|
+	inputStream := self streamWithOverflowedCustomer.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+	! !
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 17:31:50'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:32:23' prior: 50626242!
+test06CannotImportStreamContainingIncompleteAddress
+
+	|inputStream|
+	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,Maipu,888'.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty 
+			]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:33:17'!
+streamWithIncompleteAddress
+
+	^ ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,Maipu,888'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:33:17' prior: 50626995!
+test06CannotImportStreamContainingIncompleteAddress
+
+	|inputStream|
+	inputStream := self streamWithIncompleteAddress.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty 
+			]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:33:28' prior: 50626264!
+test07CannotImportStreamContainingOverflowedAddress
+
+	|inputStream|
+	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,Maipu,888,Florida,1122,Buenos Aires,estoy,pasado'.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty ]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:33:38'!
+streamWithOverflowedAddress
+
+	^ ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,Maipu,888,Florida,1122,Buenos Aires,estoy,pasado'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:33:38' prior: 50627037!
+test07CannotImportStreamContainingOverflowedAddress
+
+	|inputStream|
+	inputStream := self streamWithOverflowedAddress.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty ]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:33:46' prior: 50626287!
+test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC
+
+	|inputStream|
+	inputStream := ReadStream on: 'Customer,Pepe,Sanchez,D,22333444'.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) isEmpty]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:34:29'!
+streamWithInvalidTypeOfCustomer
+
+	^ ReadStream on: 'Customer,Pepe,Sanchez,D,22333444'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:34:29' prior: 50627080!
+test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC
+
+	|inputStream|
+	inputStream := self streamWithInvalidTypeOfCustomer.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) isEmpty]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:34:46' prior: 50626351!
+test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA
+
+	|inputStream|
+	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
+Address,San Martin,3322,Olivos,1636,BsAs'.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:36:18'!
+streamWithInvalidTypeOfAddress
+
+	^ ReadStream on: 'C,Pepe,Sanchez,D,22333444
+Address,San Martin,3322,Olivos,1636,BsAs'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:36:18' prior: 50627118!
+test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA
+
+	|inputStream|
+	inputStream := self streamWithInvalidTypeOfAddress.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:36:36' prior: 50626440!
+test10ShouldNotImportAddressWhenStreetNumberIsNotANumber
+
+	|inputStream|
+	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Martin,treinta,Olivos,1636,BsAs'.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:37:16'!
+streamWithInvalidAddressStreetNumber
+
+	^ ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Martin,treinta,Olivos,1636,BsAs'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:37:16' prior: 50627162!
+test10ShouldNotImportAddressWhenStreetNumberIsNotANumber
+
+	|inputStream|
+	inputStream := self streamWithInvalidAddressStreetNumber.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:37:23' prior: 50626624!
+test11ShouldNotImportAddressWhenZipCodeIsNotANumber
+
+	|inputStream|
+	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,diez,BsAs'.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty]
+
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:37:32'!
+streamWithInvalidAddressZipCode
+
+	^ ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,diez,BsAs'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'FP 6/28/2023 17:37:32' prior: 50627206!
+test11ShouldNotImportAddressWhenZipCodeIsNotANumber
+
+	|inputStream|
+	inputStream := self streamWithInvalidAddressZipCode.
+	
+	self 
+		should:  [CustomerImporter importFrom: inputStream  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty]
+
+	! !
+
+----SNAPSHOT----(28 June 2023 17:38:55) CuisUniversity-5832.image priorSource: 9443688!
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:40:10'!
+assertValidAddressRecord
+
+	self assertCurrentCustomerIsNotNil.
+	self assertRecordHasSixEntries.
+	self assertStreetNumberCanBeConvertedToNumber.
+	self assertZipCodeCanBeConvertedToNumber! !
+!CustomerImporter methodsFor: 'auxiliary' stamp: 'FP 6/28/2023 17:40:10' prior: 50626748!
+processAddressRecord
+
+	self assertValidAddressRecord.
+	
+	currentAddress := Address new.
+	
+	currentCustomer addAddress: currentAddress.
+	currentAddress streetName: record second.
+	currentAddress streetNumber: record third asNumber .
+	currentAddress town: record fourth.
+	currentAddress zipCode: record fifth asNumber .
+	currentAddress province: record sixth! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'FP 6/28/2023 17:40:58' prior: 50625943!
+assertCurrentCustomerIsNotNil
+
+	^ currentCustomer ifNil: [self error: self class importErrorDescription]! !
+!CustomerImporter class methodsFor: 'nil' stamp: 'FP 6/28/2023 17:41:09'!
+importErrorDescription
+
+	^'Error al importar el archivo'! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'FP 6/28/2023 17:41:26' prior: 50626098!
+assertRecordHasFiveEntries
+
+	^ record size = 5 ifFalse: [self error: self class importErrorDescription]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'FP 6/28/2023 17:41:31' prior: 50626466!
+assertRecordHasSixEntries
+
+	^ record size  = 6 ifFalse: [self error: self class importErrorDescription]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'FP 6/28/2023 17:41:36' prior: 50626712!
+assertStreetNumberCanBeConvertedToNumber
+
+	^ (record third allSatisfy: [:aCharacter | aCharacter isDigit]) ifFalse: [self error: self class importErrorDescription]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'FP 6/28/2023 17:41:43' prior: 50626740!
+assertZipCodeCanBeConvertedToNumber
+
+	^ (record fifth allSatisfy: [:aCharacter | aCharacter isDigit]) ifFalse: [self error: self class importErrorDescription]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'FP 6/28/2023 17:42:19'!
+signalImportError
+
+	^ self error: self class importErrorDescription! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'FP 6/28/2023 17:42:19' prior: 50627300!
+assertStreetNumberCanBeConvertedToNumber
+
+	^ (record third allSatisfy: [:aCharacter | aCharacter isDigit]) ifFalse: [self signalImportError]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'FP 6/28/2023 17:42:19' prior: 50627309!
+assertZipCodeCanBeConvertedToNumber
+
+	^ (record fifth allSatisfy: [:aCharacter | aCharacter isDigit]) ifFalse: [self signalImportError]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'FP 6/28/2023 17:42:19' prior: 50627275!
+assertCurrentCustomerIsNotNil
+
+	^ currentCustomer ifNil: [self signalImportError]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'FP 6/28/2023 17:42:19' prior: 50627286!
+assertRecordHasFiveEntries
+
+	^ record size = 5 ifFalse: [self signalImportError]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'FP 6/28/2023 17:42:19' prior: 50627293!
+assertRecordHasSixEntries
+
+	^ record size  = 6 ifFalse: [self signalImportError]! !
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 17:42:26'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 17:42:27'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 17:42:27'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 17:42:27'!
+PASSED!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 17:42:27'!
+PASSED!
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 17:42:27'!
+PASSED!
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 17:42:28'!
+PASSED!
+
+!testRun: #ImportTest #test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC stamp: 'FP 6/28/2023 17:42:28'!
+PASSED!
+
+!testRun: #ImportTest #test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA stamp: 'FP 6/28/2023 17:42:28'!
+PASSED!
+
+!testRun: #ImportTest #test10ShouldNotImportAddressWhenStreetNumberIsNotANumber stamp: 'FP 6/28/2023 17:42:29'!
+PASSED!
+
+!testRun: #ImportTest #test11ShouldNotImportAddressWhenZipCodeIsNotANumber stamp: 'FP 6/28/2023 17:42:29'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'FP 6/28/2023 17:43:59' prior: 50626934!
+test03CannotImportStreamContainingAddressWithoutCustomer
+
+	self 
+		should:  [CustomerImporter importFrom: self streamWithAddressAndNoCustomers  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+! !
+!ImportTest methodsFor: 'tests' stamp: 'FP 6/28/2023 17:44:02' prior: 50626908!
+test04CannotImportStreamContainingIncompleteCustomer
+
+	self 
+		should:  [CustomerImporter importFrom: self streamWithIncompleteCustomer  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'FP 6/28/2023 17:44:05' prior: 50626976!
+test05CannotImportStreamContainingOverflowedCustomer
+
+	self 
+		should:  [CustomerImporter importFrom: self streamWithOverflowedCustomer  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: (session selectAllOfType: Customer) isEmpty.
+			self assert: 'Error al importar el archivo' equals: anError messageText]
+
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'FP 6/28/2023 17:44:08' prior: 50627019!
+test06CannotImportStreamContainingIncompleteAddress
+
+	self 
+		should:  [CustomerImporter importFrom: self streamWithIncompleteAddress  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty 
+			]
+
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'FP 6/28/2023 17:44:10' prior: 50627063!
+test07CannotImportStreamContainingOverflowedAddress
+
+	self 
+		should:  [CustomerImporter importFrom: self streamWithOverflowedAddress  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty ]
+
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'FP 6/28/2023 17:44:12' prior: 50627102!
+test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC
+
+	self 
+		should:  [CustomerImporter importFrom: self streamWithInvalidTypeOfCustomer  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) isEmpty]
+
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'FP 6/28/2023 17:44:15' prior: 50627144!
+test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA
+
+	self 
+		should:  [CustomerImporter importFrom: self streamWithInvalidTypeOfAddress  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty]
+
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'FP 6/28/2023 17:44:17' prior: 50627188!
+test10ShouldNotImportAddressWhenStreetNumberIsNotANumber
+
+	self 
+		should:  [CustomerImporter importFrom: self streamWithInvalidAddressStreetNumber  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty]
+
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'FP 6/28/2023 17:44:19' prior: 50627231!
+test11ShouldNotImportAddressWhenZipCodeIsNotANumber
+
+	self 
+		should:  [CustomerImporter importFrom: self streamWithInvalidAddressZipCode  into: session]
+		raise: Error
+		withExceptionDo: [:anError | 
+			self assert: 'Error al importar el archivo' equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size = 1.
+			self assert: (session selectAllOfType: Address) isEmpty]
+
+	! !
+
+----SNAPSHOT----(28 June 2023 17:45:35) CuisUniversity-5832.image priorSource: 9459106!
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 17:49:50'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 17:49:50'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 17:49:50'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 17:49:50'!
+PASSED!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 17:49:50'!
+PASSED!
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 17:49:51'!
+PASSED!
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 17:49:51'!
+PASSED!
+
+!testRun: #ImportTest #test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC stamp: 'FP 6/28/2023 17:49:51'!
+PASSED!
+
+!testRun: #ImportTest #test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA stamp: 'FP 6/28/2023 17:49:51'!
+PASSED!
+
+!testRun: #ImportTest #test10ShouldNotImportAddressWhenStreetNumberIsNotANumber stamp: 'FP 6/28/2023 17:49:52'!
+PASSED!
+
+!testRun: #ImportTest #test11ShouldNotImportAddressWhenZipCodeIsNotANumber stamp: 'FP 6/28/2023 17:49:52'!
+PASSED!
+
+----SNAPSHOT----(28 June 2023 17:49:57) CuisUniversity-5832.image priorSource: 9468180!
+
+!testRun: #ImportTest #test01ValidInputStreamIsImportedCorrectly stamp: 'FP 6/28/2023 17:53:57'!
+PASSED!
+
+!testRun: #ImportTest #test02CannotImportEmptyStream stamp: 'FP 6/28/2023 17:53:58'!
+PASSED!
+
+!testRun: #ImportTest #test03CannotImportStreamContainingAddressWithoutCustomer stamp: 'FP 6/28/2023 17:53:58'!
+PASSED!
+
+!testRun: #ImportTest #test04CannotImportStreamContainingIncompleteCustomer stamp: 'FP 6/28/2023 17:53:58'!
+PASSED!
+
+!testRun: #ImportTest #test05CannotImportStreamContainingOverflowedCustomer stamp: 'FP 6/28/2023 17:53:58'!
+PASSED!
+
+!testRun: #ImportTest #test06CannotImportStreamContainingIncompleteAddress stamp: 'FP 6/28/2023 17:53:58'!
+PASSED!
+
+!testRun: #ImportTest #test07CannotImportStreamContainingOverflowedAddress stamp: 'FP 6/28/2023 17:53:59'!
+PASSED!
+
+!testRun: #ImportTest #test08ShouldOnlyImportCustomerWhenLinesFirstEntryIsExactlyC stamp: 'FP 6/28/2023 17:53:59'!
+PASSED!
+
+!testRun: #ImportTest #test09ShouldOnlyImportAddressWhenLinesFirstEntryIsExactlyA stamp: 'FP 6/28/2023 17:53:59'!
+PASSED!
+
+!testRun: #ImportTest #test10ShouldNotImportAddressWhenStreetNumberIsNotANumber stamp: 'FP 6/28/2023 17:53:59'!
+PASSED!
+
+!testRun: #ImportTest #test11ShouldNotImportAddressWhenZipCodeIsNotANumber stamp: 'FP 6/28/2023 17:54:00'!
+PASSED!
+
+----SNAPSHOT----(28 June 2023 17:54:03) CuisUniversity-5832.image priorSource: 9469540!
